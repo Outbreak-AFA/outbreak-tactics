@@ -83,4 +83,28 @@ public abstract class Personagem {
         System.out.println(this.getNome() + " andou " + x + " e " + y);
     }
 
+    public void retirarVida(int dano) {
+        setVida(getVida() - dano);
+    }
+
+    public int calcularDano(int danoTomado) {
+        int probabilidade = Dados.random(20);
+        int dano = getAtk() * Dados.random(danoTomado);
+        if (probabilidade >= 19) dano *= getAtk();
+        return dano;
+    }
+
+    public void mostrarStatus() {
+        System.out.println("========="+ getNome() +"=========");
+        System.out.println("Vida: " + getVida());
+        System.out.println("Mana: " + getMana());
+        System.out.println("Surto acumulado: " + getSurtoAcumulado());
+        System.out.println("=======================================");
+    }
+
+    public boolean morreu() {
+        if (getVida() > 0) return false;
+        return true;
+    }
+
 }
