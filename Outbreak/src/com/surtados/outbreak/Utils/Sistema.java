@@ -1,4 +1,6 @@
-package com.surtados.outbreak.Models;
+package com.surtados.outbreak.Utils;
+
+import com.surtados.outbreak.Models.Personagem;
 
 public class Sistema {
     public static boolean acertou() {

@@ -1,5 +1,7 @@
 package com.surtados.outbreak.Models;
 
+import com.surtados.outbreak.Utils.Dados;
+
 public class Item {
     private String tipoDeItem;
 

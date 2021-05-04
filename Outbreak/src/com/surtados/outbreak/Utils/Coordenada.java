@@ -1,4 +1,4 @@
-package com.surtados.outbreak.Models;
+package com.surtados.outbreak.Utils;
 
 public class Coordenada {
     private int coluna, linha;

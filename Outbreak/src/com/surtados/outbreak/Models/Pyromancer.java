@@ -1,5 +1,7 @@
 package com.surtados.outbreak.Models;
 
+import com.surtados.outbreak.Utils.Sistema;
+
 public class Pyromancer extends Personagem {
     public Pyromancer(String nome) {
         setAtk(5);

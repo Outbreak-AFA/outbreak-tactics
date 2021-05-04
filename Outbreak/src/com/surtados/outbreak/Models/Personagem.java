@@ -1,5 +1,8 @@
 package com.surtados.outbreak.Models;
 
+import com.surtados.outbreak.Utils.Coordenada;
+import com.surtados.outbreak.Utils.Dados;
+
 import java.util.ArrayList;
 
 public abstract class Personagem {
