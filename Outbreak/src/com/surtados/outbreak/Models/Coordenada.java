@@ -18,4 +18,8 @@ public class Coordenada {
     public void setLinha(int linha) {
         this.linha = linha;
     }
+
+    public void setPosicao(int linha, int coluna, Mapa mapa) {
+        setColuna(coluna); setLinha(linha);
+    }
 }
