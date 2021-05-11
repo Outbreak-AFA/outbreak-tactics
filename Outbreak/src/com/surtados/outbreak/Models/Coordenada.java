@@ -3,6 +3,12 @@ package com.surtados.outbreak.Models;
 public class Coordenada {
     private int coluna, linha;
 
+    public Coordenada clone() {
+        Coordenada novaCoord = new Coordenada();
+        novaCoord.setPosicao(getLinha(), getColuna());
+        return novaCoord;
+    }
+
     public int getColuna() {
         return coluna;
     }
@@ -19,7 +25,7 @@ public class Coordenada {
         this.linha = linha;
     }
 
-    public void setPosicao(int linha, int coluna, Mapa mapa) {
+    public void setPosicao(int linha, int coluna) {
         setColuna(coluna); setLinha(linha);
     }
 }

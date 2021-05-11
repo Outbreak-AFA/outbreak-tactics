@@ -42,11 +42,11 @@ public class Mapa {
         for (int i=0; i<linha; i++) {
             for (int j=0; j<coluna; j++) {
                if (j == 0 || j == coluna-1) {
-                   muro.coord.setPosicao(i, j, this);
+                   muro.coord.setPosicao(i, j);
                    obstaculos.add(muro);
                    matrizTemp[i][j] = muro.getSimbolo();
                } else if (i == 0 || i == linha-1) {
-                   muro.coord.setPosicao(i, j, this);
+                   muro.coord.setPosicao(i, j);
                    obstaculos.add(muro);
                    matrizTemp[i][j] = muro.getSimbolo();
                } else matrizTemp[i][j] = '*';

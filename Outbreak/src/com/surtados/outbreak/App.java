@@ -1,9 +1,6 @@
 package com.surtados.outbreak;
 
-import com.surtados.outbreak.Models.Gengah;
-import com.surtados.outbreak.Models.Mapa;
-import com.surtados.outbreak.Models.Personagem;
-import com.surtados.outbreak.Models.Pyromancer;
+import com.surtados.outbreak.Models.*;
 import com.surtados.outbreak.Utils.Dados;
 
 import java.util.ArrayList;
@@ -41,14 +38,19 @@ public class App {
         Pyromancer p1 = new Pyromancer("Dante");
         Gengah g1 = new Gengah("Dark");
 
-        Mapa mapa= new Mapa(20, 60);
+        ArrayList<Coordenada> coordenadas = new ArrayList<>();
+        Coordenada coord = new Coordenada();
 
-        mapa.personagens.add(g1);
-        mapa.personagens.add(p1);
+        coord.setPosicao(0, 0);
+        coordenadas.add(coord.clone());
 
-        g1.mover(2, 2, mapa);
-        p1.mover(5, 8, mapa);
-        mapa.plotarMatriz();
+        coord.setPosicao(1, 1);
+        coordenadas.add(coord.clone());
+
+        for (Coordenada c : coordenadas) {
+            System.out.println(c.getLinha() + " === " + c.getColuna());
+        }
+
     }
 
 }
