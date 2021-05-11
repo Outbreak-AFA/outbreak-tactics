@@ -150,6 +150,33 @@ public abstract class Personagem {
         System.out.println("=======================================");
     }
 
+    public void listarItens() {
+        for (Item i : inventario) {
+            System.out.println(inventario.indexOf(i) + ": " + i.getTipoDeItem());
+        }
+    }
+
+    public String usarItem(int index) {
+        int valorDados = Dados.random(20) + Dados.random(20) + Dados.random(20);
+        switch (inventario.get(index).getTipoDeItem()) {
+            case "MANA":
+                setMana(getMana() + valorDados);
+                return getNome() + " recuperou " + valorDados + " de mana!";
+            case "CURA":
+                setVida(getVida() + valorDados);
+                return getNome() + " recuperou " + valorDados + " de vida!";
+            case "DEF":
+                setDef(getDef() + (int)(getDef() / 2));
+                return getNome() + " ganhou mais " + (getDef() + (int)(getDef() / 2)) + " de defesa!";
+            case "ATK":
+                setAtk(getAtk() + (int)(getAtk() / 2));
+                return getNome() + " ganhou mais " + (getAtk() + (int)(getAtk() / 2)) + " de ataque!";
+            default:
+                setAtk(getAgl() + (int)(getAgl() / 2));
+                return getNome() + " ganhou mais " + (getAgl() + (int)(getAgl() / 2)) + " de agilidade!";
+        }
+    }
+
     public boolean morreu() {
         if (getVida() > 0) return false;
         setVida(0);

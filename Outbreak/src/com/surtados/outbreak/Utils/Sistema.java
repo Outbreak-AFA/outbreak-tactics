@@ -15,6 +15,7 @@ public class Sistema {
     }
 
     public static ArrayList<Coordenada> getAlcance(Personagem personagem, Mapa mapa) {
+        boolean possivel;
         int agl = personagem.getAgl();
         ArrayList<Coordenada> coordPadrao = new ArrayList<>();
         Coordenada personagemCoord = personagem.coord;
@@ -98,6 +99,13 @@ public class Sistema {
         }
         // verificando obstáculos
         for (Coordenada cp : coordPadrao) {
+            possivel = true;
+            for (Obstaculo ob : mapa.obstaculos) {
+                if (cp.getLinha() == ob.coord.getLinha() && (cp.getColuna() == ob.coord.getColuna())) {
+                    possivel = false;
+                }
+            }
+            if (possivel) possiveisCoordenadas.add(cp);
         }
         return possiveisCoordenadas;
     }

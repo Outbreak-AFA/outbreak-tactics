@@ -2,6 +2,7 @@ package com.surtados.outbreak;
 
 import com.surtados.outbreak.Models.*;
 import com.surtados.outbreak.Utils.Dados;
+import com.surtados.outbreak.Utils.Sistema;
 
 import java.util.ArrayList;
 
@@ -36,19 +37,20 @@ public class App {
 
     public static void main(String[] args) {
         Pyromancer p1 = new Pyromancer("Dante");
-        Gengah g1 = new Gengah("Dark");
+        Gengah g = new Gengah("Dark");
+        Mapa mapa = new Mapa(10, 30);
 
-        ArrayList<Coordenada> coordenadas = new ArrayList<>();
-        Coordenada coord = new Coordenada();
+        Obstaculo pedra = new Obstaculo('#');
 
-        coord.setPosicao(0, 0);
-        coordenadas.add(coord.clone());
+        g.coord.setPosicao(5, 10);
+        pedra.coord.setPosicao(6, 10);
 
-        coord.setPosicao(1, 1);
-        coordenadas.add(coord.clone());
+        mapa.inserirPersonagem(g);
+        mapa.inserirObsetaculo(pedra);
+        mapa.plotarMatriz();
 
-        for (Coordenada c : coordenadas) {
-            System.out.println(c.getLinha() + " === " + c.getColuna());
+        for (Coordenada c : Sistema.getAlcance(g, mapa)) {
+            System.out.println(c.getLinha() + " " + c.getColuna());
         }
 
     }

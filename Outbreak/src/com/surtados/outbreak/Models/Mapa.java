@@ -36,6 +36,16 @@ public class Mapa {
         this.colunaMax = colunaMax;
     }
 
+    public void inserirPersonagem(Personagem p) {
+       personagens.add(p);
+       matriz[p.coord.getLinha()][p.coord.getColuna()] = p.sprite.getCharacter();
+    }
+
+    public void inserirObsetaculo(Obstaculo o) {
+        obstaculos.add(o);
+        matriz[o.coord.getLinha()][o.coord.getColuna()] = o.getSimbolo();
+    }
+
     public char[][] preencherMapa(int linha, int coluna) {
        char[][] matrizTemp = new char[linha][coluna];
        Obstaculo muro = new Obstaculo('=');
