@@ -1,17 +1,19 @@
 package com.surtados.outbreak.Models;
 
+import com.surtados.outbreak.Core.Sprite;
 import com.surtados.outbreak.Utils.Dados;
 
 import java.util.ArrayList;
 
 public abstract class Personagem {
+    public Sprite sprite = new Sprite();
     private String nome;
     private int vida, mana, atk, def, agl;
     private double surtoAcumulado;
     private boolean surtado = false;
     private int contadorSurto;
-    public Coordenada coord;
-    public ArrayList<Item> inventario;
+    public Coordenada coord = new Coordenada();
+    public ArrayList<Item> inventario = new ArrayList<>();
 
     public String getNome() {
         return nome;
@@ -152,6 +154,11 @@ public abstract class Personagem {
         if (getVida() > 0) return false;
         setVida(0);
         return true;
+    }
+
+    public void mover(int linha, int coluna, Mapa mapa) {
+        mapa.setMatriz(sprite.getCharacter(), linha, coluna, coord.getLinha(), coord.getColuna());
+        coord.setPosicao(linha, coluna, mapa);
     }
 
 }
