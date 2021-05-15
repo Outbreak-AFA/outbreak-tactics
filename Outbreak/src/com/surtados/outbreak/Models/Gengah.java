@@ -1,6 +1,6 @@
 package com.surtados.outbreak.Models;
 
-import com.surtados.outbreak.Utils.Sistema;
+import com.surtados.outbreak.Core.Sistema;
 
 public class Gengah extends Personagem {
     public Gengah(String nome) {

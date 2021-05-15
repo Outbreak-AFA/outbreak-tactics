@@ -43,7 +43,7 @@ public class Mapa {
 
     public void inserirObsetaculo(Obstaculo o) {
         obstaculos.add(o);
-        matriz[o.coord.getLinha()][o.coord.getColuna()] = o.getSimbolo();
+        matriz[o.coord.getLinha()][o.coord.getColuna()] = o.sprite.getCharacter();
     }
 
     public char[][] preencherMapa(int linha, int coluna) {
@@ -54,11 +54,11 @@ public class Mapa {
                if (j == 0 || j == coluna-1) {
                    muro.coord.setPosicao(i, j);
                    obstaculos.add(muro);
-                   matrizTemp[i][j] = muro.getSimbolo();
+                   matrizTemp[i][j] = muro.sprite.getCharacter();
                } else if (i == 0 || i == linha-1) {
                    muro.coord.setPosicao(i, j);
                    obstaculos.add(muro);
-                   matrizTemp[i][j] = muro.getSimbolo();
+                   matrizTemp[i][j] = muro.sprite.getCharacter();
                } else matrizTemp[i][j] = '*';
             }
         }

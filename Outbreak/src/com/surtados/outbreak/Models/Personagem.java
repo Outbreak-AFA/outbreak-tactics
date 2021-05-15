@@ -1,6 +1,6 @@
 package com.surtados.outbreak.Models;
 
-import com.surtados.outbreak.Core.Sprite;
+import com.surtados.outbreak.Core.Sistema;
 import com.surtados.outbreak.Utils.Dados;
 
 import java.util.ArrayList;
@@ -186,6 +186,12 @@ public abstract class Personagem {
     public void mover(int linha, int coluna, Mapa mapa) {
         mapa.setMatriz(sprite.getCharacter(), linha, coluna, coord.getLinha(), coord.getColuna());
         coord.setPosicao(linha, coluna);
+    }
+
+    public void mostrarAlcance(Mapa mapa) {
+        for (Coordenada c : Sistema.getAlcance(this, mapa)) {
+            System.out.println("Linha: " + c.getLinha() + " Coluna: " + c.getColuna());
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-package com.surtados.outbreak.Core;
+package com.surtados.outbreak.Models;
 
 public class Sprite {
     private char character;
