@@ -1,10 +1,8 @@
 package com.surtados.outbreak;
 
+import com.surtados.outbreak.Core.Menu;
 import com.surtados.outbreak.Models.*;
-import com.surtados.outbreak.Utils.Dados;
-import com.surtados.outbreak.Utils.Sistema;
-
-import java.util.ArrayList;
+import com.surtados.outbreak.Core.Sistema;
 
 public class App {
 
@@ -36,22 +34,31 @@ public class App {
 //    }
 
     public static void main(String[] args) {
-        Pyromancer p1 = new Pyromancer("Dante");
+        Menu.menuJogo();
+
+        Pyromancer p = new Pyromancer("Dante");
+        Pyromancer p2 = new Pyromancer("Cleiton");
         Gengah g = new Gengah("Dark");
         Mapa mapa = new Mapa(10, 30);
 
         Obstaculo pedra = new Obstaculo('#');
 
         g.coord.setPosicao(5, 10);
+        p.coord.setPosicao(7, 11);
+        p2.coord.setPosicao(3, 20);
         pedra.coord.setPosicao(6, 10);
 
         mapa.inserirPersonagem(g);
+        mapa.inserirPersonagem(p);
+        mapa.inserirPersonagem(p2);
         mapa.inserirObsetaculo(pedra);
         mapa.plotarMatriz();
 
-        for (Coordenada c : Sistema.getAlcance(g, mapa)) {
-            System.out.println(c.getLinha() + " " + c.getColuna());
-        }
+        g.mostrarAlcance(mapa);
+        System.out.println();
+        p.mostrarAlcance(mapa);
+        System.out.println();
+        p2.mostrarAlcance(mapa);
 
     }
 

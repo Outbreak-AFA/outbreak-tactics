@@ -1,9 +1,10 @@
-package com.surtados.outbreak.Utils;
+package com.surtados.outbreak.Core;
 
 import com.surtados.outbreak.Models.Coordenada;
 import com.surtados.outbreak.Models.Mapa;
 import com.surtados.outbreak.Models.Obstaculo;
 import com.surtados.outbreak.Models.Personagem;
+import com.surtados.outbreak.Utils.Dados;
 
 import java.util.ArrayList;
 
