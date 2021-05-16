@@ -12,7 +12,7 @@ public class Gengah extends Personagem {
         setVida(300);
         setSurtado(false);
         setSurtoAcumulado(0);
-        sprite.setCharacter('A');
+        sprite.setCharacter('G');
     }
 
     @Override

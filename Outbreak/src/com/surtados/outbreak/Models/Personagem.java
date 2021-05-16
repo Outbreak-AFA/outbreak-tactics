@@ -92,6 +92,7 @@ public abstract class Personagem {
 
     public void modoSurto(int atk, int def, int agl) {
         if (podeSurtar()) {
+            System.out.println(getNome() + " ativou o modo surto!");
             setAtk(getAtk() + atk); setDef(getDef() + def); setAgl(getAgl() + agl);
             setSurtado(true);
             setContadorSurto(3);
