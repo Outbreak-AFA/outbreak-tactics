@@ -17,16 +17,16 @@ public class App {
             return;
         }
 
-//        System.out.println("Iniciando jogo!\n");
-//        while (true) {
-//            players.add(Sistema.registroOuLogin(0));
-//            players.add(Sistema.registroOuLogin(1));
-//            if (players.get(0).equals(players.get(1))) {
-//                System.out.println("Usuários iguais! Por favor, entrem com contas diferentes.");
-//            } else {
-//                break;
-//            }
-//        }
+        System.out.println("Iniciando jogo!\n");
+        while (true) {
+            players.add(Sistema.registroOuLogin(0));
+            players.add(Sistema.registroOuLogin(1));
+            if (players.get(0).equals(players.get(1))) {
+                System.out.println("Usuários iguais! Por favor, entrem com contas diferentes.");
+            } else {
+                break;
+            }
+        }
 
         System.out.println("Agora vamos configurar o mapa!");
 
