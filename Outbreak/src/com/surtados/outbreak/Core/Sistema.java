@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 public class Sistema {
 
+    public static int quantPersonagens;
+
     public static boolean acertou(Personagem p) {
         int valor = Dados.random(20, p.getAgl() * (-1));
         if (valor >= 5) return  true;
@@ -311,6 +313,16 @@ public class Sistema {
                 return registroOuLogin(index);
         }
 
+    }
+
+    public static Mapa configMapa() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Por favor insira a largura do mapa (min: 10 / max:60): ");
+        int largura = scan.nextInt();
+        System.out.println("Por favor insira a altura do mapa (min: 10 / max:60): ");
+        int altura = scan.nextInt();
+
+        return new Mapa(altura, largura);
     }
 
 }
