@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sistema {
+
     public static boolean acertou(Personagem p) {
         int valor = Dados.random(20, p.getAgl() * (-1));
         if (valor >= 5) return  true;
@@ -149,6 +150,7 @@ public class Sistema {
         System.out.println("[2] - Instruções");
         System.out.println("[3] - Créditos");
         System.out.println("[4] - Sair");
+        System.out.println("\n\nVersão: 0.1");
         System.out.println("================================");
 
         Scanner scan = new Scanner(System.in);
@@ -197,11 +199,17 @@ public class Sistema {
         }
     }
 
-    public static void registrar(String nome, String email, String senha) {
+    public static boolean registrar(String nome, String email, String senha) {
         JSONObject objeto = new JSONObject();
         JSONArray conquistasArray = new JSONArray();
         JSONObject usuarios = getUsuarios();
         JSONArray usuariosArray = usuarios.getJSONArray("usuarios");
+        for (int i=0; i<usuariosArray.length(); i++) {
+            JSONObject objTemp = (JSONObject) usuariosArray.get(i);
+            if (objTemp.get("email").equals(email)) {
+                return false;
+            }
+        }
         objeto.put("nome", nome);
         objeto.put("email", email);
         objeto.put("senha", senha);
@@ -224,6 +232,7 @@ public class Sistema {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
     public static Player login(String email, String senha) {
@@ -251,4 +260,57 @@ public class Sistema {
         }
         return null;
     }
+
+    public static Player registroOuLogin(int index) {
+        Scanner scan = new Scanner(System.in);
+        String nome, email, senha;
+
+        System.out.println("======= OUTBREACK TACTICS ======");
+        System.out.println("================================");
+        System.out.println("Jogador " + (index + 1) + ":");
+        System.out.println("[1] - Realizar Login de usuário");
+        System.out.println("[2] - Registrar novo usuário");
+        System.out.println("================================");
+
+        final int escolha = scan.nextInt();
+        scan.nextLine();
+
+        switch (escolha) {
+            case 1:
+                System.out.println("Certo! Vamos efetuar o login!");
+                System.out.print("Por favor, digite o e-mail registrado\n>>> ");
+                email = scan.nextLine();
+                System.out.print("Por favor, digite sua senha\n>>> ");
+                senha = scan.nextLine();
+                Player p1 = login(email, senha);
+                if (p1 == null) {
+                    System.out.println("Login não efetuado :(");
+                    System.out.println("E-mail ou senha incorretos!");
+                    return registroOuLogin(index);
+                }
+                System.out.println("Seja bem vinde, " + p1.getNome() + "!\n Tenha um bom jogo!");
+                return p1;
+            case 2:
+                System.out.println("Certo! Vamos efetuar o cadastro!");
+                System.out.print("Primeiro digite um nickname!\n>>> ");
+                nome = scan.nextLine();
+                System.out.print("Por favor, digite um e-mail\n>>> ");
+                email = scan.nextLine();
+                System.out.print("Por favor, digite uma senha\n>>> ");
+                senha = scan.nextLine();
+
+                boolean reg = registrar(nome, email, senha);
+                if (!reg) {
+                    System.out.println("E-mail já cadastrado! Por favor, utilize outro.");
+                    return registroOuLogin(index);
+                }
+                System.out.println("Você será redirecionado para a tela de login!");
+                return registroOuLogin(index);
+            default:
+                System.out.println("opção inválida!");
+                return registroOuLogin(index);
+        }
+
+    }
+
 }
