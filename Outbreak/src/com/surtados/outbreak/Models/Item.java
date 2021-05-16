@@ -5,6 +5,10 @@ import com.surtados.outbreak.Utils.Dados;
 public class Item {
     private String tipoDeItem;
 
+    public Item(String tipoDeItem) {
+        setTipoDeItem(tipoDeItem);
+    }
+
     public String getTipoDeItem() {
         return tipoDeItem;
     }
