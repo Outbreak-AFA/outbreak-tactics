@@ -181,7 +181,7 @@ public class Player {
                 int escolha = scan.nextInt();
                 scan.nextLine();
                 if (escolha > 0 && escolha <= 9) {
-                    personagens.get(escolha-1).descricao();
+                    System.out.println(personagens.get(escolha-1).descricao());
                     System.out.println("Deseja adicionar " + personagens.get(escolha-1).getNome() + "" +
                             " ao seu time?");
                     String resposta = scan.nextLine();

@@ -52,7 +52,7 @@ public class MrCanhao extends Personagem {
 
     @Override
     public String descricao() {
-        return "";
+        return "Mr. Canhão, ou como se chamava: Lapoleão, era um antigo guerreiro que se destacou em guerras, pelo menos\nenquanto era humano, antes de ser enfeitiçado por uma bruxa e ser transformado em um canhão. Mesmo assim,\nMr. Canhão é ainda um importante participante de batalhas, podendo atingir longas distâncias com seus ataques.";
     }
 
 }
