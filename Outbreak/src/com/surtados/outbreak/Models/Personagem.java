@@ -6,6 +6,7 @@ import com.surtados.outbreak.Utils.Dados;
 import java.util.ArrayList;
 
 public abstract class Personagem {
+    private int playerId;
     public Sprite sprite = new Sprite();
     private String nome;
     private int vida, mana, atk, def, agl;
@@ -14,6 +15,7 @@ public abstract class Personagem {
     private int contadorSurto;
     public Coordenada coord = new Coordenada();
     public ArrayList<Item> inventario = new ArrayList<>();
+    private Item itemEspecial;
 
     public String getNome() {
         return nome;
@@ -85,6 +87,14 @@ public abstract class Personagem {
 
     public void setContadorSurto(int contadorSurto) {
         this.contadorSurto = contadorSurto;
+    }
+
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
     }
 
     public abstract void atacarNatural(Personagem p);
@@ -194,5 +204,7 @@ public abstract class Personagem {
             System.out.println("Linha: " + c.getLinha() + " Coluna: " + c.getColuna());
         }
     }
+
+    public abstract String descricao();
 
 }

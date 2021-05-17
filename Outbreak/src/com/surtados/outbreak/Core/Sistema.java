@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Sistema {
 
-    public static int quantPersonagens;
+    public static int limitePersonagens;
 
     public static boolean acertou(Personagem p) {
         int valor = Dados.random(20, p.getAgl() * (-1));
@@ -317,12 +317,25 @@ public class Sistema {
 
     public static Mapa configMapa() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Por favor insira a largura do mapa (min: 10 / max:60): ");
+        System.out.println("Por favor insira a largura do mapa (min: 10 / max: 60): ");
         int largura = scan.nextInt();
-        System.out.println("Por favor insira a altura do mapa (min: 10 / max:60): ");
+        System.out.println("Por favor insira a altura do mapa (min: 10 / max: 60): ");
         int altura = scan.nextInt();
 
         return new Mapa(altura, largura);
+    }
+
+    public static void modoDeJogo() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Por favor, insira a quantidade de personagens por jogador. (min: 2 / max: 8)\n>>>");
+
+        limitePersonagens = scan.nextInt();
+        if (limitePersonagens >= 2 && limitePersonagens <= 8) {
+            System.out.println("Certo! Cada jogador terá de escolher " + limitePersonagens + " personagens!");
+        } else {
+            System.out.println("Quantidade informada não permitida!");
+            modoDeJogo();
+        }
     }
 
 }

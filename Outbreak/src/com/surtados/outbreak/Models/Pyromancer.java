@@ -50,4 +50,11 @@ public class Pyromancer extends Personagem {
         modoSurto(5, 2, 0);
         passarTurno();
     }
+
+    @Override
+    public String descricao() {
+        return "O Pyromancer é um velho mago que passou muito tempo acorrentado em uma torre localizada nas" +
+                "mais altas montanhas. Agora ele busca vingança e está disposto a queimar qualquer um que " +
+                "cruze com seu caminho.";
+    }
 }

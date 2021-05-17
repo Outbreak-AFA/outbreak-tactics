@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
+    private int id; // PK para relacionamento de 1:N com personagens
     private String nome;
     private String email;
     private String senha;
     private int vitorias;
     private int derrotas;
     public ArrayList<Item> conquistas = new ArrayList<>();
-    public ArrayList<Personagem> personagens = new ArrayList<>();
 
     public Player(String nome, String email, String senha, int vitorias, int derrotas, ArrayList<Item> conquistasPlayer) {
         setNome(nome);
@@ -51,10 +51,6 @@ public class Player {
         this.senha = senha;
     }
 
-    public ArrayList<Personagem> getPersonagens() {
-        return personagens;
-    }
-
     public int getVitorias() {
         return vitorias;
     }
@@ -71,14 +67,16 @@ public class Player {
         this.derrotas = derrotas;
     }
 
-    public ArrayList<Item> receberItens(ArrayList<Item> itens) {
-        return itens;
+    public int getId() {
+        return id;
     }
 
-    public void escolherPersonagem(Personagem p) {
-        if (personagens.size() != 5) {
-            personagens.add(p);
-        }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ArrayList<Item> receberItens(ArrayList<Item> itens) {
+        return itens;
     }
 
     public void salvarDados() {
@@ -114,6 +112,29 @@ public class Player {
             escritor.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void selecionarConquista() {
+
+    }
+
+    public void escolherPersonagens() {
+        Scanner scan = new Scanner(System.in);
+        for (int i=0; i<Sistema.limitePersonagens; i++) {
+            while (true) {
+                System.out.println(getNome() + ", escolha o " + i+1 + "º personagem:");
+                System.out.println("[1] - Gosminha");
+                System.out.println("[2] - Gengah");
+                System.out.println("[3] - Pyromancer");
+                System.out.println("[4] - Arqueiro");
+                System.out.println("[5] - Troll");
+                System.out.println("[6] - Guerreira");
+                System.out.println("[7] - Fadinha");
+                System.out.println("[8] - Mr. Canhão");
+
+                int escolha = scan.nextInt();
+            }
         }
     }
 }
