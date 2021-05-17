@@ -44,22 +44,14 @@ public class App {
         players.get(0).escolherPersonagens();
         players.get(1).escolherPersonagens();
 
-        System.out.println("Time de: " + players.get(0).getNome());
-        for (Personagem p : players.get(0).time) {
-            System.out.println(p.getNome());
-        }
-
-        System.out.println("Time de: " + players.get(1).getNome());
-        for (Personagem p : players.get(1).time) {
-            System.out.println(p.getNome());
-        }
+        players.get(0).mostrarTime();
+        players.get(1).mostrarTime();
 
         players.get(0).selecionarConquista();
         players.get(1).selecionarConquista();
 
-        for (Personagem p : players.get(1).time) {
-            System.out.println(p.getNome() + " - " + p.getAtk());
-        }
+        players.get(0).statusDoTime();
+        players.get(1).statusDoTime();
 
     }
 

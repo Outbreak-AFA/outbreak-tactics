@@ -133,7 +133,7 @@ public class Player {
     public void selecionarConquista() {
         Scanner scan = new Scanner(System.in);
         if (conquistas.size() > 0) {
-            System.out.println("Opa! " + getNome() + ", pelo visto você possui conquistas! Deseja alguma delas a algum personagem de seu time? (S | N)");
+            System.out.println("\nOpa! " + getNome() + ", pelo visto você possui conquistas! Deseja atribuir alguma delas a algum personagem de seu time? (S | N)");
         String escolha = scan.nextLine();
         if (escolha.toLowerCase().equals("s") || escolha.toLowerCase().equals("sim")) {
             System.out.println("Certo! Escolha qual item deseja implementar.");
@@ -213,4 +213,19 @@ public class Player {
             }
         }
     }
+
+    public void mostrarTime() {
+        System.out.println("\nTime de: " + getNome());
+        for (Personagem p : time) {
+            System.out.println(p.getNome());
+        }
+    }
+
+    public void statusDoTime() {
+        System.out.println("\nStatus do time de " + getNome() + ":");
+        for (Personagem p : time) {
+            p.mostrarStatus();
+        }
+    }
+
 }

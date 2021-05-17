@@ -165,6 +165,9 @@ public abstract class Personagem {
         System.out.println("========="+ getNome() +"=========");
         System.out.println("Vida: " + getVida());
         System.out.println("Mana: " + getMana());
+        System.out.println("ATK: " + getAtk());
+        System.out.println("DEF: " + getDef());
+        System.out.println("AGL: " + getAgl());
         System.out.println("Surto acumulado: " + getSurtoAcumulado());
         System.out.println("=======================================");
     }
