@@ -230,4 +230,22 @@ public abstract class Personagem {
         return "Ocorreu um problema ao identificar o item :(";
     }
 
+    private void dfs(Mapa mapa, int lin, int col, ArrayList<Coordenada> proibidos, ArrayList<Coordenada> possiveis) {
+        int colMax = mapa.getColunaMax(), linMax = mapa.getLinhaMax();
+        if ((lin < 0 || lin >= linMax) || (col < 0 || col >= colMax) || (mapa.getPosicao(lin, col, proibidos) != null)) {
+            return;
+        } else {
+            Coordenada co = new Coordenada();
+            co.setLinha(lin);
+            co.setColuna(col);
+            possiveis.add(co);
+            dfs(mapa, (lin + 1), (col), proibidos, possiveis);
+            dfs(mapa, (lin - 1), (col), proibidos, possiveis);
+            dfs(mapa, (lin), (col + 1), proibidos, possiveis);
+            dfs(mapa, (lin), (col - 1), proibidos, possiveis);
+        }
+    }
+
+    private void floodFilld() {}
+
 }

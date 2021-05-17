@@ -81,4 +81,26 @@ public class Mapa {
         System.out.println("------".repeat(getColunaMax()));
     }
 
+    public Object getPosicao(int lin, int col) {
+       for (Obstaculo o : obstaculos) {
+           if (o.coord.equals(lin, col)) return o;
+       }
+       for (Personagem p : personagens) {
+           if (p.coord.equals(lin, col)) return p;
+       }
+       return null;
+    }
+    public Object getPosicao(int lin, int col, ArrayList<Coordenada> proibidas) {
+       for (Obstaculo o : obstaculos) {
+           if (o.coord.equals(lin, col)) return o;
+       }
+       for (Personagem p : personagens) {
+           if (p.coord.equals(lin, col)) return p;
+       }
+       for (Coordenada c : proibidas) {
+           if (c.equals(lin, col)) return c;
+       }
+       return null;
+    }
+
 }
