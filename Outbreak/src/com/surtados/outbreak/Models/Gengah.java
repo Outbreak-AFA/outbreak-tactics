@@ -3,7 +3,8 @@ package com.surtados.outbreak.Models;
 import com.surtados.outbreak.Core.Sistema;
 
 public class Gengah extends Personagem {
-    public Gengah(String nome) {
+    public Gengah(String nome, int id) {
+        setPlayerId(id);
         setNome(nome);
         setAtk(4);
         setDef(5);
