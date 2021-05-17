@@ -59,24 +59,26 @@ public class Mapa {
                    muro.coord.setPosicao(i, j);
                    obstaculos.add(muro);
                    matrizTemp[i][j] = muro.sprite.getCharacter();
-               } else matrizTemp[i][j] = '*';
+               } else matrizTemp[i][j] = ' ';
             }
         }
         return matrizTemp;
     }
 
     public void setMatriz(char c, int linha, int coluna, int linhaAnt, int colunaAnt) {
-       matriz[linhaAnt][colunaAnt] = '*';
+       matriz[linhaAnt][colunaAnt] = ' ';
        matriz[linha][coluna] = c;
     }
 
     public void plotarMatriz() {
+        System.out.println("------".repeat(getColunaMax()));
         for (int i=0; i<getLinhaMax(); i++) {
             for (int j = 0; j < getColunaMax(); j++) {
-                System.out.print(matriz[i][j]);
+                System.out.print("  " + matriz[i][j] + "  |");
             }
                 System.out.println();
         }
+        System.out.println("------".repeat(getColunaMax()));
     }
 
 }

@@ -93,6 +93,14 @@ public abstract class Personagem {
         return playerId;
     }
 
+    public Item getItemEspecial() {
+        return itemEspecial;
+    }
+
+    public void setItemEspecial(Item itemEspecial) {
+        this.itemEspecial = itemEspecial;
+    }
+
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
     }
@@ -179,9 +187,6 @@ public abstract class Personagem {
             case "DEF":
                 setDef(getDef() + (int)(getDef() / 2));
                 return getNome() + " ganhou mais " + (getDef() + (int)(getDef() / 2)) + " de defesa!";
-            case "ATK":
-                setAtk(getAtk() + (int)(getAtk() / 2));
-                return getNome() + " ganhou mais " + (getAtk() + (int)(getAtk() / 2)) + " de ataque!";
             default:
                 setAtk(getAgl() + (int)(getAgl() / 2));
                 return getNome() + " ganhou mais " + (getAgl() + (int)(getAgl() / 2)) + " de agilidade!";
@@ -206,5 +211,20 @@ public abstract class Personagem {
     }
 
     public abstract String descricao();
+
+    public String equiparItem(Item i) {
+        setItemEspecial(i);
+        if (i.getTipoDeItem().equals("ATK")) {
+            setAtk(getAtk() * 2);
+            return getNome() + " dobrou o seu ataque com " + i.getNome() + "!";
+        } else if (i.getTipoDeItem().equals("DEF")) {
+            setDef(getDef() * 2);
+            return getNome() + " dobrou o sua defeca com " + i.getNome() + "!";
+        } else if (i.getTipoDeItem().equals("AGL")) {
+            setAtk(getAgl() + 2);
+            return getNome() + " ganhou mais " + 2 + " pontos de agilidade com " + i.getNome() + "!";
+        }
+        return "Ocorreu um problema ao identificar o item :(";
+    }
 
 }
