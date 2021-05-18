@@ -216,9 +216,9 @@ public abstract class Personagem {
             return getNome() + " dobrou o seu ataque com " + i.getNome() + "!";
         } else if (i.getTipoDeItem().equals("DEF")) {
             setDef(getDef() * 2);
-            return getNome() + " dobrou o sua defeca com " + i.getNome() + "!";
+            return getNome() + " dobrou o sua defesa com " + i.getNome() + "!";
         } else if (i.getTipoDeItem().equals("AGL")) {
-            setAtk(getAgl() + 2);
+            setAgl(getAgl() + 2);
             return getNome() + " ganhou mais " + 2 + " pontos de agilidade com " + i.getNome() + "!";
         }
         return "Ocorreu um problema ao identificar o item :(";

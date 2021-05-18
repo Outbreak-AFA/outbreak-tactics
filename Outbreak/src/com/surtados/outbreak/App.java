@@ -1,6 +1,9 @@
 package com.surtados.outbreak;
 
+import com.surtados.outbreak.Core.Sistema;
 import com.surtados.outbreak.Models.*;
+
+import java.util.ArrayList;
 
 public class App {
 
@@ -44,50 +47,27 @@ public class App {
 //
 //        players.get(0).selecionarConquista();
 //        players.get(1).selecionarConquista();
-//
+
+        ArrayList<Personagem> p1 = new ArrayList<>();
+        ArrayList<Personagem> p2 = new ArrayList<>();
+
+        p1.add(new Gosminha("Gosminha", 1));
+        p1.add(new Gosminha("Gosminha", 1));
+        p1.add(new Gosminha("Gosminha", 1));
+
+        p2.add(new Gosminha("Gosminha", 0));
+        p2.add(new Gosminha("Gosminha", 0));
+        p2.add(new Gosminha("Gosminha", 0));
+
+        Mapa mapa = new Mapa(20, 20);
+        Sistema.limitePersonagens = 3;
+        mapa.organizarPersonagens(p1, p2);
+
+        mapa.plotarMatriz();
+
 //        players.get(0).statusDoTime();
 //        players.get(1).statusDoTime();
 
-        Mapa mapa = new Mapa(20, 20);
-
-
-        Fadinha f = new Fadinha("Ophelia", 1);
-        f.coord.setPosicao(10, 10);
-
-        LapaGod lg = new LapaGod("Lapa", 1);
-        lg.coord.setPosicao(1, 1);
-        lg.equiparItem(new Item("AGL"));
-
-        mapa.inserirPersonagem(lg);
-
-        Obstaculo obs = new Obstaculo('X');
-        Obstaculo arroba = new Obstaculo('@');
-
-        arroba.coord.setPosicao(9, 8);
-        mapa.inserirObsetaculo(arroba.clone());
-
-        arroba.coord.setPosicao(9, 9);
-        mapa.inserirObsetaculo(arroba.clone());
-
-        arroba.coord.setPosicao(9, 10);
-        mapa.inserirObsetaculo(arroba.clone());
-
-        arroba.coord.setPosicao(9, 11);
-        mapa.inserirObsetaculo(arroba.clone());
-
-        arroba.coord.setPosicao(9, 12);
-        mapa.inserirObsetaculo(arroba.clone());
-
-        mapa.inserirPersonagem(f);
-
-        System.out.println();
-        for (Coordenada cp : lg.getAlcance(mapa)) {
-            System.out.println(cp.getLinha() + " " + cp.getColuna());
-            obs.coord.setPosicao(cp.getLinha(), cp.getColuna());
-            mapa.inserirObsetaculo(obs);
-        }
-
-        mapa.plotarMatriz();
     }
 
 }
