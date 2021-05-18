@@ -92,15 +92,32 @@ public class Mapa {
     }
     public Object getPosicao(int lin, int col, ArrayList<Coordenada> proibidas) {
        for (Obstaculo o : obstaculos) {
-           if (o.coord.equals(lin, col)) return o;
+           if (o.coord.equals(lin, col)) {
+               System.out.println("achei obstáculo");
+               return o;
+           }
        }
        for (Personagem p : personagens) {
-           if (p.coord.equals(lin, col)) return p;
+           if (p.coord.equals(lin, col)) {
+               System.out.println("achei personagem");
+               return p;
+           }
        }
        for (Coordenada c : proibidas) {
-           if (c.equals(lin, col)) return c;
+           if (c.equals(lin, col)) {
+               System.out.println("achei proibido: " + c.getLinha() + " " + c.getColuna());
+               return c;
+           }
        }
        return null;
     }
 
+    public boolean posicaoVazia(int lin, int col, ArrayList<Coordenada> proibidas) {
+       Object ob = getPosicao(lin, col, proibidas);
+       if (ob == null) {
+           System.out.println("está vazia");
+           return true;
+       }
+       return false;
+    }
 }

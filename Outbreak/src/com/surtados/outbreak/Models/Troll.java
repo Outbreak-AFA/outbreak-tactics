@@ -1,7 +1,6 @@
 package com.surtados.outbreak.Models;
 
 import com.surtados.outbreak.Core.Sistema;
-import com.surtados.outbreak.Models.Personagem;
 
 public class Troll extends Personagem {
         public Troll(String nome, int id){
@@ -14,7 +13,7 @@ public class Troll extends Personagem {
          setAgl(2);
          setSurtoAcumulado(0);
          setSurtado(false);
-          
+         sprite.setCharacter('T');
     }
      @Override
     public void atacarNatural(Personagem p) {
