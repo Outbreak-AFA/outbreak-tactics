@@ -142,6 +142,7 @@ public abstract class Personagem {
         // TODO rever surto
         if(getContadorSurto() > 0) setContadorSurto(getContadorSurto() - 1);
         setMoveu(false);
+        setAtacou(false);
 
     }
 
@@ -201,22 +202,18 @@ public abstract class Personagem {
         }
     }
 
-    public String usarItem(int index) {
+    public String usarItem(Item i) {
         int valorDados = Dados.random(20) + Dados.random(20) + Dados.random(20);
-        switch (inventario.get(index).getTipoDeItem()) {
+        switch (i.getTipoDeItem()) {
             case "MANA":
                 setMana(getMana() + valorDados);
                 return getNome() + " recuperou " + valorDados + " de mana!";
             case "CURA":
                 setVida(getVida() + valorDados);
                 return getNome() + " recuperou " + valorDados + " de vida!";
-            case "DEF":
-                setDef(getDef() + (int)(getDef() / 2));
-                return getNome() + " ganhou mais " + (getDef() + (int)(getDef() / 2)) + " de defesa!";
-            default:
-                setAtk(getAgl() + (int)(getAgl() / 2));
-                return getNome() + " ganhou mais " + (getAgl() + (int)(getAgl() / 2)) + " de agilidade!";
         }
+        inventario.remove(i);
+        return "";
     }
 
     public boolean morreu() {
@@ -228,8 +225,16 @@ public abstract class Personagem {
     public void mover(int linha, int coluna, Mapa mapa) {
         mapa.setMatriz(sprite.getCharacter(), linha, coluna, coord.getLinha(), coord.getColuna());
         coord.setPosicao(linha, coluna);
+
+        for (Item i : mapa.items) {
+            if (i.coord.equals(coord)) {
+                System.out.println(getNome() + " encontrou " + i.getNome());
+                inventario.add(i);
+                mapa.items.remove(i);
+            }
+        }
+        
         setMoveu(true);
-        setAtacou(true);
     }
 
     public abstract String descricao();
@@ -249,9 +254,9 @@ public abstract class Personagem {
         return "Ocorreu um problema ao identificar o item :(";
     }
 
-    private void preenchimentoPorInundacao(Mapa mapa, int lin, int col, ArrayList<Coordenada> proibidos, ArrayList<Coordenada> possiveis) {
+    public void preenchimentoPorInundacao(Mapa mapa, int lin, int col, ArrayList<Coordenada> proibidos, ArrayList<Coordenada> possiveis, boolean identificarPersonagem) {
         int colMax = mapa.getColunaMax(), linMax = mapa.getLinhaMax();
-        if ((lin < 1|| lin >= linMax - 1) || (col < 1 || col >= colMax - 1) || ((!coord.equals(lin, col)) && (!mapa.posicaoVazia(lin, col, proibidos))) || (!verificarPossiveis(possiveis, lin, col))) {
+        if ((lin < 1|| lin >= linMax - 1) || (col < 1 || col >= colMax - 1) || ((!coord.equals(lin, col)) && (!mapa.posicaoVazia(lin, col, proibidos, identificarPersonagem))) || (!verificarPossiveis(possiveis, lin, col))) {
             return;
         } else {
             Coordenada co = new Coordenada();
@@ -259,12 +264,14 @@ public abstract class Personagem {
             if (!coord.equals(lin, col)) {
                 possiveis.add(co.clone());
             }
-            preenchimentoPorInundacao(mapa, (lin + 1), (col), proibidos, possiveis);
-            preenchimentoPorInundacao(mapa, (lin - 1), (col), proibidos, possiveis);
-            preenchimentoPorInundacao(mapa, (lin), (col + 1), proibidos, possiveis);
-            preenchimentoPorInundacao(mapa, (lin), (col - 1), proibidos, possiveis);
+            preenchimentoPorInundacao(mapa, (lin + 1), (col), proibidos, possiveis, identificarPersonagem);
+            preenchimentoPorInundacao(mapa, (lin - 1), (col), proibidos, possiveis, identificarPersonagem);
+            preenchimentoPorInundacao(mapa, (lin), (col + 1), proibidos, possiveis, identificarPersonagem);
+            preenchimentoPorInundacao(mapa, (lin), (col - 1), proibidos, possiveis, identificarPersonagem);
         }
     }
+
+    
 
     private boolean verificarPossiveis(ArrayList<Coordenada> possiveis, int lin, int col) {
         for (Coordenada c : possiveis) {
@@ -368,7 +375,7 @@ public abstract class Personagem {
     public ArrayList<Coordenada> getAlcance(Mapa mapa) {
         ArrayList<Coordenada> proibidos = getAlcanceProibido();
         ArrayList<Coordenada> possiveis = new ArrayList<>();
-        preenchimentoPorInundacao(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis);
+        preenchimentoPorInundacao(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis, true);
         return possiveis;
     }
 
@@ -388,7 +395,8 @@ public abstract class Personagem {
         atacou = atk;
     }
 
-//    public abstract ArrayList<Coordenada> getAlcanceAtk(int opcao);
+   public abstract ArrayList<Coordenada> getAlcanceAtk(int opcao, Mapa mapa);
+   public abstract ArrayList<Coordenada> getAlcanceAtkProibido(int opcao);
         
     public void menuOpcoes(Mapa mapa) {
         System.out.println("===================================================");
@@ -438,16 +446,75 @@ public abstract class Personagem {
             System.out.println("[1] - " + getAtkNatural());
             System.out.println("[2] - " + getHabilidadeEspecial());
             int optAtk = scan.nextInt();
-            if (optAtk == 1) {
-//                atacarNatural();
+
+            if (optAtk != 1 && optAtk != 2) {
+                System.out.println("Opção Inválida!");
+                menuOpcoes(mapa);
+                return;
             }
+            
+            System.out.println("Escolha o local em que irá atacar: ");
+            ArrayList<Coordenada> alcance = getAlcanceAtk(optAtk, mapa);
+            ArrayList<Personagem> alvos = new ArrayList<>();
+            for (Coordenada c : alcance) {
+                Personagem p = (Personagem) mapa.getPosicao(c.getLinha(), c.getColuna());
+                if (p != null && p.getPlayerId() != getPlayerId()) alvos.add(p);
+            }
+            
+            for (Personagem p : alvos) {
+                System.out.println("[" + (alvos.indexOf(p) + 1) + "] - " + p.getNome());
+            }
+            System.out.println("[ "+ (alvos.size() + 1)+"] - Cancelar");
+            System.out.print(">>> ");
+            int vitima = scan.nextInt();
+            if (vitima == alcance.size() + 1) {
+                System.out.println("Certo! Voltando para menu de ações.");
+                menuOpcoes(mapa);
+                return;
+            }
+            if (vitima < 1 || vitima > alcance.size()) {
+                System.out.println("Opção inválida");
+                menuOpcoes(mapa);
+                return;
+            }
+            if (optAtk == 1) atacarNatural(alvos.get(vitima));
+            else if (optAtk == 2) habilidadeEspecial(alvos.get(vitima));
+            setAtacou(true);
+            menuOpcoes(mapa);
+            return;
         }
-        else if (opcao == 3) {
-            passarTurno();
+        else if (opcao == 3 && !atacou()) {
+            System.out.println("Abrindo o inventário de " + getNome() + "...");
+            System.out.println("Escolha qual item utilizar: ");
+            for (Item i : inventario) {
+                System.out.println("[" + (inventario.indexOf(i) + 1) + "] - " + i.getNome());
+            }
+            System.out.println("[ "+ (inventario.size() + 1)+"] - Voltar");
+            System.out.print(">>> ");
+            int itemEscolhido = scan.nextInt();
+
+            if (itemEscolhido == inventario.size() + 1) {
+                System.out.println("Certo! Voltando para menu de ações.");
+                menuOpcoes(mapa);
+                return;
+            }
+            if (itemEscolhido < 1 || itemEscolhido > inventario.size()) {
+                System.out.println("Opção inválida");
+                menuOpcoes(mapa);
+                return;
+            }
+            System.out.println(usarItem(inventario.get(itemEscolhido)));
+            menuOpcoes(mapa);
+            return;
         }
         else if (opcao == 4) {
             passarTurno();
-        } else {
+        }
+        else if (opcao == 5) {
+            System.out.println(getNome() + " acumulou todos os pontos de surto!!");
+
+        } 
+        else {
             System.out.println("Essa opção ou é inválida ou já foi utilizada!");
             menuOpcoes(mapa);
             return;

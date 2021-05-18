@@ -1,10 +1,10 @@
 package com.surtados.outbreak.Models;
 
-import com.surtados.outbreak.Utils.Dados;
-
 public class Item {
     private String nome;
     private String tipoDeItem;
+    public Coordenada coord = new Coordenada();
+    public Sprite sprite = new Sprite();
 
     public Item(String tipoDeItem) {
         if (tipoDeItem.equals("ATK")) {
@@ -19,6 +19,7 @@ public class Item {
             setNome("Poção de mana");
         }
         setTipoDeItem(tipoDeItem);
+        sprite.setCharacter('$');
     }
 
     public String getNome() {

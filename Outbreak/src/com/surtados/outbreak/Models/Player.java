@@ -150,7 +150,7 @@ public class Player {
             System.out.println("Ok. Agora escolha qual personagem receber o privilégio de " +
                     itemEscolhido.getNome() + ": ");
             Personagem p = getPersonagem();
-            p.equiparItem(itemEscolhido);
+            System.out.println(p.equiparItem(itemEscolhido));
         }
         }
     }

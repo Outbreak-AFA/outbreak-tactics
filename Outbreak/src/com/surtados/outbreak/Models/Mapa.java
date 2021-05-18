@@ -102,15 +102,17 @@ public class Mapa {
        }
        return null;
     }
-    public Object getPosicao(int lin, int col, ArrayList<Coordenada> proibidas) {
+    public Object getPosicao(int lin, int col, ArrayList<Coordenada> proibidas, boolean identificarPersonagem) {
        for (Obstaculo o : obstaculos) {
            if (o.coord.equals(lin, col)) {
                return o;
            }
        }
-       for (Personagem p : personagens) {
-           if (p.coord.equals(lin, col)) {
-               return p;
+       if (identificarPersonagem) {
+           for (Personagem p : personagens) {
+               if (p.coord.equals(lin, col)) {
+                   return p;
+               }
            }
        }
        for (Coordenada c : proibidas) {
@@ -121,8 +123,8 @@ public class Mapa {
        return null;
     }
 
-    public boolean posicaoVazia(int lin, int col, ArrayList<Coordenada> proibidas) {
-       Object ob = getPosicao(lin, col, proibidas);
+    public boolean posicaoVazia(int lin, int col, ArrayList<Coordenada> proibidas, boolean identificarPersonagem) {
+       Object ob = getPosicao(lin, col, proibidas, identificarPersonagem);
        if (ob == null) {
            return true;
        }

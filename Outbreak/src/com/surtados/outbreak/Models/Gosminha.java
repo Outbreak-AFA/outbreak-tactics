@@ -22,7 +22,6 @@ public class Gosminha extends Personagem {
     }
      @Override
     public void atacarNatural(Personagem p) {
-        // TODO Verificar range de dano
         if (Sistema.acertou(p)) {
             int dano = calcularDano(8, p);
             p.retirarVida(dano);
@@ -35,7 +34,6 @@ public class Gosminha extends Personagem {
 
     @Override
     public void habilidadeEspecial(Personagem p) {
-        // TODO Verificar range de dano
         if (getMana() > 0) {
             if (Sistema.acertou(p)) {
                 int dano = calcularDano(10, p);
@@ -60,8 +58,119 @@ public class Gosminha extends Personagem {
         return "Gosminha é um pequeno bichinho que vive em esgotos e pantanais. Gosta de comer praticamente tudo mas não sabe  diferenciar uma maçã de um tomate.\nApesar de ser meio bobo, pode cuspir um veneno e causar grandes malefícios aos corpos daqueles que o encostam.";
     }
 
-//    @Override
-//    public ArrayList<Coordenada> getAlcanceAtk(int opcao) {
-//
-//    }
+    @Override
+    public ArrayList<Coordenada> getAlcanceAtkProibido(int opcao) {
+        ArrayList<Coordenada> proibidos = new ArrayList<>();
+        if (opcao == 1) {
+            Coordenada temp = new Coordenada();
+
+            temp.setPosicao(coord.getLinha(), coord.getColuna() - 2);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 2, coord.getColuna());
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha(), coord.getColuna() + 2);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 2, coord.getColuna());
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+        }
+        else {
+            Coordenada temp = new Coordenada();
+
+            temp.setPosicao(coord.getLinha() - 4, coord.getColuna());
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 3, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 3, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 2, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 2, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() - 3);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() - 2);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() + 2);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() + 3);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha(), coord.getColuna() - 4);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha(), coord.getColuna() + 4);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() - 3);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() - 2);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() + 2);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() + 3);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 2, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 2, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 3, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 3, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 4, coord.getColuna());
+            proibidos.add(temp.clone());
+        }
+        return proibidos;
+    }
+
+    @Override
+    public ArrayList<Coordenada> getAlcanceAtk(int opcao, Mapa mapa) {
+        ArrayList<Coordenada> proibidos = getAlcanceAtkProibido(opcao);
+        ArrayList<Coordenada> possiveis = new ArrayList<>();
+        preenchimentoPorInundacao(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis, false);
+        return possiveis;
+    }
 }
