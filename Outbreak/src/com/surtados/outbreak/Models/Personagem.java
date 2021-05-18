@@ -267,15 +267,19 @@ public abstract class Personagem {
         ArrayList<Coordenada> proibidos = new ArrayList<>();
         Coordenada temp = new Coordenada();
         if (getAgl() == 2) {
+            //Agilidade nivel 2
             for (int lin=-2; lin<=2; lin++) {
                 for (int col=-2; col<=2; col++) {
-                    if (!((col == lin || col == -lin) || (col == 0 && (lin == -1 || lin == 1)) || (lin == 0 && (col == -1 || col == 1)))) {
+                    if (!((col == lin || col == -lin) ||
+                     (col == 0 && (lin == -1 || lin == 1)) ||
+                     (lin == 0 && (col == -1 || col == 1)))) {
                         temp.setPosicao(coord.getLinha() + lin, coord.getColuna() + col);
                         proibidos.add(temp.clone());
                     }
                 }
             }
-        } else if (getAgl() == 4) {
+        } 
+        else if (getAgl() == 4) {
             for (int lin=-2; lin<=2; lin++) {
                 for (int col=-2; col<=2; col++) {
                     if (!((col == lin || col == -lin) || (lin == 0 || col == 0))) {
@@ -292,7 +296,9 @@ public abstract class Personagem {
             proibidos.add(temp.clone());
             temp.setPosicao(coord.getLinha() + 3, coord.getColuna());
             proibidos.add(temp.clone());
-        }else if (getAgl() == 6) {
+
+        }
+        else if (getAgl() == 6) {
             for (int lin=-3; lin<=3; lin++) {
                 for (int col=-3; col<=3; col++) {
                     if (!((col == lin || col == -lin) || (lin == 0 || col == 0) || ((lin == -3 || lin == 3) && (col == -2 || col == 2)) || (((col == -3 || col == 3) && (lin == -2 || lin == 2))))) {
@@ -309,7 +315,9 @@ public abstract class Personagem {
             proibidos.add(temp.clone());
             temp.setPosicao(coord.getLinha() + 4, coord.getColuna());
             proibidos.add(temp.clone());
-        }else if (getAgl() == 8) {
+
+        }
+        else if (getAgl() == 8) {
             for (int lin=-3; lin<=3; lin++) {
                 for (int col=-3; col<=3; col++) {
                     if (!(((col == lin || col == -lin) && (col != -2 && col != 2)) || (lin == 0 || col == 0) ||
@@ -330,23 +338,19 @@ public abstract class Personagem {
             proibidos.add(temp.clone());
             temp.setPosicao(coord.getLinha() + 4, coord.getColuna());
             proibidos.add(temp.clone());
-        }else if (getAgl() == 10) {
-            for (int lin=-2; lin<=2; lin++) {
-                for (int col=-2; col<=2; col++) {
-                    if (!(col == lin || col == -lin) || !(lin == 0 || col == 0)) {
+
+        }
+        else if (getAgl() == 10) {
+            for (int lin=-4; lin<=4; lin++) {
+                for (int col=-4; col<=4; col++) {
+                    if (!(col == lin || col == -lin) &&
+                        (((lin == -4 || lin == 4) && (col >= -3 || col <= 3))) ||
+                        (((col == -4 || col == 4) && (lin >= -3 || lin <= 3))) ) {
                         temp.setPosicao(coord.getLinha() + lin, coord.getColuna() + col);
                         proibidos.add(temp.clone());
                     }
                 }
             }
-            temp.setPosicao(coord.getLinha() - 3, coord.getColuna());
-            proibidos.add(temp.clone());
-            temp.setPosicao(coord.getLinha(), coord.getColuna() - 3);
-            proibidos.add(temp.clone());
-            temp.setPosicao(coord.getLinha(), coord.getColuna() + 3);
-            proibidos.add(temp.clone());
-            temp.setPosicao(coord.getLinha() + 3, coord.getColuna());
-            proibidos.add(temp.clone());
         }
         return proibidos;
     }
