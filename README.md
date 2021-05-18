@@ -203,12 +203,14 @@ Tela de WINNER
 
 ## Glossário
 
-ATK: Ataque.
-DEF: Defesa.
-AGL: Agilidade
-Ataque Natural: É aquele ataque que não gasta magia e só depende da força do personagem. Além disso sua Range é de 1x1.
-Range: Alcance no qual um personagem pode utilizar seus ataques, magias e movimentações.
-Modo surto: Habilidade desbloqueada quando o personagem acumula uma quantidade específica de experiência, que pode ser obtida ao longo de seus movimentos, ataques e danos recebidos. Possui duração de 3 turnos.
-XdY: {x, y são números} -> Lê-se: “X dado(s) de Y lados”.
-Itens consumíveis: são elementos que são usados uma vez só, sumindo do inventário logo em seguida.
-Itens Usáveis: são elementos que podem ser usados até o final da partida, possuem a chance de serem obtidos com a morte de um dos oponentes.
+<ul>
+<li>ATK: Ataque.
+<li>DEF: Defesa.
+<li>AGL: Agilidade
+<li>Ataque Natural: É aquele ataque que não gasta magia e só depende da força do personagem. Além disso sua Range é de 1x1.
+<li>Range: Alcance no qual um personagem pode utilizar seus ataques, magias e movimentações.
+<li>Modo surto: Habilidade desbloqueada quando o personagem acumula uma quantidade específica de experiência, que pode ser obtida ao longo de seus movimentos, ataques e danos recebidos. Possui duração de 3 turnos.
+<li>XdY: {x, y são números} -> Lê-se: “X dado(s) de Y lados”.
+<li>Itens consumíveis: são elementos que são usados uma vez só, sumindo do inventário logo em seguida.
+<li>Itens Usáveis: são elementos que podem ser usados até o final da partida, possuem a chance de serem obtidos com a morte de um dos oponentes.
+</ul>
