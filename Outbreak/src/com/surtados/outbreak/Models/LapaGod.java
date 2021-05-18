@@ -18,14 +18,7 @@ public class LapaGod extends Personagem {
      @Override
     public void atacarNatural(Personagem p) {
         // TODO Verificar range de dano
-        if (Sistema.acertou(p)) {
-            int dano = calcularDano(8, p);
-            p.retirarVida(dano);
-            System.out.println(getNome() + " atacou " + p.getNome() + " motivando !");//??
-            System.out.println("Dano retirado: " + dano);
-        } else {
-            System.out.println(p.getNome() + " desviou do ataque!");
-        }
+        System.out.println(getNome() + " motivou " + p.getNome());
     }
 
     @Override
@@ -52,6 +45,6 @@ public class LapaGod extends Personagem {
 
     @Override
     public String descricao() {
-        return "";
+        return "O que?? PARABÉNS!!! Você acessou o personagem mais supremo deste universo.\nLapa é o bruxo mais poderoso do C# capaz de destruir qualquer criatura em questão de segundos.";
     }
 }

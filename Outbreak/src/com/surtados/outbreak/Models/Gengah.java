@@ -55,6 +55,6 @@ public class Gengah extends Personagem {
     public String descricao() {
         return "Gengah é um ser místico que vive nas sombras desde o início dos tempos." +
                 "\nSua aparência felina encanta muitas pessoas que chegam a cruzar seu caminho, " +
-                "porém, não se engane...";
+                "porém, não se engane... Às vezes os frascos mais bonitos possuem os piores venenos.";
     }
 }

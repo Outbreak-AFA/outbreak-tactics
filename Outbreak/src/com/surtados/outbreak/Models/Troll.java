@@ -51,6 +51,6 @@ public class Troll extends Personagem {
 
     @Override
     public String descricao() {
-            return "";
+            return "Troll é um ogro muito raivoso que vive nas cavernas próximas às montanhas distantes de Barlof. Sortudo é aquele que consegue fugir de seu ataque, apesar de não ser tão difícil correr de sua lentidão.";
     }
 }

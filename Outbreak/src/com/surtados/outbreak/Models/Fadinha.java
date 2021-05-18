@@ -51,6 +51,6 @@ public class Fadinha extends Personagem {
 
     @Override
     public String descricao() {
-        return "";
+        return "Ophelia é uma fada que vive na floresta escura que circundeia Barlof. Sempre muito carismática, busca ajudar a todos aqueles que pedem sua ajuda.";
     }
 }

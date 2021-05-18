@@ -51,6 +51,6 @@ public class Arqueiro extends Personagem {
 
     @Override
     public String descricao() {
-        return "";
+        return "Arqueiro treinado no reino das terras de Barlof.";
     }
 }

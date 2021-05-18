@@ -52,6 +52,6 @@ public class Guerreira extends Personagem{
 
     @Override
     public String descricao() {
-        return "Alice Zuberg é filha do chefe de uma antiga aldeia. Devido a quebrar uma cláusula do Índice de Tabu em sua\ninfância, Alice foi detida por guardas e levada para a Catedral Central, onde foi forçada a se tornar uma\nGuerreira da Integridade e tendo suas memórias seladas. Alice manuseia sua espada com leveza e pode cortar tudo o que quiser com um breve movimento.";
+        return "Alice era uma pequena princesa filha do rei das terras de Barlof. Mas, com a sua personalidade extremamente forte, não aceitava determinadas ordens, o que a levou a quebrar uma importante cláusula do Índice de Regras Reais em sua\ninfância. Devido a isso, Alice foi expulsa de seu reino, fugindo para as montanhas, onde chegou a treinar com um velho Guerreiro que a ensinou como manusear espadas.\nHoje, Alice busca se tornar forte o suficiente para libertar seu povo das maldades do reino que vivera.";
     }
 }

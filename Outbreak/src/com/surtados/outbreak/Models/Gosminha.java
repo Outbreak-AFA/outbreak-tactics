@@ -53,6 +53,6 @@ public class Gosminha extends Personagem {
     
     @Override
     public String descricao() {
-        return "Gosminha é um pequeno bichinho que vive em esgotos e pantanais.\nSua aparência faz-se parecer fofo, mas Gosminha pode trazer grandes malefícios aos corpos daqueles que encostam em seu veneno.";
+        return "Gosminha é um pequeno bichinho que vive em esgotos e pantanais. Gosta de comer praticamente tudo mas não sabe  diferenciar uma maçã de um tomate.\nApesar de ser meio bobo, pode cuspir um veneno e causar grandes malefícios aos corpos daqueles que o encostam.";
     }
 }
