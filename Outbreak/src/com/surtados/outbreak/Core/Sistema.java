@@ -243,4 +243,23 @@ public class Sistema {
         }
     }
 
+    public static void sortearPlayers(ArrayList<Player> players) {
+        int rdn = Dados.random();
+        if (rdn % 2 == 0) {
+            System.out.println("Dados: " + rdn);
+            System.out.println("Jogador 1: " + players.get(0).getNome());
+            System.out.println("Jogador 2: " + players.get(1).getNome());
+            return;
+        }
+        ArrayList<Player> temp = new ArrayList<>();
+        temp.add(players.get(1));
+        temp.add(players.get(0));
+
+        players.clear();
+        players.addAll(temp);
+        System.out.println("Dados: " + rdn);
+        System.out.println("Jogador 1: " + players.get(0).getNome());
+        System.out.println("Jogador 2: " + players.get(1).getNome());
+    }
+
 }

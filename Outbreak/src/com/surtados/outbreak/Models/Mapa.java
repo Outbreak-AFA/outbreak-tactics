@@ -122,19 +122,18 @@ public class Mapa {
 
     public void organizarPersonagens(ArrayList<Personagem> p1, ArrayList<Personagem> p2) {
         gerarObstaculosAleatorios();
+        ArrayList<Coordenada> cEsq = new ArrayList<>();
+        ArrayList<Coordenada> cDir = new ArrayList<>();
         for (Coordenada c : gerarMeio()) {
-            for (Personagem p : p1) {
-                if (c.getColuna() == 1) {
-                    p.coord.setPosicao(c.getLinha(), 1);
-                    inserirPersonagem(p);
-                }
-            }
-            for (Personagem p : p2) {
-                if (c.getColuna() == getColunaMax() - 2) {
-                    p.coord.setPosicao(c.getLinha(), getColunaMax() - 2);
-                    inserirPersonagem(p);
-                }
-            }
+            if (c.getColuna() == 1) {
+                cEsq.add(c);
+            } else cDir.add(c);
+        }
+        for (int i=0; i<Sistema.limitePersonagens; i++) {
+            p1.get(i).coord.setPosicao(cEsq.get(i).getLinha(), cEsq.get(i).getColuna());
+            inserirPersonagem(p1.get(i));
+            p2.get(i).coord.setPosicao(cDir.get(i).getLinha(), cDir.get(i).getColuna());
+            inserirPersonagem(p2.get(i));
         }
     }
 
@@ -151,17 +150,19 @@ public class Mapa {
                proibidas.add(posEsq);
                proibidas.add(posDir);
            } else if (i%2 != 0) {
+               meio += i;
                Coordenada posEsq = new Coordenada();
                Coordenada posDir = new Coordenada();
-               posEsq.setPosicao(meio + (proibidas.size() / 2), 1);
-               posDir.setPosicao(meio + (proibidas.size() / 2), getColunaMax() - 2);
+               posEsq.setPosicao(meio, 1);
+               posDir.setPosicao(meio, getColunaMax() - 2);
                proibidas.add(posEsq);
                proibidas.add(posDir);
            } else {
+               meio -= i;
                Coordenada posEsq = new Coordenada();
                Coordenada posDir = new Coordenada();
-               posEsq.setPosicao(meio - (proibidas.size() / 2), 1);
-               posDir.setPosicao(meio - (proibidas.size() / 2), getColunaMax() - 2);
+               posEsq.setPosicao(meio, 1);
+               posDir.setPosicao(meio, getColunaMax() - 2);
                proibidas.add(posEsq);
                proibidas.add(posDir);
            }
@@ -173,7 +174,7 @@ public class Mapa {
        int posLin = 0, posCol = 0;
        ArrayList<Coordenada> proibidas = gerarMeio();
        int k = 0;
-       for (int i=0; i<getColunaMax(); i++) {
+       for (int i=0; i<getColunaMax() * 2; i++) {
            while (k == 0) {
                posLin = Dados.random(getLinhaMax() - 2);
                posCol = Dados.random(getColunaMax() - 2);
