@@ -6,8 +6,9 @@ import com.surtados.outbreak.Models.Personagem;
 import java.util.ArrayList;
 
 public class Gosminha extends Personagem {
-   public Gosminha(String nome, int id){
-         setPlayerId(id);
+   public Gosminha(String nome, int id, Player p){
+       super(p);
+       setPlayerId(id);
          setNome(nome);
          setVida(250);
          setMana(50);

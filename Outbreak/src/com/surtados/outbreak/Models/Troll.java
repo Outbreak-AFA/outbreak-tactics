@@ -5,7 +5,8 @@ import com.surtados.outbreak.Core.Sistema;
 import java.util.ArrayList;
 
 public class Troll extends Personagem {
-        public Troll(String nome, int id){
+        public Troll(String nome, int id, Player p){
+            super(p);
          setPlayerId(id);
          setNome(nome);
          setVida(200);

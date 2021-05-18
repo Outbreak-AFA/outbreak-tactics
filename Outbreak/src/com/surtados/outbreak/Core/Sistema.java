@@ -261,4 +261,32 @@ public class Sistema {
         System.out.println("Jogador 1: " + players.get(0).getNome());
         System.out.println("Jogador 2: " + players.get(1).getNome());
     }
+
+    public static void adicionarConquista(Item item, Player p) {
+        JSONObject usuarios = getUsuarios();
+        JSONArray usuariosArray = usuarios.getJSONArray("usuarios");
+        for (int i=0; i<usuariosArray.length(); i++) {
+            JSONObject objTemp = (JSONObject) usuariosArray.get(i);
+            if (objTemp.get("email").equals(p.getEmail())) {
+                ArrayList<String> conq = new ArrayList<>();
+                JSONArray conqJson = objTemp.getJSONArray("conquistas");
+                for (int j=0; j< conqJson.length(); j++) {
+                    conq.add(conqJson.get(j).toString());
+                }
+                conq.add(item.getTipoDeItem());
+                objTemp.put("conquistas", conq);
+                usuariosArray.put(i, objTemp);
+            }
+        }
+        usuarios.put("usuarios", usuariosArray);
+        try {
+            FileWriter escritor = new FileWriter("Outbreak/src/usuarios.json");
+            BufferedWriter bw = new BufferedWriter(escritor);
+            bw.write(usuarios.toString());
+            bw.close();
+            escritor.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

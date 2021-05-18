@@ -5,7 +5,8 @@ import com.surtados.outbreak.Core.Sistema;
 import java.util.ArrayList;
 
 public class Guerreira extends Personagem{
-    public Guerreira(String nome, int id){
+    public Guerreira(String nome, int id, Player p){
+        super(p);
          setPlayerId(id);
         setNome(nome);
          setVida(200);

@@ -5,7 +5,8 @@ import com.surtados.outbreak.Core.Sistema;
 import java.util.ArrayList;
 
 public class Pyromancer extends Personagem {
-    public Pyromancer(String nome, int id) {
+    public Pyromancer(String nome, int id, Player p){
+        super(p);
         setPlayerId(id);
         setNome(nome);
         setAtk(8);

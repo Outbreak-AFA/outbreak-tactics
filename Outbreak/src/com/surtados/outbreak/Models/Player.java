@@ -158,15 +158,15 @@ public class Player {
     public void escolherPersonagens() {
         Scanner scan = new Scanner(System.in);
         ArrayList<Personagem> personagens = new ArrayList<>();
-        personagens.add(new Gosminha("Gosminha", getId()));
-        personagens.add(new Gengah("Gengah", getId()));
-        personagens.add(new Pyromancer("Pyromancer", getId()));
-        personagens.add(new Arqueiro("Arqueiro", getId()));
-        personagens.add(new Troll("Troll", getId()));
-        personagens.add(new Guerreira("Alice", getId()));
-        personagens.add(new Fadinha("Ophelia", getId()));
-        personagens.add(new MrCanhao("Mr. Canhão", getId()));
-        personagens.add(new LapaGod("Lapa", getId()));
+        personagens.add(new Gosminha("Gosminha", getId(), this));
+        personagens.add(new Gengah("Gengah", getId(), this));
+        personagens.add(new Pyromancer("Pyromancer", getId(), this));
+        personagens.add(new Arqueiro("Arqueiro", getId(), this));
+        personagens.add(new Troll("Troll", getId(), this));
+        personagens.add(new Guerreira("Alice", getId(), this));
+        personagens.add(new Fadinha("Ophelia", getId(), this));
+        personagens.add(new MrCanhao("Mr. Canhão", getId(), this));
+        personagens.add(new LapaGod("Lapa", getId(), this));
         for (int i=0; i<Sistema.limitePersonagens; i++) {
             while (true) {
                 System.out.println(getNome() + ", escolha o " + (i+1) + "º personagem:");
@@ -187,23 +187,23 @@ public class Player {
                     String resposta = scan.nextLine();
                     if (resposta.toLowerCase().equals("s") || resposta.toLowerCase().equals("sim")) {
                         if (escolha == 1) {
-                            time.add(new Gosminha("Gosminha", getId()));
+                            time.add(new Gosminha("Gosminha", getId(), this));
                         } else if (escolha == 2) {
-                            time.add(new Gengah("Gengah", getId()));
+                            time.add(new Gengah("Gengah", getId(), this));
                         } else if (escolha == 3) {
-                            time.add(new Pyromancer("Pyromancer", getId()));
+                            time.add(new Pyromancer("Pyromancer", getId(), this));
                         } else if (escolha == 4) {
-                            time.add(new Arqueiro("Arqueiro", getId()));
+                            time.add(new Arqueiro("Arqueiro", getId(), this));
                         } else if (escolha == 5) {
-                            time.add(new Troll("Troll", getId()));
+                            time.add(new Troll("Troll", getId(), this));
                         } else if (escolha == 6) {
-                            time.add(new Guerreira("Alice", getId()));
+                            time.add(new Guerreira("Alice", getId(), this));
                         } else if (escolha == 7) {
-                            time.add(new Fadinha("Ophelia", getId()));
+                            time.add(new Fadinha("Ophelia", getId(), this));
                         } else if (escolha == 8) {
-                            time.add(new MrCanhao("Mr. Canhão", getId()));
+                            time.add(new MrCanhao("Mr. Canhão", getId(), this));
                         } else if (escolha == 9) {
-                            time.add(new LapaGod("Lapa", getId()));
+                            time.add(new LapaGod("Lapa", getId(), this));
                         }
                         break;
                     }

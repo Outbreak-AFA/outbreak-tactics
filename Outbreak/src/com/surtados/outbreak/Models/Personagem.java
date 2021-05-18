@@ -21,6 +21,11 @@ public abstract class Personagem {
     private String atkNatural;
     private String habilidadeEspecial;
     private boolean suporte = false;
+    public Player dono;
+
+    public Personagem(Player p) {
+        dono = p;
+    }
 
     public String getNome() {
         return nome;
@@ -241,7 +246,11 @@ public abstract class Personagem {
         for (Item i : mapa.items) {
             if (i.coord.equals(coord)) {
                 System.out.println(getNome() + " encontrou " + i.getNome());
-                inventario.add(i);
+                if (i.getTipoDeItem().equals("CURA") || i.getTipoDeItem().equals("MANA")) {
+                    inventario.add(i);
+                } else {
+                    Sistema.adicionarConquista(i, dono);
+                }
                 mapa.items.remove(i);
             }
         }

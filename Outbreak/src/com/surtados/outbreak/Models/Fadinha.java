@@ -6,7 +6,8 @@ import com.surtados.outbreak.Utils.Dados;
 import java.util.ArrayList;
 
 public class Fadinha extends Personagem {
-   public Fadinha(String nome, int id){
+   public Fadinha(String nome, int id, Player p){
+       super(p);
          setPlayerId(id);
          setNome(nome);
          setVida(300);

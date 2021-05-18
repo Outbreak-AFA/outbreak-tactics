@@ -60,10 +60,17 @@ public class Mapa {
         personagens.remove(p);
         matriz[p.coord.getLinha()][p.coord.getColuna()] = ' ';
         if (Dados.random(100) >= 60) {
-            if (Dados.random() % 2 == 0) {
+            int pocao = Dados.random(5);
+            if (pocao == 1) {
                 i = new Item("CURA");
-            } else {
+            } else if (pocao == 2){
                 i = new Item("MANA");
+            }else if (pocao == 3){
+                i = new Item("ATK");
+            }else if (pocao == 4){
+                i = new Item("DEF");
+            }else {
+                i = new Item("AGL");
             }
             i.coord.setPosicao(p.coord.getLinha(), p.coord.getColuna());
             items.add(i);

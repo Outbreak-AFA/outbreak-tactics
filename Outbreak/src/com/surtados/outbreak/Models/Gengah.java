@@ -5,7 +5,8 @@ import com.surtados.outbreak.Core.Sistema;
 import java.util.ArrayList;
 
 public class Gengah extends Personagem {
-    public Gengah(String nome, int id) {
+    public Gengah(String nome, int id, Player p){
+        super(p);
         setPlayerId(id);
         setNome(nome);
         setAtk(4);
