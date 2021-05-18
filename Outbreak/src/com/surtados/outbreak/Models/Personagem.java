@@ -242,17 +242,21 @@ public abstract class Personagem {
     public void mover(int linha, int coluna, Mapa mapa) {
         mapa.setMatriz(sprite.getCharacter(), linha, coluna, coord.getLinha(), coord.getColuna());
         coord.setPosicao(linha, coluna);
+        Item temp = null;
 
         for (Item i : mapa.items) {
-            if (i.coord.equals(coord)) {
+            if (i != null && i.coord.equals(coord)) {
                 System.out.println(getNome() + " encontrou " + i.getNome());
                 if (i.getTipoDeItem().equals("CURA") || i.getTipoDeItem().equals("MANA")) {
                     inventario.add(i);
                 } else {
+                    temp = i;
                     Sistema.adicionarConquista(i, dono);
                 }
-                mapa.removerItem(i);
             }
+        }
+        if (temp != null) {
+            mapa.removerItem(temp);
         }
 
         setMoveu(true);
