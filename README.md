@@ -1,6 +1,34 @@
 # Outbreak Tactics
 
-> > > Personagens
+## Informações
+
+<div align='center'>
+    <b>
+    <i>
+    Trabalho realizado pelos estudantes do curso de Engenharia de Computação do Centro Universitário SENAI Cimatec para a disciplina de Linguagem de Programação I.
+    </i>
+    </b>
+</div>
+<br/>
+<br/>
+
+`Disciplina`: Linguagem de Programação I <br/>
+`Curso`: Engenharia de Computação
+
+`Discentes`:
+
+- Amanda Rigaud
+- Antônio Cesar
+- Felipe Ribeiro
+
+`Docentes`:
+
+- Marcos Lapa
+- Sergio Martins
+
+---
+
+## Personagens
 
 `Gosminha`</br>
 Ataque Natural: Cabeçada</br>
@@ -145,9 +173,9 @@ Armadura divina: Dobra a defesa
 Espada vermelha: Dobra o o ataque
 Pena sagrada: Aumenta a agilidade em 2 pontos
 
-> > > História ?
+---
 
-> > > Sistema do jogo
+## Sistema do jogo
 
 Tela Inicial
 Jogar
@@ -171,7 +199,9 @@ Tela do jogo (“tabuleiro”)
 
 Tela de WINNER
 
-> > > Glossário
+---
+
+## Glossário
 
 ATK: Ataque.
 DEF: Defesa.
