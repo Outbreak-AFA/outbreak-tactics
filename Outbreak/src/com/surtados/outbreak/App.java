@@ -32,7 +32,6 @@ public class App {
         System.out.println("Agora vamos configurar o mapa!");
 
         Mapa mapa = Sistema.configMapa();
-        mapa.plotarMatriz();
 
         System.out.println("\nÓtimo! Agora vamos escolher a quantidade máxima de jogadores " +
                 "por time");
@@ -52,8 +51,14 @@ public class App {
 
         mapa.organizarPersonagens(players.get(0).time, players.get(1).time);
 
-        mapa.plotarMatriz();
-
+        int rodada = 0;
+        while (!players.get(0).perdeu() && !players.get(1).perdeu()) {
+            mapa.plotarMatriz();
+            players.get(rodada).listarTime(mapa);
+            if (rodada == 0) {
+                rodada = 1;
+            } else rodada = 0;
+        }
     }
 
 }

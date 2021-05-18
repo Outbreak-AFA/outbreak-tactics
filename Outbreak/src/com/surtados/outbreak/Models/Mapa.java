@@ -1,6 +1,7 @@
 package com.surtados.outbreak.Models;
 
 import com.surtados.outbreak.Core.Sistema;
+import com.surtados.outbreak.Utils.Cores;
 import com.surtados.outbreak.Utils.Dados;
 
 import java.util.ArrayList;
@@ -49,6 +50,11 @@ public class Mapa {
         matriz[o.coord.getLinha()][o.coord.getColuna()] = o.sprite.getCharacter();
     }
 
+    public void removerObstaculo(Obstaculo o) {
+        obstaculos.remove(o);
+        matriz[o.coord.getLinha()][o.coord.getColuna()] = ' ';
+    }
+
     public char[][] preencherMapa(int linha, int coluna) {
        char[][] matrizTemp = new char[linha][coluna];
        Obstaculo muro = new Obstaculo('=');
@@ -77,6 +83,9 @@ public class Mapa {
         System.out.println("------".repeat(getColunaMax()));
         for (int i=0; i<getLinhaMax(); i++) {
             for (int j = 0; j < getColunaMax(); j++) {
+                if (matriz[i][j] == '#') {
+                    System.out.print(Cores.ANSI_GREEN + "  " + matriz[i][j] + Cores.ANSI_RESET + "  |");
+                } else
                 System.out.print("  " + matriz[i][j] + "  |");
             }
                 System.out.println();

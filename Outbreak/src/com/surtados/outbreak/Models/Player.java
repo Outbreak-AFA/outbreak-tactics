@@ -228,4 +228,31 @@ public class Player {
         }
     }
 
+    public boolean perdeu() {
+        int mortes = 0;
+        for (Personagem p : time) {
+            if (p.morreu()) mortes++;
+        }
+        return mortes == time.size();
+    }
+
+    public void listarTime(Mapa mapa) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Vez de " + getNome() + "================");
+        System.out.println("Escolha um personagem do seu time para realizar suas ações:");
+        for (Personagem p : time) {
+            System.out.println("[" + (time.indexOf(p) + 1) + "] " + p.getNome());
+        }
+        System.out.println("==============================================");
+        System.out.print(">>> ");
+        int opcao = scan.nextInt();
+        if (opcao > 0 && opcao <= time.size()) {
+            time.get(opcao-1).menuOpcoes(mapa);
+        } else {
+            System.out.println("Opção inválida!");
+            listarTime(mapa);
+            return;
+        }
+        System.out.println("Turno encerrado!");
+    }
 }

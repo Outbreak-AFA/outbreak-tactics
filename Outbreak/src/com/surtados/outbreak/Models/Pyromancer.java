@@ -8,7 +8,7 @@ public class Pyromancer extends Personagem {
         setNome(nome);
         setAtk(5);
         setDef(4);
-        setAgl(3);
+        setAgl(6);
         setMana(50);
         setVida(250);
         setSurtado(false);

@@ -4,6 +4,7 @@ import com.surtados.outbreak.Core.Sistema;
 import com.surtados.outbreak.Utils.Dados;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public abstract class Personagem {
     private int playerId;
@@ -16,6 +17,7 @@ public abstract class Personagem {
     public Coordenada coord = new Coordenada();
     public ArrayList<Item> inventario = new ArrayList<>();
     private Item itemEspecial;
+    private boolean moveu = false, atacou = false;
 
     public String getNome() {
         return nome;
@@ -119,7 +121,10 @@ public abstract class Personagem {
     }
 
     public void passarTurno() {
+        // TODO rever surto
         if(getContadorSurto() > 0) setContadorSurto(getContadorSurto() - 1);
+        setMoveu(false);
+
     }
 
     public void andar(int x, int y) {
@@ -205,6 +210,8 @@ public abstract class Personagem {
     public void mover(int linha, int coluna, Mapa mapa) {
         mapa.setMatriz(sprite.getCharacter(), linha, coluna, coord.getLinha(), coord.getColuna());
         coord.setPosicao(linha, coluna);
+        setMoveu(true);
+        setAtacou(true);
     }
 
     public abstract String descricao();
@@ -345,5 +352,67 @@ public abstract class Personagem {
         ArrayList<Coordenada> possiveis = new ArrayList<>();
         preenchimentoPorInundacao(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis);
         return possiveis;
+    }
+
+    public boolean moveu() {
+        return moveu;
+    }
+
+    public boolean atacou() {
+        return atacou;
+    }
+
+    public void setMoveu(boolean movimentou) {
+        moveu = movimentou;
+    }
+
+    public void setAtacou(boolean atk) {
+        atacou = atk;
+    }
+
+    public void menuOpcoes(Mapa mapa) {
+        System.out.println("===================================================");
+        System.out.println("Escolha uma ação para " + getNome());
+        System.out.println("[1] - Mover");
+        System.out.println("[2] - Atacar");
+        System.out.println("[3] - Item");
+        System.out.println("[4] - Concluir");
+        System.out.println("===================================================");
+        System.out.print(">>> ");
+        Scanner scan = new Scanner(System.in);
+        int opcao = scan.nextInt();
+        if (opcao == 1  && !moveu()) {
+                ArrayList<Coordenada> alcance = getAlcance(mapa);
+                System.out.println("Escolha a posição para a qual deseja mover: ");
+                ArrayList<Obstaculo> obstaculos = new ArrayList<>();
+                for (Coordenada c : alcance) {
+                    Obstaculo obs = new Obstaculo('#');
+                    obs.coord.setPosicao(c.getLinha(), c.getColuna());
+                    obstaculos.add(obs);
+                    mapa.inserirObsetaculo(obs);
+                }
+                mapa.plotarMatriz();
+                for (Coordenada co : alcance) {
+                    System.out.println("[" + (alcance.indexOf(co) + 1) + "] - (" + co.getLinha() + ", " + co.getColuna() + ")");
+                }
+                int escolha = scan.nextInt();
+                for (Obstaculo o : obstaculos) {
+                    mapa.removerObstaculo(o);
+                }
+                if (escolha < 1 || escolha > alcance.size()) {
+                    System.out.println("Opção inválida");
+                    menuOpcoes(mapa);
+                    return;
+                }
+                mover(alcance.get(escolha-1).getLinha(), alcance.get(escolha-1).getColuna(), mapa);
+                menuOpcoes(mapa);
+                return;
+        } else if (opcao == 4) {
+            passarTurno();
+        } else {
+            System.out.println("Essa opção ou é inválida ou já foi utilizada!");
+            menuOpcoes(mapa);
+            return;
+        }
     }
 }
