@@ -186,13 +186,17 @@ public class Player {
     }
 
     public boolean perdeu(Mapa mapa) {
+        Personagem morto = null ;
         int mortes = 0;
-        for (Personagem p : time) {
-            if (p.morreu()) {
-                System.out.println(p.getNome() + " morreu :(");
-                mapa.removerPersonagem(p);
-                time.remove(p);
+        if (time.size() > 0) {
+            for (Personagem p : time) {
+                if (p.morreu()) {
+                    morto = p;
+                    System.out.println(p.getNome() + " morreu :(");
+                    mapa.removerPersonagem(p);
+                }
             }
+            time.remove(morto);
         }
         return mortes == time.size();
     }

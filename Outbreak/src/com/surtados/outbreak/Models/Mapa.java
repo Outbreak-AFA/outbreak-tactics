@@ -54,6 +54,10 @@ public class Mapa {
         obstaculos.remove(o);
         matriz[o.coord.getLinha()][o.coord.getColuna()] = ' ';
     }
+    public void removerItem(Item i) {
+        items.remove(i);
+        matriz[i.coord.getLinha()][i.coord.getColuna()] = ' ';
+    }
 
     public void removerPersonagem(Personagem p) {
         Item i;
@@ -120,6 +124,13 @@ public class Mapa {
        for (Obstaculo o : obstaculos) {
            if (o.coord.equals(lin, col)) return o;
        }
+       for (Personagem p : personagens) {
+           if (p.coord.equals(lin, col)) return p;
+       }
+       return null;
+    }
+
+    public Personagem getPosicaoPersonagem(int lin, int col) {
        for (Personagem p : personagens) {
            if (p.coord.equals(lin, col)) return p;
        }

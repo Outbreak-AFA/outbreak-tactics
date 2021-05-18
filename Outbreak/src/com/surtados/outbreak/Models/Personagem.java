@@ -199,7 +199,7 @@ public abstract class Personagem {
     }
 
     public void aumentarSurto(int danoRecebido) {
-        setSurtoAcumulado(danoRecebido * Dados.random(4) / 10);
+        setSurtoAcumulado(getSurtoAcumulado() + (danoRecebido * Dados.random(4) / 10));
     }
 
     public void mostrarStatus() {
@@ -251,7 +251,7 @@ public abstract class Personagem {
                 } else {
                     Sistema.adicionarConquista(i, dono);
                 }
-                mapa.items.remove(i);
+                mapa.removerItem(i);
             }
         }
 
@@ -485,7 +485,7 @@ public abstract class Personagem {
             ArrayList<Coordenada> alcance = getAlcanceAtk(optAtk, mapa);
             ArrayList<Personagem> alvos = new ArrayList<>();
             for (Coordenada c : alcance) {
-                Personagem p = (Personagem) mapa.getPosicao(c.getLinha(), c.getColuna());
+                Personagem p = mapa.getPosicaoPersonagem(c.getLinha(), c.getColuna());
                 if (isSuporte() && optAtk == 2 && p != null) {
                     alvos.add(p);
                 }
@@ -543,7 +543,7 @@ public abstract class Personagem {
         }
         else if (opcao == 5 && podeSurtar()) {
             System.out.println(getNome() + " acumulou muitos os pontos de surto!!");
-            System.out.println(getNome() + " está SURTADOOOO");
+            System.out.println(getNome() + " está SURTANDOOOO");
             ativarModoSurto();
             menuOpcoes(mapa);
             return;
