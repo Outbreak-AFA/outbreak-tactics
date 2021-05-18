@@ -42,7 +42,7 @@ public class Gengah extends Personagem {
                 int dano = calcularDano((3*getAtk()), p);
                 p.retirarVida(dano);
                 setMana(getMana() - 10);
-                System.out.println(getNome() + " atacou " + p.getNome() + "com suas esferas sobrias!");
+                System.out.println(getNome() + " atacou " + p.getNome() + " com suas esferas sobrias!");
                 System.out.println("Dano retirado: " + dano);
                 aumentarSurto(dano);
                 p.aumentarSurto(dano);
@@ -61,7 +61,7 @@ public class Gengah extends Personagem {
     public String descricao() {
         return "Gengah é um ser místico que vive nas sombras desde o início dos tempos." +
                 "\nSua aparência felina encanta muitas pessoas que chegam a cruzar seu caminho, " +
-                "porém, não se engane... Às vezes os frascos mais bonitos possuem os piores venenos.";
+                "porém, não se engane...\nÀs vezes os frascos mais bonitos possuem os piores venenos.";
     }
 
     @Override

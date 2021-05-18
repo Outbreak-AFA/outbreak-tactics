@@ -42,7 +42,7 @@ public class Fadinha extends Personagem {
             int cura = Dados.random(20) + Dados.random(20);
             setMana(getMana() - 10);
             p.setVida(p.getVida() + cura);
-            System.out.println(getNome() + " curou " + cura + " pontos de vida de " + p.getNome() + "com a luz da cura!");
+            System.out.println(getNome() + " curou " + cura + " pontos de vida de " + p.getNome() + "  com a luz da cura!");
             aumentarSurto(cura);
             p.aumentarSurto(cura);
         } else System.out.println(getNome() + " está sem mana!");

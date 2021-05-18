@@ -51,7 +51,7 @@ public class Guerreira extends Personagem{
 
     @Override
     public String descricao() {
-        return "Alice era uma pequena princesa filha do rei das terras de Barlof. Mas, com a sua personalidade extremamente forte, não aceitava determinadas ordens, o que a levou a quebrar uma importante cláusula do Índice de Regras Reais em sua\ninfância. Devido a isso, Alice foi expulsa de seu reino, fugindo para as montanhas, onde chegou a treinar com um velho Guerreiro que a ensinou como manusear espadas.\nHoje, Alice busca se tornar forte o suficiente para libertar seu povo das maldades do reino que vivera.";
+        return "Alice era uma pequena princesa filha do rei das terras de Barlof. Mas, com a sua personalidade extremamente forte, não aceitava determinadas ordens,\n o que a levou a quebrar uma importante cláusula do Índice de Regras Reais em sua\ninfância. Devido a isso, Alice foi expulsa de seu reino,\nfugindo para as montanhas, onde chegou a treinar com um velho Guerreiro que a ensinou como manusear espadas.\nHoje, Alice busca se tornar forte o suficiente para libertar seu povo das maldades do reino que vivera.";
     }
 
     @Override

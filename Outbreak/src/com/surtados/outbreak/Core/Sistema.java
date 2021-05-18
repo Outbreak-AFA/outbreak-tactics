@@ -222,9 +222,9 @@ public class Sistema {
 
     public static Mapa configMapa() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Por favor insira a largura do mapa (min: 10 / max: 60): ");
+        System.out.println("Por favor insira a largura do mapa (min sugerido: 10 | max sugerido: 20): ");
         int largura = scan.nextInt();
-        System.out.println("Por favor insira a altura do mapa (min: 10 / max: 60): ");
+        System.out.println("Por favor insira a altura do mapa (min sugerido: 10 | max sugerido: 20): ");
         int altura = scan.nextInt();
 
         return new Mapa(altura, largura);
@@ -232,7 +232,7 @@ public class Sistema {
 
     public static void modoDeJogo() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Por favor, insira a quantidade de personagens por jogador. (min: 2 / max: 8)\n>>> ");
+        System.out.print("Por favor, insira a quantidade de personagens por jogador. (min: 2 | max: 8)\n>>> ");
 
         limitePersonagens = scan.nextInt();
         if (limitePersonagens >= 2 && limitePersonagens <= 8) {

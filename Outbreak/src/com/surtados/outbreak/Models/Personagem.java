@@ -194,7 +194,7 @@ public abstract class Personagem {
     public abstract void ativarModoSurto();
 
     public boolean podeSurtar() {
-        if (getSurtoAcumulado() >= 50) return true;
+        if (getSurtoAcumulado() >= 20) return true;
         return false;
     }
 

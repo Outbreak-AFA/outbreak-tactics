@@ -42,7 +42,7 @@ public class MrCanhao extends Personagem {
                     dano += calcularDano(10, p);
                     p.retirarVida(dano);
                     setMana(getMana() - 10);
-                    System.out.println(getNome() + " atacou " + p.getNome() + "atirando bombas");
+                    System.out.println(getNome() + " atacou " + p.getNome() + " atirando bombas");
                     System.out.println("Dano retirado: " + dano);
                     aumentarSurto(dano);
                     p.aumentarSurto(dano);

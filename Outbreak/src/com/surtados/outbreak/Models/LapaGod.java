@@ -33,7 +33,7 @@ public class LapaGod extends Personagem {
                 dano += calcularDano(10, p);
                 p.retirarVida(dano);
                 setMana(getMana() - 10);
-                System.out.println(getNome() + " atacou " + p.getNome() + "usando o C#!");//??
+                System.out.println(getNome() + " atacou " + p.getNome() + " usando o C#!");
                 System.out.println("Dano retirado: " + dano);
                 aumentarSurto(dano);
                 p.aumentarSurto(dano);

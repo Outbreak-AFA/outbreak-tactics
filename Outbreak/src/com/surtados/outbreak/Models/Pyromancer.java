@@ -42,7 +42,7 @@ public class Pyromancer extends Personagem {
                 dano += calcularDano(10, p);
                 p.retirarVida(dano);
                 setMana(getMana() - 10);
-                System.out.println(getNome() + " atacou " + p.getNome() + "com bolas flamejantes!");
+                System.out.println(getNome() + " atacou " + p.getNome() + " com bolas flamejantes!");
                 System.out.println("Dano retirado: " + dano);
                 aumentarSurto(dano);
                 p.aumentarSurto(dano);
@@ -60,7 +60,7 @@ public class Pyromancer extends Personagem {
     @Override
     public String descricao() {
         return "O Pyromancer é um velho mago que passou muito tempo acorrentado em uma torre localizada nas" +
-                "mais altas montanhas. Agora ele busca vingança e está disposto a queimar qualquer um que " +
+                "mais altas montanhas. Agora ele busca vingança\ne está disposto a queimar qualquer um que " +
                 "cruze com seu caminho.";
     }
 
