@@ -11,7 +11,7 @@ public abstract class Personagem {
     public Sprite sprite = new Sprite();
     private String nome;
     private int vida, mana, atk, def, agl;
-    private double surtoAcumulado;
+    private int surtoAcumulado;
     private boolean surtado = false;
     private int contadorSurto;
     public Coordenada coord = new Coordenada();
@@ -69,12 +69,16 @@ public abstract class Personagem {
         this.agl = agl;
     }
 
-    public double getSurtoAcumulado() {
+    public int getSurtoAcumulado() {
         return surtoAcumulado;
     }
 
     public void setSurtoAcumulado(int surtoAcumulado) {
         this.surtoAcumulado = surtoAcumulado;
+    }
+
+    public void acumularSurto(int s) {
+        setSurtoAcumulado(getSurtoAcumulado() + s);
     }
 
     public boolean isSurtado() {
@@ -152,6 +156,14 @@ public abstract class Personagem {
 
     public void retirarVida(int dano) {
         setVida(getVida() - dano);
+    }
+
+    public abstract void surtar();
+
+    public void ativarSurto() {
+        setSurtado(true);
+        setContadorSurto(3);
+        surtar(); //unico de cada personagem
     }
 
     public int calcularDano(int danoMaximoOferecido, Personagem p) {
@@ -233,7 +245,7 @@ public abstract class Personagem {
                 mapa.items.remove(i);
             }
         }
-        
+
         setMoveu(true);
     }
 
@@ -405,6 +417,7 @@ public abstract class Personagem {
         System.out.println("[2] - Atacar");
         System.out.println("[3] - Item");
         System.out.println("[4] - Concluir");
+        if (podeSurtar()) System.out.println("[5] - SURTAR");
         System.out.println("===================================================");
         System.out.print(">>> ");
         Scanner scan = new Scanner(System.in);
@@ -510,9 +523,10 @@ public abstract class Personagem {
         else if (opcao == 4) {
             passarTurno();
         }
-        else if (opcao == 5) {
-            System.out.println(getNome() + " acumulou todos os pontos de surto!!");
-
+        else if (opcao == 5 && podeSurtar()) {
+            System.out.println(getNome() + " acumulou muitos os pontos de surto!!");
+            System.out.println(getNome() + " está SURTADOOOO");
+            ativarSurto();
         } 
         else {
             System.out.println("Essa opção ou é inválida ou já foi utilizada!");
