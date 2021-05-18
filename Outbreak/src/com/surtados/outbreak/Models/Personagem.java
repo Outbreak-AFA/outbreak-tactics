@@ -18,6 +18,8 @@ public abstract class Personagem {
     public ArrayList<Item> inventario = new ArrayList<>();
     private Item itemEspecial;
     private boolean moveu = false, atacou = false;
+    private String atkNatural;
+    private String habilidadeEspecial;
 
     public String getNome() {
         return nome;
@@ -105,6 +107,22 @@ public abstract class Personagem {
 
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
+    }
+
+    public String getAtkNatural() {
+        return atkNatural;
+    }
+
+    public void setAtkNatural(String atkNatural) {
+        this.atkNatural = atkNatural;
+    }
+
+    public String getHabilidadeEspecial() {
+        return habilidadeEspecial;
+    }
+
+    public void setHabilidadeEspecial(String habilidadeEspecial) {
+        this.habilidadeEspecial = habilidadeEspecial;
     }
 
     public abstract void atacarNatural(Personagem p);
@@ -370,6 +388,8 @@ public abstract class Personagem {
         atacou = atk;
     }
 
+//    public abstract ArrayList<Coordenada> getAlcanceAtk(int opcao);
+        
     public void menuOpcoes(Mapa mapa) {
         System.out.println("===================================================");
         System.out.println("Escolha uma ação para " + getNome());
@@ -395,9 +415,15 @@ public abstract class Personagem {
                 for (Coordenada co : alcance) {
                     System.out.println("[" + (alcance.indexOf(co) + 1) + "] - (" + co.getLinha() + ", " + co.getColuna() + ")");
                 }
+            System.out.println("[" + (alcance.size()+1) + "] - Voltar menu.");
                 int escolha = scan.nextInt();
                 for (Obstaculo o : obstaculos) {
                     mapa.removerObstaculo(o);
+                }
+                if (escolha == alcance.size() + 1) {
+                    System.out.println("Certo! Voltando para menu de ações.");
+                    menuOpcoes(mapa);
+                    return;
                 }
                 if (escolha < 1 || escolha > alcance.size()) {
                     System.out.println("Opção inválida");
@@ -407,7 +433,19 @@ public abstract class Personagem {
                 mover(alcance.get(escolha-1).getLinha(), alcance.get(escolha-1).getColuna(), mapa);
                 menuOpcoes(mapa);
                 return;
-        } else if (opcao == 4) {
+        } else if (opcao == 2 && !atacou()) {
+            System.out.println("Ótimo! Escolha qual tipo de ataque realizar:");
+            System.out.println("[1] - " + getAtkNatural());
+            System.out.println("[2] - " + getHabilidadeEspecial());
+            int optAtk = scan.nextInt();
+            if (optAtk == 1) {
+//                atacarNatural();
+            }
+        }
+        else if (opcao == 3) {
+            passarTurno();
+        }
+        else if (opcao == 4) {
             passarTurno();
         } else {
             System.out.println("Essa opção ou é inválida ou já foi utilizada!");

@@ -13,6 +13,8 @@ public class Gengah extends Personagem {
         setVida(300);
         setSurtado(false);
         setSurtoAcumulado(0);
+        setAtkNatural("Arranhar");
+        setHabilidadeEspecial("Bola sombria");
         sprite.setCharacter('☪');
     }
 

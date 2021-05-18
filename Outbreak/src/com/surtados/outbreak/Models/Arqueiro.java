@@ -11,6 +11,8 @@ public class Arqueiro extends Personagem {
          setAtk(4);
          setDef(4);
          setAgl(6);
+         setAtkNatural("Atirar dardos");
+         setHabilidadeEspecial("Atirar flechas");
          setSurtoAcumulado(0);
          setSurtado(false);
           sprite.setCharacter('➶');

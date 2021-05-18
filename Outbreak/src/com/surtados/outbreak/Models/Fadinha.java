@@ -11,6 +11,8 @@ public class Fadinha extends Personagem {
          setAtk(3);
          setDef(2);
          setAgl(8);
+         setAtkNatural("Pózinho mágico");
+         setHabilidadeEspecial("Luz da cura");
          setSurtoAcumulado(0);
          setSurtado(false);
           sprite.setCharacter('✧');

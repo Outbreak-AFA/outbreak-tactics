@@ -13,6 +13,8 @@ public class Guerreira extends Personagem{
          setAgl(6);
          setSurtoAcumulado(0);
          setSurtado(false);
+         setAtkNatural("Atacar com espada");
+         setHabilidadeEspecial("Escudo mágico");
           sprite.setCharacter('╁');
     }
      @Override

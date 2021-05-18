@@ -13,6 +13,8 @@ public class Pyromancer extends Personagem {
         setVida(250);
         setSurtado(false);
         setSurtoAcumulado(0);
+        setAtkNatural("Atacar com cajado");
+        setHabilidadeEspecial("Atacar com bola de fogo");
         sprite.setCharacter('☀');
     }
     @Override

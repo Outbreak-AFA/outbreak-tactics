@@ -13,6 +13,8 @@ public class Troll extends Personagem {
          setAgl(2);
          setSurtoAcumulado(0);
          setSurtado(false);
+         setAtkNatural("Martelada");
+         setHabilidadeEspecial("Super soco");
          sprite.setCharacter('۩');
     }
      @Override

@@ -13,6 +13,8 @@ public class MrCanhao extends Personagem {
             setAgl(4);
             setSurtoAcumulado(0);
             setSurtado(false);
+            setAtkNatural("Bater");
+            setHabilidadeEspecial("Atirar bomba");
             sprite.setCharacter('§');
         }
         @Override

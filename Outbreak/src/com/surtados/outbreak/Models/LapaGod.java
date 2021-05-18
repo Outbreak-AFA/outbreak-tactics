@@ -11,6 +11,8 @@ public class LapaGod extends Personagem {
          setAtk(999);
          setDef(10);
          setAgl(8);
+         setAtkNatural("Motivar");
+         setHabilidadeEspecial("C#");
          setSurtoAcumulado(0);
          setSurtado(false);
           sprite.setCharacter('♔');
