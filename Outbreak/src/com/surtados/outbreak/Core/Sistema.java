@@ -261,5 +261,4 @@ public class Sistema {
         System.out.println("Jogador 1: " + players.get(0).getNome());
         System.out.println("Jogador 2: " + players.get(1).getNome());
     }
-
 }

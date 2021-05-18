@@ -2,6 +2,8 @@ package com.surtados.outbreak.Models;
 
 import com.surtados.outbreak.Core.Sistema;
 
+import java.util.ArrayList;
+
 public class MrCanhao extends Personagem {
         public MrCanhao(String nome, int id){
             setPlayerId(id);
@@ -19,12 +21,13 @@ public class MrCanhao extends Personagem {
         }
         @Override
         public void atacarNatural(Personagem p) {
-            // TODO Verificar range de dano
             if (Sistema.acertou(p)) {
                 int dano = calcularDano(8, p);
                 p.retirarVida(dano);
                 System.out.println(getNome() + " atacou " + p.getNome() + " batendo!");
                 System.out.println("Dano retirado: " + dano);
+                aumentarSurto(dano);
+                p.aumentarSurto(dano);
             } else {
                 System.out.println(p.getNome() + " desviou do ataque!");
             }
@@ -32,7 +35,6 @@ public class MrCanhao extends Personagem {
 
         @Override
         public void habilidadeEspecial(Personagem p) {
-            // TODO Verificar range de dano
             if (getMana() > 0) {
                 if (Sistema.acertou(p)) {
                     int dano = calcularDano(10, p);
@@ -41,6 +43,8 @@ public class MrCanhao extends Personagem {
                     setMana(getMana() - 10);
                     System.out.println(getNome() + " atacou " + p.getNome() + "atirando bombas");
                     System.out.println("Dano retirado: " + dano);
+                    aumentarSurto(dano);
+                    p.aumentarSurto(dano);
                 } else
                     System.out.println(p.getNome() + " desviou do ataque!");
             } else System.out.println(getNome() + " está sem mana!");
@@ -48,13 +52,102 @@ public class MrCanhao extends Personagem {
 
     @Override
     public void ativarModoSurto() {
-        modoSurto(5, 2, 0);
-        passarTurno();
+        modoSurto(15, 40, 2);
     }
 
     @Override
     public String descricao() {
         return "Mr. Canhão, ou como se chamava: Lapoleão, era um antigo guerreiro que se destacou em guerras, pelo menos\nenquanto era humano, antes de ser enfeitiçado por uma bruxa e ser transformado em um canhão. Mesmo assim,\nMr. Canhão é ainda um importante participante de batalhas, podendo atingir longas distâncias com seus ataques.";
+    }
+
+    @Override
+    public ArrayList<Coordenada> getAlcanceAtkProibido(int opcao) {
+        ArrayList<Coordenada> proibidos = new ArrayList<>();
+        Coordenada temp = new Coordenada();
+
+        if (opcao == 1) {
+            temp.setPosicao(coord.getLinha(), coord.getColuna() - 2);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 2, coord.getColuna());
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha(), coord.getColuna() + 2);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 2, coord.getColuna());
+            proibidos.add(temp.clone());
+
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+        } else {
+            temp.setPosicao(coord.getLinha() - 4, coord.getColuna() - 3);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 4, coord.getColuna() - 2);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 4, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 4, coord.getColuna());
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 4, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 4, coord.getColuna() + 2);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 4, coord.getColuna() + 3);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 3, coord.getColuna() - 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 2, coord.getColuna() - 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() - 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha(), coord.getColuna() - 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() - 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 2, coord.getColuna() - 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 3, coord.getColuna() - 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 4, coord.getColuna() - 3);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 4, coord.getColuna() - 2);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 4, coord.getColuna() - 1);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 4, coord.getColuna());
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 4, coord.getColuna() + 1);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 4, coord.getColuna() + 2);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 4, coord.getColuna() + 3);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 3, coord.getColuna() + 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 2, coord.getColuna() + 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() - 1, coord.getColuna() + 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha(), coord.getColuna() + 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 1, coord.getColuna() + 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 2, coord.getColuna() + 4);
+            proibidos.add(temp.clone());
+            temp.setPosicao(coord.getLinha() + 3, coord.getColuna() + 4);
+            proibidos.add(temp.clone());
+        }
+        return proibidos;
     }
 
 }

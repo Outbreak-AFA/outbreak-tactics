@@ -52,7 +52,7 @@ public class App {
         mapa.organizarPersonagens(players.get(0).time, players.get(1).time);
 
         int rodada = 0;
-        while (!players.get(0).perdeu() && !players.get(1).perdeu()) {
+        while (!players.get(0).perdeu(mapa) && !players.get(1).perdeu(mapa)) {
             mapa.plotarMatriz();
             players.get(rodada).listarTime(mapa);
             if (rodada == 0) {

@@ -228,10 +228,13 @@ public class Player {
         }
     }
 
-    public boolean perdeu() {
+    public boolean perdeu(Mapa mapa) {
         int mortes = 0;
         for (Personagem p : time) {
-            if (p.morreu()) mortes++;
+            if (p.morreu()) {
+                mortes++;
+                mapa.removerPersonagem(p);
+            }
         }
         return mortes == time.size();
     }
@@ -247,6 +250,7 @@ public class Player {
         System.out.print(">>> ");
         int opcao = scan.nextInt();
         if (opcao > 0 && opcao <= time.size()) {
+            time.get(opcao-1).mostrarStatus();
             time.get(opcao-1).menuOpcoes(mapa);
         } else {
             System.out.println("Opção inválida!");

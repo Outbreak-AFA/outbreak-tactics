@@ -55,6 +55,22 @@ public class Mapa {
         matriz[o.coord.getLinha()][o.coord.getColuna()] = ' ';
     }
 
+    public void removerPersonagem(Personagem p) {
+        Item i;
+        personagens.remove(p);
+        matriz[p.coord.getLinha()][p.coord.getColuna()] = ' ';
+        if (Dados.random(100) >= 60) {
+            if (Dados.random() % 2 == 0) {
+                i = new Item("CURA");
+            } else {
+                i = new Item("MANA");
+            }
+            i.coord.setPosicao(p.coord.getLinha(), p.coord.getColuna());
+            items.add(i);
+            matriz[p.coord.getLinha()][p.coord.getColuna()] = i.sprite.getCharacter();
+        }
+    }
+
     public char[][] preencherMapa(int linha, int coluna) {
        char[][] matrizTemp = new char[linha][coluna];
        Obstaculo muro = new Obstaculo('=');
@@ -185,7 +201,7 @@ public class Mapa {
        int posLin = 0, posCol = 0;
        ArrayList<Coordenada> proibidas = gerarMeio();
        int k = 0;
-       for (int i=0; i<getColunaMax() * 2; i++) {
+       for (int i=0; i<(getColunaMax() + (getColunaMax() / 2)); i++) {
            while (k == 0) {
                posLin = Dados.random(getLinhaMax() - 2);
                posCol = Dados.random(getColunaMax() - 2);

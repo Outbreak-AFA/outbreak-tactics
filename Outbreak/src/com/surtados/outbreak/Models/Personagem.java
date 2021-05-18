@@ -20,6 +20,7 @@ public abstract class Personagem {
     private boolean moveu = false, atacou = false;
     private String atkNatural;
     private String habilidadeEspecial;
+    private boolean suporte = false;
 
     public String getNome() {
         return nome;
@@ -129,6 +130,14 @@ public abstract class Personagem {
         this.habilidadeEspecial = habilidadeEspecial;
     }
 
+    public boolean isSuporte() {
+        return suporte;
+    }
+
+    public void setSuporte(boolean suporte) {
+        this.suporte = suporte;
+    }
+
     public abstract void atacarNatural(Personagem p);
     public abstract void habilidadeEspecial(Personagem p);
 
@@ -143,7 +152,6 @@ public abstract class Personagem {
     }
 
     public void passarTurno() {
-        // TODO rever surto
         if(getContadorSurto() > 0) setContadorSurto(getContadorSurto() - 1);
         setMoveu(false);
         setAtacou(false);
@@ -156,14 +164,6 @@ public abstract class Personagem {
 
     public void retirarVida(int dano) {
         setVida(getVida() - dano);
-    }
-
-    public abstract void surtar();
-
-    public void ativarSurto() {
-        setSurtado(true);
-        setContadorSurto(3);
-        surtar(); //unico de cada personagem
     }
 
     public int calcularDano(int danoMaximoOferecido, Personagem p) {
@@ -407,7 +407,12 @@ public abstract class Personagem {
         atacou = atk;
     }
 
-   public abstract ArrayList<Coordenada> getAlcanceAtk(int opcao, Mapa mapa);
+   public ArrayList<Coordenada> getAlcanceAtk(int opcao, Mapa mapa) {
+       ArrayList<Coordenada> proibidos = getAlcanceAtkProibido(opcao);
+       ArrayList<Coordenada> possiveis = new ArrayList<>();
+       preenchimentoPorInundacao(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis, false);
+       return possiveis;
+   }
    public abstract ArrayList<Coordenada> getAlcanceAtkProibido(int opcao);
         
     public void menuOpcoes(Mapa mapa) {
@@ -433,6 +438,7 @@ public abstract class Personagem {
                     mapa.inserirObsetaculo(obs);
                 }
                 mapa.plotarMatriz();
+            System.out.println("Posição atual: " + "(" + coord.getLinha() + ", " + coord.getColuna() + ")");
                 for (Coordenada co : alcance) {
                     System.out.println("[" + (alcance.indexOf(co) + 1) + "] - (" + co.getLinha() + ", " + co.getColuna() + ")");
                 }
@@ -466,32 +472,35 @@ public abstract class Personagem {
                 return;
             }
             
-            System.out.println("Escolha o local em que irá atacar: ");
+            System.out.println("Escolha o oponente em que irá atacar: ");
             ArrayList<Coordenada> alcance = getAlcanceAtk(optAtk, mapa);
             ArrayList<Personagem> alvos = new ArrayList<>();
             for (Coordenada c : alcance) {
                 Personagem p = (Personagem) mapa.getPosicao(c.getLinha(), c.getColuna());
-                if (p != null && p.getPlayerId() != getPlayerId()) alvos.add(p);
+                if (isSuporte() && optAtk == 2 && p != null) {
+                    alvos.add(p);
+                }
+                else if (p != null && p.getPlayerId() != getPlayerId()) alvos.add(p);
             }
             
             for (Personagem p : alvos) {
                 System.out.println("[" + (alvos.indexOf(p) + 1) + "] - " + p.getNome());
             }
-            System.out.println("[ "+ (alvos.size() + 1)+"] - Cancelar");
+            System.out.println("["+ (alvos.size() + 1)+"] - Cancelar");
             System.out.print(">>> ");
             int vitima = scan.nextInt();
-            if (vitima == alcance.size() + 1) {
+            if (vitima == alvos.size() + 1) {
                 System.out.println("Certo! Voltando para menu de ações.");
                 menuOpcoes(mapa);
                 return;
             }
-            if (vitima < 1 || vitima > alcance.size()) {
+            if (vitima < 1 || vitima > alvos.size()) {
                 System.out.println("Opção inválida");
                 menuOpcoes(mapa);
                 return;
             }
-            if (optAtk == 1) atacarNatural(alvos.get(vitima));
-            else if (optAtk == 2) habilidadeEspecial(alvos.get(vitima));
+            if (optAtk == 1) atacarNatural(alvos.get(vitima-1));
+            else if (optAtk == 2) habilidadeEspecial(alvos.get(vitima-1));
             setAtacou(true);
             menuOpcoes(mapa);
             return;
@@ -526,7 +535,9 @@ public abstract class Personagem {
         else if (opcao == 5 && podeSurtar()) {
             System.out.println(getNome() + " acumulou muitos os pontos de surto!!");
             System.out.println(getNome() + " está SURTADOOOO");
-            ativarSurto();
+            ativarModoSurto();
+            menuOpcoes(mapa);
+            return;
         } 
         else {
             System.out.println("Essa opção ou é inválida ou já foi utilizada!");

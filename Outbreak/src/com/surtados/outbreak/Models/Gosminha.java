@@ -27,6 +27,8 @@ public class Gosminha extends Personagem {
             p.retirarVida(dano);
             System.out.println(getNome() + " atacou " + p.getNome() + " dando uma cabeçada !");
             System.out.println("Dano retirado: " + dano);
+            aumentarSurto(dano);
+            p.aumentarSurto(dano);
         } else {
             System.out.println(p.getNome() + " desviou do ataque!");
         }
@@ -42,6 +44,8 @@ public class Gosminha extends Personagem {
                 setMana(getMana() - 10);
                 System.out.println(getNome() + " atacou " + p.getNome() + "cuspindo veneno!");
                 System.out.println("Dano retirado: " + dano);
+                aumentarSurto(dano);
+                p.aumentarSurto(dano);
             } else
                 System.out.println(p.getNome() + " desviou do ataque!");
             } else System.out.println(getNome() + " está sem mana!");
@@ -49,8 +53,7 @@ public class Gosminha extends Personagem {
 
     @Override
     public void ativarModoSurto() {
-        modoSurto(5, 2, 0);
-        passarTurno();
+        modoSurto(15, 30, 2);
     }
     
     @Override
@@ -164,13 +167,5 @@ public class Gosminha extends Personagem {
             proibidos.add(temp.clone());
         }
         return proibidos;
-    }
-
-    @Override
-    public ArrayList<Coordenada> getAlcanceAtk(int opcao, Mapa mapa) {
-        ArrayList<Coordenada> proibidos = getAlcanceAtkProibido(opcao);
-        ArrayList<Coordenada> possiveis = new ArrayList<>();
-        preenchimentoPorInundacao(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis, false);
-        return possiveis;
     }
 }
