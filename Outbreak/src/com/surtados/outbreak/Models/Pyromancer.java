@@ -13,9 +13,8 @@ public class Pyromancer extends Personagem {
         setVida(250);
         setSurtado(false);
         setSurtoAcumulado(0);
-        sprite.setCharacter('&');
+        sprite.setCharacter('☀');
     }
-
     @Override
     public void atacarNatural(Personagem p) {
         // TODO Verificar range de dano

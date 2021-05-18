@@ -13,7 +13,7 @@ public class Fadinha extends Personagem {
          setAgl(8);
          setSurtoAcumulado(0);
          setSurtado(false);
-          
+          sprite.setCharacter('✧');
     }
      @Override
     public void atacarNatural(Personagem p) {

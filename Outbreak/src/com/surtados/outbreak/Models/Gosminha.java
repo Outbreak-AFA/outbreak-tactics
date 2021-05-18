@@ -14,7 +14,7 @@ public class Gosminha extends Personagem {
          setAgl(4);
          setSurtoAcumulado(0);
          setSurtado(false);
-          
+          sprite.setCharacter('☺');
     }
      @Override
     public void atacarNatural(Personagem p) {

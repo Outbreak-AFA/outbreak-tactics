@@ -13,7 +13,7 @@ public class Troll extends Personagem {
          setAgl(2);
          setSurtoAcumulado(0);
          setSurtado(false);
-         sprite.setCharacter('T');
+         sprite.setCharacter('۩');
     }
      @Override
     public void atacarNatural(Personagem p) {

@@ -13,7 +13,7 @@ public class Guerreira extends Personagem{
          setAgl(6);
          setSurtoAcumulado(0);
          setSurtado(false);
-          
+          sprite.setCharacter('╁');
     }
      @Override
     public void atacarNatural(Personagem p) {

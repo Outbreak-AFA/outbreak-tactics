@@ -224,27 +224,20 @@ public abstract class Personagem {
         return "Ocorreu um problema ao identificar o item :(";
     }
 
-    private void dfs(Mapa mapa, int lin, int col, ArrayList<Coordenada> proibidos, ArrayList<Coordenada> possiveis) {
+    private void preenchimentoPorInundacao(Mapa mapa, int lin, int col, ArrayList<Coordenada> proibidos, ArrayList<Coordenada> possiveis) {
         int colMax = mapa.getColunaMax(), linMax = mapa.getLinhaMax();
-        if ((lin < 0 || lin >= linMax) || (col < 0 || col >= colMax) || ((!coord.equals(lin, col)) && (!mapa.posicaoVazia(lin, col, proibidos))) || (!verificarPossiveis(possiveis, lin, col))) {
+        if ((lin < 1|| lin >= linMax - 1) || (col < 1 || col >= colMax - 1) || ((!coord.equals(lin, col)) && (!mapa.posicaoVazia(lin, col, proibidos))) || (!verificarPossiveis(possiveis, lin, col))) {
             return;
         } else {
             Coordenada co = new Coordenada();
             co.setPosicao(lin, col);
             if (!coord.equals(lin, col)) {
-                System.out.println("Adicionei os possíveis: " + co.getLinha() + " " + co.getColuna());
                 possiveis.add(co.clone());
             }
-            dfs(mapa, (lin + 1), (col), proibidos, possiveis);
-            dfs(mapa, (lin - 1), (col), proibidos, possiveis);
-            dfs(mapa, (lin), (col + 1), proibidos, possiveis);
-            dfs(mapa, (lin), (col - 1), proibidos, possiveis);
-        }
-    }
-
-    public void printarPossiveis(ArrayList<Coordenada> possiveis) {
-        for (int i=0; i<possiveis.size(); i++) {
-            System.out.println("Posição [" + i + "] - " + possiveis.get(i).getLinha() + " " + possiveis.get(i).getColuna());
+            preenchimentoPorInundacao(mapa, (lin + 1), (col), proibidos, possiveis);
+            preenchimentoPorInundacao(mapa, (lin - 1), (col), proibidos, possiveis);
+            preenchimentoPorInundacao(mapa, (lin), (col + 1), proibidos, possiveis);
+            preenchimentoPorInundacao(mapa, (lin), (col - 1), proibidos, possiveis);
         }
     }
 
@@ -253,14 +246,6 @@ public abstract class Personagem {
             if (c.equals(lin, col)) return false;
         }
         return true;
-    }
-
-    private void floodFill(Mapa mapa, int lin, int col, ArrayList<Coordenada> proibidos, ArrayList<Coordenada> possiveis) {
-        System.out.println("vou rodar o dfs");
-        dfs(mapa, lin, col, proibidos, possiveis);
-        printarPossiveis(possiveis);
-        System.out.println(possiveis.size());
-        System.out.println("saiu do dfs");
     }
 
     private ArrayList<Coordenada> getAlcanceProibido() {
@@ -344,8 +329,8 @@ public abstract class Personagem {
             for (int lin=-4; lin<=4; lin++) {
                 for (int col=-4; col<=4; col++) {
                     if (!(col == lin || col == -lin) &&
-                        (((lin == -4 || lin == 4) && (col >= -3 || col <= 3))) ||
-                        (((col == -4 || col == 4) && (lin >= -3 || lin <= 3))) ) {
+                        (((lin == -4 || lin == 4))) ||
+                        (((col == -4 || col == 4))) ) {
                         temp.setPosicao(coord.getLinha() + lin, coord.getColuna() + col);
                         proibidos.add(temp.clone());
                     }
@@ -358,7 +343,7 @@ public abstract class Personagem {
     public ArrayList<Coordenada> getAlcance(Mapa mapa) {
         ArrayList<Coordenada> proibidos = getAlcanceProibido();
         ArrayList<Coordenada> possiveis = new ArrayList<>();
-        floodFill(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis);
+        preenchimentoPorInundacao(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis);
         return possiveis;
     }
 }
