@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="199cc1ae-2031-47a1-9dc6-502e6c97dd7c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Mapa.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Mapa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Personagem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Utils/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Utils/Sistema.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

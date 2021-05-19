@@ -50,6 +50,11 @@ public class Mapa {
         matriz[o.coord.getLinha()][o.coord.getColuna()] = o.sprite.getCharacter();
     }
 
+    public void inserirItem(Item i) {
+        items.add(i);
+        matriz[i.coord.getLinha()][i.coord.getColuna()] = i.sprite.getCharacter();
+    }
+
     public void removerObstaculo(Obstaculo o) {
         obstaculos.remove(o);
         matriz[o.coord.getLinha()][o.coord.getColuna()] = ' ';

@@ -538,7 +538,7 @@ public abstract class Personagem {
                 menuOpcoes(mapa);
                 return;
             }
-            System.out.println(usarItem(inventario.get(itemEscolhido)));
+            System.out.println(usarItem(inventario.get(itemEscolhido - 1)));
             menuOpcoes(mapa);
             return;
         }

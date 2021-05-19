@@ -53,6 +53,16 @@ public class App {
 
             mapa.organizarPersonagens(players.get(0).time, players.get(1).time);
 
+            Item i = new Item("CURA");
+            Item cura = new Item("CURA");
+            Item i_ = new Item("MANA");
+            i.coord.setPosicao(6, 2);
+            i_.coord.setPosicao(6, 18);
+            cura.coord.setPosicao(4, 9);
+            mapa.inserirItem(i);
+            mapa.inserirItem(i_);
+            mapa.inserirItem(cura);
+
             int rodada = 0;
             while (!players.get(0).perdeu(mapa) && !players.get(1).perdeu(mapa)) {
                 mapa.plotarMatriz();
