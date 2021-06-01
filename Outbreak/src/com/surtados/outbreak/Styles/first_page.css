@@ -1,0 +1,26 @@
+.start {
+    -fx-alignment: center;
+    -fx-min-width: 800px;
+    -fx-min-height: 600px;
+    -fx-max-width: 800px;
+    -fx-max-height: 600px;
+}
+
+.mainBox {
+    -fx-alignment: center;
+    -fx-min-width: 800px;
+    -fx-min-height: 600px;
+    -fx-max-width: 800px;
+    -fx-max-height: 600px;
+    -fx-background-color: red;
+}
+
+.menu {
+    -fx-
+
+}
+
+.menuButton {
+    -fx-padding: 10;
+    -fx-margin: 10;
+}

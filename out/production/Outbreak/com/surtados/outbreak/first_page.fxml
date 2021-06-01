@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Box?>
+<?import javafx.scene.canvas.Canvas?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.surtados.outbreak.Controller"
+            prefHeight="600.0" prefWidth="800.0" styleClass="start">
+    <VBox alignment="CENTER" styleClass="mainBox">
+        <children>
+            <VBox styleClass="menu">
+                <children>
+                    <Button text="INICIAR" styleClass="menuButton"/>
+                    <Button text="INSTRUÇÕES" styleClass="menuButton"/>
+                    <Button text="CRÉDITOS" styleClass="menuButton"/>
+                    <Button text="SAIR" styleClass="menuButton"/>
+                </children>
+            </VBox>
+        </children>
+    </VBox>
+</AnchorPane>
