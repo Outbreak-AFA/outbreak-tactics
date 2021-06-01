@@ -8,20 +8,26 @@
 
 <?import javafx.scene.shape.Box?>
 <?import javafx.scene.canvas.Canvas?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.surtados.outbreak.Controller"
-            prefHeight="600.0" prefWidth="800.0" styleClass="start">
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.surtados.outbreak.Controller"
+          prefHeight="600.0" prefWidth="800.0" styleClass="start">
     <VBox alignment="CENTER" styleClass="mainBox">
         <children>
-            <VBox styleClass="menu">
+            <VBox styleClass="boxCenter" alignment="CENTER">
                 <children>
-                    <Button text="INICIAR" styleClass="menuButton"/>
-                    <Button text="INSTRUÇÕES" styleClass="menuButton"/>
-                    <Button text="CRÉDITOS" styleClass="menuButton"/>
-                    <Button text="SAIR" styleClass="menuButton"/>
+                    <Separator minHeight="250" styleClass="separador"/>
+                    <VBox styleClass="menu">
+                        <children>
+                            <Button text="INICIAR" styleClass="menuButton" contentDisplay="CENTER"/>
+                            <Button text="INSTRUCOES" styleClass="menuButton"/>
+                            <Button text="CREDITOS" styleClass="menuButton"/>
+                            <Button text="SAIR" styleClass="menuButton" fx:id="closeButton" onAction="#closeButton"/>
+                        </children>
+                    </VBox>
                 </children>
             </VBox>
         </children>
     </VBox>
-</AnchorPane>
+</GridPane>

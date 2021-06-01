@@ -24,6 +24,7 @@ public class App extends Application {
 
         Scene cena = new Scene(root, 800, 600);
         cena.getStylesheets().add(firstPageCSS);
+        cena.getStylesheets().add("https://fonts.googleapis.com/css2?family=Press+Start+2P");
 
         primaryStage.setScene(cena);
         primaryStage.show();

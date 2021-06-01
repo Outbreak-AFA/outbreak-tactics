@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="199cc1ae-2031-47a1-9dc6-502e6c97dd7c" name="Default Changelist" comment="" />
+    <list default="true" id="199cc1ae-2031-47a1-9dc6-502e6c97dd7c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Styles/first_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Styles/first_page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/first_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/first_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Styles/first_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Styles/first_page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/first_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/first_page.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

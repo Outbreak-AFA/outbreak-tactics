@@ -12,15 +12,38 @@
     -fx-min-height: 600px;
     -fx-max-width: 800px;
     -fx-max-height: 600px;
-    -fx-background-color: red;
+    -fx-background-image: url("../Assets/background.png");
 }
 
 .menu {
-    -fx-
-
+    -fx-alignment: center;
+    -fx-max-width: 320;
+    -fx-min-height: 210;
+    -fx-spacing: 10;
+    -fx-border-style: solid;
+    -fx-border-color: white;
+    -fx-border-width: 3px;
+    -fx-border-radius: 22px;
+    -fx-background-radius: 22px;
+    -fx-background-color: rgba(166, 161, 161, 0.3);
 }
 
 .menuButton {
-    -fx-padding: 10;
-    -fx-margin: 10;
+    -fx-min-height: 40;
+    -fx-min-width: 280;
+    -fx-font-family: 'Press Start 2P', cursive;
+    -fx-font-size: 20;
+    -fx-background-color: rgba(255, 255, 255, 0.4);
+}
+
+.menuButton:hover {
+    -fx-background-color: #fff;
+}
+
+.boxCenter {
+    -fx-min-height: 600px;
+}
+
+.separador {
+    -fx-opacity: 0;
 }
