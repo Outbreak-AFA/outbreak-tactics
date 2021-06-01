@@ -16,5 +16,6 @@
     </orderEntry>
     <orderEntry type="library" name="javadocs" level="project" />
     <orderEntry type="library" name="json-20210307" level="project" />
+    <orderEntry type="library" name="javafx" level="project" />
   </component>
 </module>
