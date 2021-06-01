@@ -1,7 +1,8 @@
 <component name="libraryTable">
   <library name="javadocs">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../../../../../Programs/javafx-sdk-11.0.2/lib" />
+      <root url="file://$USER_HOME$/Programs/javafx-sdk-11.0.2/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../gson-gson-2.3.1.zip!/gson-gson-2.3.1/docs/javadocs" />
@@ -9,9 +10,12 @@
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../gson-gson-2.3.1.zip!/gson-gson-2.3.1/src/main/java" />
       <root url="jar://$PROJECT_DIR$/../gson-gson-2.3.1.zip!/gson-gson-2.3.1/src/test/java" />
-      <root url="file://$PROJECT_DIR$/../../../../../Programs/javafx-sdk-11.0.2/lib" />
+      <root url="file://$USER_HOME$/Programs/javafx-sdk-11.0.2/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
     </SOURCES>
-    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Programs/javafx-sdk-11.0.2/lib" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Programs/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Programs/javafx-sdk-11.0.2/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$USER_HOME$/Programs/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
   </library>
 </component>
