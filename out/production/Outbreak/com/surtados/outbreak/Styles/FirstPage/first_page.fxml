@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.surtados.outbreak.Controller"
+          fx:controller="com.surtados.outbreak.Styles.FirstPage.Controller"
           prefHeight="600.0" prefWidth="800.0" styleClass="start">
     <VBox alignment="CENTER" styleClass="mainBox">
         <children>
@@ -20,7 +20,7 @@
                     <Separator minHeight="250" styleClass="separador"/>
                     <VBox styleClass="menu">
                         <children>
-                            <Button text="INICIAR" styleClass="menuButton" contentDisplay="CENTER"/>
+                            <Button text="INICIAR" styleClass="menuButton" contentDisplay="CENTER" fx:id="startButton" onAction="#nextPage"/>
                             <Button text="INSTRUCOES" styleClass="menuButton"/>
                             <Button text="CREDITOS" styleClass="menuButton"/>
                             <Button text="SAIR" styleClass="menuButton" fx:id="closeButton" onAction="#closeButton"/>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.sun.javafx.webkit.theme.RenderThemeImpl.FormTextField?>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.surtados.outbreak.Styles.RegisterPage.RegisterController"
+          prefHeight="600.0" prefWidth="800.0">
+    <VBox>
+        <children>
+            <Text></Text>
+            <FormTextField/>
+            <FormTextField/>
+            <FormTextField/>
+            <Button/>
+        </children>
+    </VBox>
+</GridPane>

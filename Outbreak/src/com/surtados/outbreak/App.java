@@ -1,26 +1,21 @@
 package com.surtados.outbreak;
 
-import com.surtados.outbreak.Core.Sistema;
-import com.surtados.outbreak.Models.*;
+//import com.surtados.outbreak.Core.Sistema;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("first_page.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Styles/FirstPage/first_page.fxml"));
         primaryStage.setTitle("Outbreak Tactics");
         primaryStage.setResizable(false);
 
-        String firstPageCSS = getClass().getResource("./Styles/first_page.css").toExternalForm();
+        String firstPageCSS = getClass().getResource("./Styles/FirstPage/first_page.css").toExternalForm();
 
         Scene cena = new Scene(root, 800, 600);
         cena.getStylesheets().add(firstPageCSS);
