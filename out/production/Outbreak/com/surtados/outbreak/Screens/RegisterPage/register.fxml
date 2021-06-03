@@ -10,14 +10,11 @@
 <?import javafx.scene.text.Text?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.surtados.outbreak.Styles.RegisterPage.RegisterController"
+          fx:controller="com.surtados.outbreak.Screens.RegisterPage.RegisterController"
           prefHeight="600.0" prefWidth="800.0">
     <VBox>
         <children>
             <Text></Text>
-            <FormTextField/>
-            <FormTextField/>
-            <FormTextField/>
             <Button/>
         </children>
     </VBox>

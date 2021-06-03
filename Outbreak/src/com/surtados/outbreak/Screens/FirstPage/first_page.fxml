@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.surtados.outbreak.Styles.FirstPage.Controller"
+          fx:controller="com.surtados.outbreak.Screens.FirstPage.Controller"
           prefHeight="600.0" prefWidth="800.0" styleClass="start">
     <VBox alignment="CENTER" styleClass="mainBox">
         <children>

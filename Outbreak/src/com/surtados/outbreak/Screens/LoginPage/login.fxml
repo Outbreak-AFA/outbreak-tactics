@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import com.sun.javafx.webkit.theme.RenderThemeImpl.FormTextField?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.surtados.outbreak.Screens.LoginPage.LoginController"
+          prefHeight="600.0" prefWidth="800.0" styleClass="mainBox" alignment="CENTER">
+    <VBox>
+        <children>
+            <Separator minHeight="200" visible="false"/>
+            <VBox styleClass="loginMenu">
+                <children>
+                    <Text styleClass="loginText">Faça o login do 1º jogador!</Text>
+                    <TextField></TextField>
+                    <TextField></TextField>
+                    <HBox styleClass="opcoes">
+                        <children>
+                            <Button styleClass="novoCadastro" fx:id="registerButton" onAction="#registerPage">novo cadastro</Button>
+                            <Separator visible="false" minWidth="30"/>
+                            <Button text="ENTRAR" styleClass="botaoEntrar"/>
+                        </children>
+                    </HBox>
+                </children>
+            </VBox>
+        </children>
+    </VBox>
+
+</GridPane>
