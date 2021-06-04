@@ -17,7 +17,7 @@
             <Separator minHeight="200" visible="false"/>
             <VBox styleClass="registerMenu">
                 <children>
-                    <Text styleClass="registerText">Faça o cadastro de um jogador!</Text>
+                    <Label styleClass="registerText">Faça o cadastro de um jogador!</Label>
                     <TextField></TextField>
                     <TextField></TextField>
                     <TextField></TextField>

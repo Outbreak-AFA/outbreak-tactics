@@ -4,6 +4,7 @@
 
 .loginText {
     -fx-font-family: 'Press Start 2P', cursive;
+    -fx-text-fill: rgba(255, 255, 255, 1);
     -fx-font-size: 16;
 }
 
@@ -16,7 +17,7 @@
 
 .loginMenu {
     -fx-alignment: center;
-    -fx-max-width: 320;
+    -fx-max-width: 536;
     -fx-min-height: 210;
     -fx-spacing: 10;
     -fx-border-style: solid;
@@ -25,7 +26,7 @@
     -fx-border-radius: 22px;
     -fx-background-radius: 22px;
     -fx-background-color: rgba(166, 161, 161, 0.3);
-    -fx-padding: 30;
+    -fx-padding: 20;
 }
 
 .opcoes {
@@ -37,4 +38,8 @@
     -fx-font-size: 12;
     -fx-background-color: transparent;
      -fx-text-fill: rgba(255, 255, 255, 1);
+}
+
+.loginField {
+    -fx-border-radius: 6px;
 }

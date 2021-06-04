@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="199cc1ae-2031-47a1-9dc6-502e6c97dd7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/RegisterPage/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/RegisterPage/register.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/RegisterPage/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/RegisterPage/register.fxml" afterDir="false" />
     </list>
