@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Outbreak/Outbreak.iml" filepath="$PROJECT_DIR$/Outbreak/Outbreak.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/outbreak-tactics.iml" filepath="$PROJECT_DIR$/.idea/outbreak-tactics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/outbreak-tactics.iml" filepath="$PROJECT_DIR$/outbreak-tactics.iml" />
     </modules>
   </component>
 </project>
