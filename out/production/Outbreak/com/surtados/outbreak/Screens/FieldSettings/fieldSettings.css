@@ -1,0 +1,27 @@
+.root {
+     -fx-font-family: 'Press Start 2P', cursive;
+}
+
+.mainBox {
+    -fx-background-image: url("../../Assets/background.png");
+}
+
+.fieldMenu {
+    -fx-alignment: center;
+    -fx-max-width: 540;
+    -fx-min-height: 210;
+    -fx-spacing: 10;
+    -fx-border-style: solid;
+    -fx-border-color: white;
+    -fx-border-width: 3px;
+    -fx-border-radius: 22px;
+    -fx-background-radius: 22px;
+    -fx-background-color: rgba(166, 161, 161, 0.3);
+    -fx-padding: 17;
+}
+
+.botaoIniciar {
+    -fx-background-color: rgba(234, 85, 85, 1);
+    -fx-font-size: 14;
+    -fx-border-radius: 10px;
+}

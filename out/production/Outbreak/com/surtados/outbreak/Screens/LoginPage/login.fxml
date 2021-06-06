@@ -24,7 +24,7 @@
                         <children>
                             <Button styleClass="novoCadastro" fx:id="registerButton" onAction="#registerPage">novo cadastro</Button>
                             <Separator visible="false" minWidth="30"/>
-                            <Button text="ENTRAR" styleClass="botaoEntrar"/>
+                            <Button text="ENTRAR" styleClass="botaoEntrar" fx:id="enterButton" onAction="#fieldSettings"/>
                         </children>
                     </HBox>
                 </children>

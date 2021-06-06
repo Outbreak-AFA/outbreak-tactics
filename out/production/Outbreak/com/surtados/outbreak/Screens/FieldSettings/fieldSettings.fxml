@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Box?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.surtados.outbreak.Screens.FieldSettings.FieldSettingsController"
+          prefHeight="600.0" prefWidth="800.0" styleClass="mainBox" alignment="CENTER">
+    <VBox>
+        <children>
+            <Separator visible="false" minHeight="200"/>
+            <VBox styleClass="fieldMenu">
+                <children>
+                    <Label text="CONFIGURANDO JOGO" textFill="white"/>
+                    <VBox alignment="CENTER_LEFT">
+                        <children>
+                            <Separator visible="false" minHeight="20"/>
+                            <Label text="Tamanho do mapa:" textFill="white" textAlignment="LEFT"/>
+                        </children>
+                    </VBox>
+                    <HBox alignment="CENTER_LEFT">
+                        <children>
+                            <Label text="Largura:" textFill="white"/>
+                            <TextField maxWidth="40" minHeight="36"></TextField>
+                            <Separator visible="false" minWidth="50"/>
+                            <Label text="Altura:" textFill="white"/>
+                            <TextField maxWidth="40" minHeight="36"></TextField>
+                        </children>
+                    </HBox>
+                    <HBox alignment="CENTER">
+                        <children>
+                            <Label text="Quantidade de personagens:" textFill="white"/>
+                            <TextField maxWidth="40" minHeight="36"></TextField>
+                        </children>
+                    </HBox>
+                    <Button text="INICIAR" styleClass="botaoIniciar" textFill="white" fx:id="botaoStart" onAction="#characterSelection"/>
+                </children>
+            </VBox>
+        </children>
+    </VBox>
+</GridPane>

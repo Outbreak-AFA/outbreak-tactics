@@ -15,7 +15,7 @@ public class App extends Application {
         primaryStage.setTitle("Outbreak Tactics");
         primaryStage.setResizable(false);
 
-        String firstPageCSS = getClass().getResource("./Screens/FirstPage/first_page.css").toExternalForm();
+        String firstPageCSS = getClass().getResource("Screens/FirstPage/first_page.css").toExternalForm();
 
         Scene cena = new Scene(root, 800, 600);
         cena.getStylesheets().add(firstPageCSS);

@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 
 public class LoginController {
 
-    @FXML private javafx.scene.control.Button registerButton;
+    @FXML private javafx.scene.control.Button registerButton, enterButton;
 
     @FXML
     private void registerPage(ActionEvent event) throws Exception {
@@ -29,4 +29,23 @@ public class LoginController {
         stage.setScene(cena);
         stage.show();
     }
+
+    @FXML
+    private void fieldSettings(ActionEvent event) throws Exception {
+        Stage stage = null;
+        Parent root = null;
+
+        String registerPageCSS = getClass().getResource("../FieldSettings/fieldSettings.css").toExternalForm();
+
+        if(event.getSource()==enterButton){
+            stage = (Stage) enterButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../FieldSettings/fieldSettings.fxml"));
+        }
+        Scene cena = new Scene(root);
+        cena.getStylesheets().add(registerPageCSS);
+        stage.setScene(cena);
+        stage.show();
+    }
+
+
 }
