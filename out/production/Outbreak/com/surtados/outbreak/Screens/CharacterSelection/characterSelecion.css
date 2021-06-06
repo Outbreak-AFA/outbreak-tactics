@@ -1,0 +1,49 @@
+.root {
+     -fx-font-family: 'Press Start 2P', cursive;
+}
+
+.mainBox {
+    -fx-background-image: url("../../Assets/forest.png");
+}
+
+.secondaryBox {
+    -fx-padding: 15 35 20 45;
+}
+
+.characterList {
+    -fx-alignment: center;
+    -fx-max-width: 254;
+    -fx-min-height: 478;
+    -fx-spacing: 10;
+    -fx-border-style: solid;
+    -fx-border-color: rgba(248, 255, 220, 0.5);
+    -fx-border-width: 3px;
+    -fx-border-radius: 22px;
+    -fx-background-radius: 22px;
+    -fx-background-color: rgba(166, 161, 161, 0.3);
+    -fx-padding: 17;
+}
+
+.characterBox {
+    -fx-background-color: rgba(196, 196, 196, 1);
+}
+
+.teamList {
+    -fx-alignment: center;
+    -fx-max-width: 322;
+    -fx-min-height: 89;
+    -fx-spacing: 10;
+    -fx-border-style: solid;
+    -fx-border-color: rgba(248, 255, 220, 0.5);
+    -fx-border-width: 3px;
+    -fx-border-radius: 22px;
+    -fx-background-radius: 22px;
+    -fx-background-color: rgba(166, 161, 161, 0.3);
+    -fx-padding: 17;
+}
+
+.botaoAvancar {
+    -fx-background-color: rgba(234, 85, 85, 0.6);
+    -fx-font-size: 14;
+    -fx-border-radius: 16px;
+}

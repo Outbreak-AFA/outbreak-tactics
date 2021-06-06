@@ -21,7 +21,7 @@
     -fx-min-height: 210;
     -fx-spacing: 10;
     -fx-border-style: solid;
-    -fx-border-color: white;
+    -fx-border-color: rgba(248, 255, 220, 0.5);
     -fx-border-width: 3px;
     -fx-border-radius: 22px;
     -fx-background-radius: 22px;

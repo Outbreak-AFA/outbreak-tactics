@@ -6,9 +6,47 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.shape.Box?>
+<?import com.sun.javafx.scene.control.IntegerField?>
 <GridPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.surtados.outbreak.Screens.CharacterSelection.CharacterSelectionController"
-            prefHeight="600.0" prefWidth="800.0">
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.surtados.outbreak.Screens.CharacterSelection.CharacterSelectionController"
+          prefHeight="600.0" prefWidth="800.0" styleClass="mainBox">
 
+    <HBox styleClass="secondaryBox">
+        <children>
+            <VBox alignment="CENTER_LEFT">
+                <children>
+                    <Separator visible="false" minHeight="20"/>
+                    <Label text="Olá Fulano!" textAlignment="LEFT" textFill="white"/>
+                    <Label text="Monte o seu time!!" textAlignment="LEFT" textFill="white"/>
+                    <Separator visible="false" minHeight="5"/>
+                    <VBox styleClass="characterList">
+                        <children>
+                        </children>
+                    </VBox>
+                </children>
+            </VBox>
+            <Separator visible="false" minWidth="190"/>
+            <VBox>
+                <children>
+                    <HBox>
+                        <children>
+                            <Label text="VITÓRIAS: " textFill="white"/>
+                            <Separator visible="false" minWidth="15"/>
+                            <Label text="DERROTAS: " textFill="white"/>
+                        </children>
+                    </HBox>
+                    <Separator visible="false" minHeight="50"/>
+                    <HBox styleClass="teamList">
+                        <children>
+
+                        </children>
+                    </HBox>
+                </children>
+                <Separator minHeight="320" visible="false"/>
+                <Button text="AVANÇAR" minWidth="225" minHeight="48" styleClass="botaoAvancar" textFill="white"/>
+            </VBox>
+        </children>
+    </HBox>
 </GridPane>
