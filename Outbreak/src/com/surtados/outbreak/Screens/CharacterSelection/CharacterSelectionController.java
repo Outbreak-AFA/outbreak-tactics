@@ -1,16 +1,21 @@
 package com.surtados.outbreak.Screens.CharacterSelection;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
 public class CharacterSelectionController {
 
+    @FXML private Button btnAvancar;
+
     // Função para selecionar o personagem
-    private void selectCharacter() {}
+    @FXML private void selectCharacter() {}
 
     // Função para adicionar o personagem no time
-    private void addCharacterTeam() {}
+    @FXML private void addCharacterTeam() {}
 
     // Função para remover o personagem do time
-    private void removeCharacterTeam() {}
+    @FXML private void removeCharacterTeam() {}
 
     // Função para confirmar o time e ir para a próxima página
-    private void confirmTeamNextPage() {}
+    @FXML private void confirmTeamNextPage() {}
 }

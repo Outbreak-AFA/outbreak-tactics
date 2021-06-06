@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="199cc1ae-2031-47a1-9dc6-502e6c97dd7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/characterSelecion.css" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/characterSelecion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/characterSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/characterSelection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FieldSettings/fieldSettings.css" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FieldSettings/fieldSettings.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FirstPage/first_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FirstPage/first_page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/RegisterPage/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/RegisterPage/register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/CharacterSelection/characterSelecion.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/CharacterSelection/characterSelecion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/CharacterSelection/characterSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/CharacterSelection/characterSelection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/FieldSettings/fieldSettings.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/FieldSettings/fieldSettings.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/FirstPage/first_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/FirstPage/first_page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/LoginPage/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/LoginPage/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/RegisterPage/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/RegisterPage/register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/CharacterSelectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/CharacterSelectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FieldSettings/FieldSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FieldSettings/FieldSettingsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

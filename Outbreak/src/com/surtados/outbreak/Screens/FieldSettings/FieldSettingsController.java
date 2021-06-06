@@ -26,4 +26,5 @@ public class FieldSettingsController {
         stage.setScene(cena);
         stage.show();
     }
+
 }
