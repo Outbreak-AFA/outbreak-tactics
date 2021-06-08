@@ -1,6 +1,5 @@
 package com.surtados.outbreak;
 
-//import com.surtados.outbreak.Core.Sistema;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

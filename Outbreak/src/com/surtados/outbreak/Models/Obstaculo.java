@@ -11,7 +11,7 @@ public class Obstaculo {
     }
 
     public Obstaculo(char simb) {
-       sprite.setCharacter(simb);
+        sprite.setCharacter(simb);
     }
 
 }

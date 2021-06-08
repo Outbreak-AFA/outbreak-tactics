@@ -98,24 +98,24 @@ public class Player {
         Scanner scan = new Scanner(System.in);
         if (conquistas.size() > 0) {
             System.out.println("\nOpa! " + getNome() + ", pelo visto você possui conquistas! Deseja atribuir alguma delas a algum personagem de seu time? (S | N)");
-        String escolha = scan.nextLine();
-        if (escolha.toLowerCase().equals("s") || escolha.toLowerCase().equals("sim")) {
-            System.out.println("Certo! Escolha qual item deseja implementar.");
-            for (int i=0; i<conquistas.size(); i++) {
-                System.out.println("[" + (i+1) + "] - " + conquistas.get(i).getNome());
+            String escolha = scan.nextLine();
+            if (escolha.toLowerCase().equals("s") || escolha.toLowerCase().equals("sim")) {
+                System.out.println("Certo! Escolha qual item deseja implementar.");
+                for (int i=0; i<conquistas.size(); i++) {
+                    System.out.println("[" + (i+1) + "] - " + conquistas.get(i).getNome());
+                }
+                int escolhaConq = scan.nextInt();
+                if (escolhaConq < 1 || escolhaConq > conquistas.size()) {
+                    System.out.println("Opa! Opção inválida!");
+                    selecionarConquista();
+                    return;
+                }
+                Item itemEscolhido = conquistas.get(escolhaConq-1);
+                System.out.println("Ok. Agora escolha qual personagem receber o privilégio de " +
+                        itemEscolhido.getNome() + ": ");
+                Personagem p = getPersonagem();
+                System.out.println(p.equiparItem(itemEscolhido));
             }
-            int escolhaConq = scan.nextInt();
-            if (escolhaConq < 1 || escolhaConq > conquistas.size()) {
-                System.out.println("Opa! Opção inválida!");
-                selecionarConquista();
-                return;
-            }
-            Item itemEscolhido = conquistas.get(escolhaConq-1);
-            System.out.println("Ok. Agora escolha qual personagem receber o privilégio de " +
-                    itemEscolhido.getNome() + ": ");
-            Personagem p = getPersonagem();
-            System.out.println(p.equiparItem(itemEscolhido));
-        }
         }
     }
 

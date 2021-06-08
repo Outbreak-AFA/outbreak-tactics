@@ -7,9 +7,9 @@ import com.surtados.outbreak.Utils.Dados;
 import java.util.ArrayList;
 
 /*
-* TODO
-*
-* */
+ * TODO
+ *
+ * */
 
 public class Mapa {
     private char[][] matriz;
@@ -18,11 +18,11 @@ public class Mapa {
     public ArrayList<Item> items = new ArrayList<>();
     private int linhaMax, colunaMax;
 
-   public Mapa(int linha, int coluna) {
-       setColunaMax(coluna);
-       setLinhaMax(linha);
-       matriz = preencherMapa(linha, coluna);
-   }
+    public Mapa(int linha, int coluna) {
+        setColunaMax(coluna);
+        setLinhaMax(linha);
+        matriz = preencherMapa(linha, coluna);
+    }
 
     public int getLinhaMax() {
         return linhaMax;
@@ -41,8 +41,8 @@ public class Mapa {
     }
 
     public void inserirPersonagem(Personagem p) {
-       personagens.add(p);
-       matriz[p.coord.getLinha()][p.coord.getColuna()] = p.sprite.getCharacter();
+        personagens.add(p);
+        matriz[p.coord.getLinha()][p.coord.getColuna()] = p.sprite.getCharacter();
     }
 
     public void inserirObsetaculo(Obstaculo o) {
@@ -88,27 +88,27 @@ public class Mapa {
     }
 
     public char[][] preencherMapa(int linha, int coluna) {
-       char[][] matrizTemp = new char[linha][coluna];
-       Obstaculo muro = new Obstaculo('=');
+        char[][] matrizTemp = new char[linha][coluna];
+        Obstaculo muro = new Obstaculo('=');
         for (int i=0; i<linha; i++) {
             for (int j=0; j<coluna; j++) {
-               if (j == 0 || j == coluna-1) {
-                   muro.coord.setPosicao(i, j);
-                   obstaculos.add(muro);
-                   matrizTemp[i][j] = muro.sprite.getCharacter();
-               } else if (i == 0 || i == linha-1) {
-                   muro.coord.setPosicao(i, j);
-                   obstaculos.add(muro);
-                   matrizTemp[i][j] = muro.sprite.getCharacter();
-               } else matrizTemp[i][j] = ' ';
+                if (j == 0 || j == coluna-1) {
+                    muro.coord.setPosicao(i, j);
+                    obstaculos.add(muro);
+                    matrizTemp[i][j] = muro.sprite.getCharacter();
+                } else if (i == 0 || i == linha-1) {
+                    muro.coord.setPosicao(i, j);
+                    obstaculos.add(muro);
+                    matrizTemp[i][j] = muro.sprite.getCharacter();
+                } else matrizTemp[i][j] = ' ';
             }
         }
         return matrizTemp;
     }
 
     public void setMatriz(char c, int linha, int coluna, int linhaAnt, int colunaAnt) {
-       matriz[linhaAnt][colunaAnt] = ' ';
-       matriz[linha][coluna] = c;
+        matriz[linhaAnt][colunaAnt] = ' ';
+        matriz[linha][coluna] = c;
     }
 
     public void plotarMatriz() {
@@ -118,56 +118,56 @@ public class Mapa {
                 if (matriz[i][j] == '#') {
                     System.out.print(Cores.ANSI_GREEN + "  " + matriz[i][j] + Cores.ANSI_RESET + "  |");
                 } else
-                System.out.print("  " + matriz[i][j] + "  |");
+                    System.out.print("  " + matriz[i][j] + "  |");
             }
-                System.out.println();
+            System.out.println();
         }
         System.out.println("------".repeat(getColunaMax()));
     }
 
     public Object getPosicao(int lin, int col) {
-       for (Obstaculo o : obstaculos) {
-           if (o.coord.equals(lin, col)) return o;
-       }
-       for (Personagem p : personagens) {
-           if (p.coord.equals(lin, col)) return p;
-       }
-       return null;
+        for (Obstaculo o : obstaculos) {
+            if (o.coord.equals(lin, col)) return o;
+        }
+        for (Personagem p : personagens) {
+            if (p.coord.equals(lin, col)) return p;
+        }
+        return null;
     }
 
     public Personagem getPosicaoPersonagem(int lin, int col) {
-       for (Personagem p : personagens) {
-           if (p.coord.equals(lin, col)) return p;
-       }
-       return null;
+        for (Personagem p : personagens) {
+            if (p.coord.equals(lin, col)) return p;
+        }
+        return null;
     }
     public Object getPosicao(int lin, int col, ArrayList<Coordenada> proibidas, boolean identificarPersonagem) {
-       for (Obstaculo o : obstaculos) {
-           if (o.coord.equals(lin, col)) {
-               return o;
-           }
-       }
-       if (identificarPersonagem) {
-           for (Personagem p : personagens) {
-               if (p.coord.equals(lin, col)) {
-                   return p;
-               }
-           }
-       }
-       for (Coordenada c : proibidas) {
-           if (c.equals(lin, col)) {
-               return c;
-           }
-       }
-       return null;
+        for (Obstaculo o : obstaculos) {
+            if (o.coord.equals(lin, col)) {
+                return o;
+            }
+        }
+        if (identificarPersonagem) {
+            for (Personagem p : personagens) {
+                if (p.coord.equals(lin, col)) {
+                    return p;
+                }
+            }
+        }
+        for (Coordenada c : proibidas) {
+            if (c.equals(lin, col)) {
+                return c;
+            }
+        }
+        return null;
     }
 
     public boolean posicaoVazia(int lin, int col, ArrayList<Coordenada> proibidas, boolean identificarPersonagem) {
-       Object ob = getPosicao(lin, col, proibidas, identificarPersonagem);
-       if (ob == null) {
-           return true;
-       }
-       return false;
+        Object ob = getPosicao(lin, col, proibidas, identificarPersonagem);
+        if (ob == null) {
+            return true;
+        }
+        return false;
     }
 
     public void organizarPersonagens(ArrayList<Personagem> p1, ArrayList<Personagem> p2) {
@@ -188,55 +188,55 @@ public class Mapa {
     }
 
     private ArrayList<Coordenada> gerarMeio() {
-       int meio = getLinhaMax() / 2;
-       int limite = Sistema.limitePersonagens;
-       ArrayList<Coordenada> proibidas = new ArrayList<>();
-       for (int i=0; i<limite; i++) {
-           if (i==0) {
-               Coordenada posEsq = new Coordenada();
-               Coordenada posDir = new Coordenada();
-               posEsq.setPosicao(meio, 1);
-               posDir.setPosicao(meio, getColunaMax() - 2);
-               proibidas.add(posEsq);
-               proibidas.add(posDir);
-           } else if (i%2 != 0) {
-               meio += i;
-               Coordenada posEsq = new Coordenada();
-               Coordenada posDir = new Coordenada();
-               posEsq.setPosicao(meio, 1);
-               posDir.setPosicao(meio, getColunaMax() - 2);
-               proibidas.add(posEsq);
-               proibidas.add(posDir);
-           } else {
-               meio -= i;
-               Coordenada posEsq = new Coordenada();
-               Coordenada posDir = new Coordenada();
-               posEsq.setPosicao(meio, 1);
-               posDir.setPosicao(meio, getColunaMax() - 2);
-               proibidas.add(posEsq);
-               proibidas.add(posDir);
-           }
-       }
-    return proibidas;
+        int meio = getLinhaMax() / 2;
+        int limite = Sistema.limitePersonagens;
+        ArrayList<Coordenada> proibidas = new ArrayList<>();
+        for (int i=0; i<limite; i++) {
+            if (i==0) {
+                Coordenada posEsq = new Coordenada();
+                Coordenada posDir = new Coordenada();
+                posEsq.setPosicao(meio, 1);
+                posDir.setPosicao(meio, getColunaMax() - 2);
+                proibidas.add(posEsq);
+                proibidas.add(posDir);
+            } else if (i%2 != 0) {
+                meio += i;
+                Coordenada posEsq = new Coordenada();
+                Coordenada posDir = new Coordenada();
+                posEsq.setPosicao(meio, 1);
+                posDir.setPosicao(meio, getColunaMax() - 2);
+                proibidas.add(posEsq);
+                proibidas.add(posDir);
+            } else {
+                meio -= i;
+                Coordenada posEsq = new Coordenada();
+                Coordenada posDir = new Coordenada();
+                posEsq.setPosicao(meio, 1);
+                posDir.setPosicao(meio, getColunaMax() - 2);
+                proibidas.add(posEsq);
+                proibidas.add(posDir);
+            }
+        }
+        return proibidas;
     }
 
     private void gerarObstaculosAleatorios() {
-       int posLin = 0, posCol = 0;
-       ArrayList<Coordenada> proibidas = gerarMeio();
-       int k = 0;
-       for (int i=0; i<(getColunaMax() + (getColunaMax() / 2)); i++) {
-           while (k == 0) {
-               posLin = Dados.random(getLinhaMax() - 2);
-               posCol = Dados.random(getColunaMax() - 2);
-               for (Coordenada c : proibidas) {
-                   if (c.equals(posLin, posCol)) k = 0;
-                   k = 1;
-               }
-           }
-           k = 0;
-           Obstaculo obs = new Obstaculo('■');
-           obs.coord.setPosicao(posLin, posCol);
-           inserirObsetaculo(obs);
-       }
+        int posLin = 0, posCol = 0;
+        ArrayList<Coordenada> proibidas = gerarMeio();
+        int k = 0;
+        for (int i=0; i<(getColunaMax() + (getColunaMax() / 2)); i++) {
+            while (k == 0) {
+                posLin = Dados.random(getLinhaMax() - 2);
+                posCol = Dados.random(getColunaMax() - 2);
+                for (Coordenada c : proibidas) {
+                    if (c.equals(posLin, posCol)) k = 0;
+                    k = 1;
+                }
+            }
+            k = 0;
+            Obstaculo obs = new Obstaculo('■');
+            obs.coord.setPosicao(posLin, posCol);
+            inserirObsetaculo(obs);
+        }
     }
 }

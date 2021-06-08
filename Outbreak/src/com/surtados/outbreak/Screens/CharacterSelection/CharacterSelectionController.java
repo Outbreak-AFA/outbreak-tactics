@@ -1,5 +1,6 @@
 package com.surtados.outbreak.Screens.CharacterSelection;
 
+import com.surtados.outbreak.Models.Personagem;
 import com.surtados.outbreak.components.characterBox.CharacterBox;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,12 +11,14 @@ import javafx.scene.layout.RowConstraints;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class CharacterSelectionController {
 
     @FXML private Button btnAvancar;
     @FXML private GridPane gridPersonagens = new GridPane();
     @FXML private CharacterBox alice = new CharacterBox();
+    ArrayList<Personagem> personagens = new ArrayList<>();
 
     // Função para selecionar o personagem
     @FXML private void selectCharacter(MouseEvent event) {

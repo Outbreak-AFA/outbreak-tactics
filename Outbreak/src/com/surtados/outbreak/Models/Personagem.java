@@ -296,7 +296,7 @@ public abstract class Personagem {
         }
     }
 
-    
+
 
     private boolean verificarPossiveis(ArrayList<Coordenada> possiveis, int lin, int col) {
         for (Coordenada c : possiveis) {
@@ -313,14 +313,14 @@ public abstract class Personagem {
             for (int lin=-2; lin<=2; lin++) {
                 for (int col=-2; col<=2; col++) {
                     if (!((col == lin || col == -lin) ||
-                     (col == 0 && (lin == -1 || lin == 1)) ||
-                     (lin == 0 && (col == -1 || col == 1)))) {
+                            (col == 0 && (lin == -1 || lin == 1)) ||
+                            (lin == 0 && (col == -1 || col == 1)))) {
                         temp.setPosicao(coord.getLinha() + lin, coord.getColuna() + col);
                         proibidos.add(temp.clone());
                     }
                 }
             }
-        } 
+        }
         else if (getAgl() == 4) {
             for (int lin=-2; lin<=2; lin++) {
                 for (int col=-2; col<=2; col++) {
@@ -386,8 +386,8 @@ public abstract class Personagem {
             for (int lin=-4; lin<=4; lin++) {
                 for (int col=-4; col<=4; col++) {
                     if (!(col == lin || col == -lin) &&
-                        (((lin == -4 || lin == 4))) ||
-                        (((col == -4 || col == 4))) ) {
+                            (((lin == -4 || lin == 4))) ||
+                            (((col == -4 || col == 4))) ) {
                         temp.setPosicao(coord.getLinha() + lin, coord.getColuna() + col);
                         proibidos.add(temp.clone());
                     }
@@ -420,14 +420,14 @@ public abstract class Personagem {
         atacou = atk;
     }
 
-   public ArrayList<Coordenada> getAlcanceAtk(int opcao, Mapa mapa) {
-       ArrayList<Coordenada> proibidos = getAlcanceAtkProibido(opcao);
-       ArrayList<Coordenada> possiveis = new ArrayList<>();
-       preenchimentoPorInundacao(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis, false);
-       return possiveis;
-   }
-   public abstract ArrayList<Coordenada> getAlcanceAtkProibido(int opcao);
-        
+    public ArrayList<Coordenada> getAlcanceAtk(int opcao, Mapa mapa) {
+        ArrayList<Coordenada> proibidos = getAlcanceAtkProibido(opcao);
+        ArrayList<Coordenada> possiveis = new ArrayList<>();
+        preenchimentoPorInundacao(mapa, coord.getLinha(), coord.getColuna(), proibidos, possiveis, false);
+        return possiveis;
+    }
+    public abstract ArrayList<Coordenada> getAlcanceAtkProibido(int opcao);
+
     public void menuOpcoes(Mapa mapa) {
         System.out.println("===================================================");
         System.out.println("Escolha uma ação para " + getNome());
@@ -441,38 +441,38 @@ public abstract class Personagem {
         Scanner scan = new Scanner(System.in);
         int opcao = scan.nextInt();
         if (opcao == 1  && !moveu()) {
-                ArrayList<Coordenada> alcance = getAlcance(mapa);
-                System.out.println("Escolha a posição para a qual deseja mover: ");
-                ArrayList<Obstaculo> obstaculos = new ArrayList<>();
-                for (Coordenada c : alcance) {
-                    Obstaculo obs = new Obstaculo('#');
-                    obs.coord.setPosicao(c.getLinha(), c.getColuna());
-                    obstaculos.add(obs);
-                    mapa.inserirObsetaculo(obs);
-                }
-                mapa.plotarMatriz();
+            ArrayList<Coordenada> alcance = getAlcance(mapa);
+            System.out.println("Escolha a posição para a qual deseja mover: ");
+            ArrayList<Obstaculo> obstaculos = new ArrayList<>();
+            for (Coordenada c : alcance) {
+                Obstaculo obs = new Obstaculo('#');
+                obs.coord.setPosicao(c.getLinha(), c.getColuna());
+                obstaculos.add(obs);
+                mapa.inserirObsetaculo(obs);
+            }
+            mapa.plotarMatriz();
             System.out.println("Posição atual: " + "(" + coord.getLinha() + ", " + coord.getColuna() + ")");
-                for (Coordenada co : alcance) {
-                    System.out.println("[" + (alcance.indexOf(co) + 1) + "] - (" + co.getLinha() + ", " + co.getColuna() + ")");
-                }
+            for (Coordenada co : alcance) {
+                System.out.println("[" + (alcance.indexOf(co) + 1) + "] - (" + co.getLinha() + ", " + co.getColuna() + ")");
+            }
             System.out.println("[" + (alcance.size()+1) + "] - Voltar menu.");
-                int escolha = scan.nextInt();
-                for (Obstaculo o : obstaculos) {
-                    mapa.removerObstaculo(o);
-                }
-                if (escolha == alcance.size() + 1) {
-                    System.out.println("Certo! Voltando para menu de ações.");
-                    menuOpcoes(mapa);
-                    return;
-                }
-                if (escolha < 1 || escolha > alcance.size()) {
-                    System.out.println("Opção inválida");
-                    menuOpcoes(mapa);
-                    return;
-                }
-                mover(alcance.get(escolha-1).getLinha(), alcance.get(escolha-1).getColuna(), mapa);
+            int escolha = scan.nextInt();
+            for (Obstaculo o : obstaculos) {
+                mapa.removerObstaculo(o);
+            }
+            if (escolha == alcance.size() + 1) {
+                System.out.println("Certo! Voltando para menu de ações.");
                 menuOpcoes(mapa);
                 return;
+            }
+            if (escolha < 1 || escolha > alcance.size()) {
+                System.out.println("Opção inválida");
+                menuOpcoes(mapa);
+                return;
+            }
+            mover(alcance.get(escolha-1).getLinha(), alcance.get(escolha-1).getColuna(), mapa);
+            menuOpcoes(mapa);
+            return;
         } else if (opcao == 2 && !atacou()) {
             System.out.println("Ótimo! Escolha qual tipo de ataque realizar:");
             System.out.println("[1] - " + getAtkNatural());
@@ -484,7 +484,7 @@ public abstract class Personagem {
                 menuOpcoes(mapa);
                 return;
             }
-            
+
             System.out.println("Escolha o oponente em que irá atacar: ");
             ArrayList<Coordenada> alcance = getAlcanceAtk(optAtk, mapa);
             ArrayList<Personagem> alvos = new ArrayList<>();
@@ -495,7 +495,7 @@ public abstract class Personagem {
                 }
                 else if (p != null && p.getPlayerId() != getPlayerId()) alvos.add(p);
             }
-            
+
             for (Personagem p : alvos) {
                 System.out.println("[" + (alvos.indexOf(p) + 1) + "] - " + p.getNome());
             }
@@ -551,7 +551,7 @@ public abstract class Personagem {
             ativarModoSurto();
             menuOpcoes(mapa);
             return;
-        } 
+        }
         else {
             System.out.println("Essa opção ou é inválida ou já foi utilizada!");
             menuOpcoes(mapa);

@@ -5,22 +5,22 @@ import com.surtados.outbreak.Core.Sistema;
 import java.util.ArrayList;
 
 public class LapaGod extends Personagem {
-   public LapaGod(String nome, int id, Player p){
-       super(p);
-         setPlayerId(id);
-       setNome(nome);
-         setVida(300);
-         setMana(50);
-         setAtk(999);
-         setDef(10);
-         setAgl(8);
-         setAtkNatural("Motivar");
-         setHabilidadeEspecial("C#");
-         setSurtoAcumulado(0);
-         setSurtado(false);
-          sprite.setCharacter('♔');
+    public LapaGod(String nome, int id, Player p){
+        super(p);
+        setPlayerId(id);
+        setNome(nome);
+        setVida(300);
+        setMana(50);
+        setAtk(999);
+        setDef(10);
+        setAgl(8);
+        setAtkNatural("Motivar");
+        setHabilidadeEspecial("C#");
+        setSurtoAcumulado(0);
+        setSurtado(false);
+        sprite.setCharacter('♔');
     }
-     @Override
+    @Override
     public void atacarNatural(Personagem p) {
         System.out.println(getNome() + " motivou " + p.getNome());
     }
