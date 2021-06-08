@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.shape.Box?>
-<?import com.sun.javafx.scene.control.IntegerField?>
+<?import com.surtados.outbreak.components.characterBox.CharacterBox?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.surtados.outbreak.Screens.CharacterSelection.CharacterSelectionController"
           prefHeight="600.0" prefWidth="800.0" styleClass="mainBox">
-
     <HBox styleClass="secondaryBox">
         <children>
             <VBox alignment="CENTER_LEFT">
@@ -21,10 +16,18 @@
                     <Label text="Olá Fulano!" textAlignment="LEFT" textFill="white"/>
                     <Label text="Monte o seu time!!" textAlignment="LEFT" textFill="white"/>
                     <Separator visible="false" minHeight="5"/>
-                    <VBox styleClass="characterList">
-                        <children>
-                        </children>
-                    </VBox>
+                    <GridPane hgap="5" vgap="5" fx:id="gridPersonagens" styleClass="characterList" onContextMenuRequested="#criaGridPane">
+                        <CharacterBox fx:id="alice" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="alice"/>
+                        <CharacterBox GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="characterBox"/>
+                        <CharacterBox GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="characterBox"/>
+                        <CharacterBox GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="characterBox"/>
+                        <CharacterBox GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="characterBox"/>
+                        <CharacterBox GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="characterBox"/>
+                        <CharacterBox GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="characterBox"/>
+                        <CharacterBox GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="characterBox"/>
+                        <CharacterBox GridPane.rowIndex="4" GridPane.columnIndex="0" styleClass="characterBox"/>
+                        <CharacterBox GridPane.rowIndex="4" GridPane.columnIndex="1" styleClass="characterBox"/>
+                    </GridPane>
                 </children>
             </VBox>
             <Separator visible="false" minWidth="190"/>
@@ -45,7 +48,7 @@
                     </HBox>
                 </children>
                 <Separator minHeight="320" visible="false"/>
-                <Button text="AVANÇAR" minWidth="225" minHeight="48" styleClass="botaoAvancar" textFill="white"/>
+                <Button fx:id="btnAvancar" text="AVANÇAR" minWidth="225" minHeight="48" styleClass="botaoAvancar" textFill="white"/>
             </VBox>
         </children>
     </HBox>

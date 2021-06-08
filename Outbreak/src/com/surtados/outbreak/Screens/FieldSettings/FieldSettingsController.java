@@ -24,6 +24,7 @@ public class FieldSettingsController {
         Scene cena = new Scene(root);
         cena.getStylesheets().add(characterSelectionCSS);
         stage.setScene(cena);
+
         stage.show();
     }
 

@@ -24,8 +24,18 @@
     -fx-padding: 17;
 }
 
+.alice {
+    -fx-background-image: url('../../Assets/alice.png');
+    -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+
 .characterBox {
     -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+.characterBox:hover {
+    -fx-background-color: rgba(255, 255, 255, 1);
 }
 
 .teamList {
