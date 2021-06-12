@@ -17,16 +17,14 @@
                     <Label text="Monte o seu time!!" textAlignment="LEFT" textFill="white"/>
                     <Separator visible="false" minHeight="5"/>
                     <GridPane hgap="5" vgap="5" fx:id="gridPersonagens" styleClass="characterList" onContextMenuRequested="#criaGridPane">
-                        <CharacterBox fx:id="alice" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="alice"/>
-                        <CharacterBox GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="characterBox"/>
-                        <CharacterBox GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="characterBox"/>
-                        <CharacterBox GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="characterBox"/>
-                        <CharacterBox GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="characterBox"/>
-                        <CharacterBox GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="characterBox"/>
-                        <CharacterBox GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="characterBox"/>
-                        <CharacterBox GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="characterBox"/>
-                        <CharacterBox GridPane.rowIndex="4" GridPane.columnIndex="0" styleClass="characterBox"/>
-                        <CharacterBox GridPane.rowIndex="4" GridPane.columnIndex="1" styleClass="characterBox"/>
+                        <CharacterBox fx:id="fadinha" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="fadinha" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="pyromancer" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="pyromancer" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="alice" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="alice" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="troll" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="troll" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="arqueiro" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="arqueiro" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="gengah" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="gengah" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="gosminha" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="gosminha" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="mrcanhao" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="mrcanhao" onMouseClicked="#selectCharacter"/>
                     </GridPane>
                 </children>
             </VBox>
