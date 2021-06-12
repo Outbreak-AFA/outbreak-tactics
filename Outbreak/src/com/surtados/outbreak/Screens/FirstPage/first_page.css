@@ -43,7 +43,3 @@
 .boxCenter {
     -fx-min-height: 600px;
 }
-
-.separador {
-    -fx-opacity: 0;
-}

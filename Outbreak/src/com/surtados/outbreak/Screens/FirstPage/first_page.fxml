@@ -17,12 +17,12 @@
         <children>
             <VBox styleClass="boxCenter" alignment="CENTER">
                 <children>
-                    <Separator minHeight="250" styleClass="separador"/>
+                    <Separator minHeight="250" visible="false"/>
                     <VBox styleClass="menu">
                         <children>
-                            <Button text="INICIAR" styleClass="menuButton" contentDisplay="CENTER" fx:id="startButton" onAction="#nextPage"/>
-                            <Button text="INSTRUCOES" styleClass="menuButton"/>
-                            <Button text="CREDITOS" styleClass="menuButton"/>
+                            <Button text="INICIAR" styleClass="menuButton" contentDisplay="CENTER" fx:id="startButton" onAction="#login"/>
+                            <Button text="INSTRUCOES" styleClass="menuButton" fx:id="rulesButton"/>
+                            <Button text="CREDITOS" styleClass="menuButton" fx:id="creditsButton" onAction="#credits"/>
                             <Button text="SAIR" styleClass="menuButton" fx:id="closeButton" onAction="#closeButton"/>
                         </children>
                     </VBox>

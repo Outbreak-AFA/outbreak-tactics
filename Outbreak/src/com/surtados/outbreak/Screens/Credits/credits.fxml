@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Circle?>
+<?import com.surtados.outbreak.components.DevBox?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.surtados.outbreak.Screens.Credits.CreditsController"
+          prefHeight="600.0" prefWidth="800.0">
+
+    <VBox styleClass="mainBox">
+        <children>
+            <Separator minHeight="200" visible="false"/>
+            <VBox styleClass="devsField">
+                <children>
+                    <Separator minHeight="10" visible="false"/>
+                    <Label text="Conheça nosso time de Devs!" textFill="white" styleClass="teamTitle"/>
+                    <Separator minHeight="10" visible="false"/>
+                    <HBox alignment="CENTER" styleClass="devList">
+                        <children>
+                            <DevBox styleClass="antonio"/>
+                            <DevBox styleClass="mandy"/>
+                            <DevBox styleClass="felipe"/>
+                        </children>
+                    </HBox>
+                    <HBox alignment="CENTER" styleClass="devName">
+                        <children>
+                            <Label text="Antônio" textFill="white"/>
+                            <Label text="Amanda" textFill="white"/>
+                            <Label text="Felipe" textFill="white"/>
+                        </children>
+                    </HBox>
+                </children>
+            </VBox>
+        </children>
+    </VBox>
+</GridPane>

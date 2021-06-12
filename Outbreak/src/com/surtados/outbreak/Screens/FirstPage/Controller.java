@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Controller {
 
-    @FXML private javafx.scene.control.Button closeButton, startButton;
+    @FXML private javafx.scene.control.Button closeButton, startButton, creditsButton, rulesButton;
 
     @FXML
     public void closeButton() {
@@ -18,7 +18,7 @@ public class Controller {
     }
 
     @FXML
-    private void nextPage(ActionEvent event) throws Exception {
+    private void login(ActionEvent event) throws Exception {
         Stage stage = null;
         Parent root = null;
 
@@ -33,4 +33,22 @@ public class Controller {
         stage.setScene(cena);
         stage.show();
     }
+
+    @FXML
+    private void credits(ActionEvent event) throws Exception {
+        Stage stage = null;
+        Parent root = null;
+
+        String creditsCSS = getClass().getResource("../Credits/credits.css").toExternalForm();
+
+        if(event.getSource()==creditsButton){
+            stage = (Stage) creditsButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../Credits/credits.fxml"));
+        }
+        Scene cena = new Scene(root);
+        cena.getStylesheets().add(creditsCSS);
+        stage.setScene(cena);
+        stage.show();
+    }
+
 }
