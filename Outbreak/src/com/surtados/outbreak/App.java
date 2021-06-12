@@ -1,5 +1,6 @@
 package com.surtados.outbreak;
 
+import com.surtados.outbreak.Screens.Credits.CreditsController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +23,7 @@ public class App extends Application {
 
         primaryStage.setScene(cena);
         primaryStage.show();
+
     }
 
 //    public static void main(String[] args) {

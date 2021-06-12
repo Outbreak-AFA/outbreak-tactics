@@ -43,6 +43,7 @@
     -fx-border-radius: 18px;
     -fx-background-radius: 22px;
     -fx-background-image: url("../../Assets/felipe.jpg");
+    -fx-background-size: 80 80;
 }
 
 .antonio {
@@ -52,6 +53,7 @@
     -fx-border-radius: 18px;
     -fx-background-radius: 18px;
     -fx-background-image: url("../../Assets/antonio.jpg");
+    -fx-background-size: 80 80;
 }
 
 .mandy {
@@ -61,4 +63,5 @@
     -fx-border-radius: 18px;
     -fx-background-radius: 18px;
     -fx-background-image: url("../../Assets/mandy.png");
+    -fx-background-size: 80 80;
 }

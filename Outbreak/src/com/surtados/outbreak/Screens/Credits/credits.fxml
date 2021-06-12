@@ -21,17 +21,17 @@
                     <Separator minHeight="10" visible="false"/>
                     <Label text="Conheça nosso time de Devs!" textFill="white" styleClass="teamTitle"/>
                     <Separator minHeight="10" visible="false"/>
-                    <HBox alignment="CENTER" styleClass="devList">
+                    <HBox alignment="CENTER" styleClass="devList" fx:id="devHorizontalList">
                         <children>
-                            <DevBox styleClass="antonio"/>
-                            <DevBox styleClass="mandy"/>
-                            <DevBox styleClass="felipe"/>
+                            <DevBox styleClass="mandy" fx:id="mandy" onMouseClicked="#onLinkClick"/>
+                            <DevBox styleClass="antonio" fx:id="antonio" onMouseClicked="#onLinkClick"/>
+                            <DevBox styleClass="felipe" fx:id="felipe" onMouseClicked="#onLinkClick"/>
                         </children>
                     </HBox>
                     <HBox alignment="CENTER" styleClass="devName">
                         <children>
-                            <Label text="Antônio" textFill="white"/>
                             <Label text="Amanda" textFill="white"/>
+                            <Label text="Antônio" textFill="white"/>
                             <Label text="Felipe" textFill="white"/>
                         </children>
                     </HBox>
