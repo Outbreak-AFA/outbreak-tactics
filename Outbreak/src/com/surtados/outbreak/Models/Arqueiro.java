@@ -1,7 +1,6 @@
 package com.surtados.outbreak.Models;
 
 import com.surtados.outbreak.Core.Sistema;
-import com.surtados.outbreak.Models.Coordenada;
 
 import java.util.ArrayList;
 
@@ -21,6 +20,7 @@ public class Arqueiro extends Personagem {
         setSurtado(false);
         sprite.setCharacter('➶');
     }
+
     @Override
     public void atacarNatural(Personagem p) {
         if (Sistema.acertou(p)) {

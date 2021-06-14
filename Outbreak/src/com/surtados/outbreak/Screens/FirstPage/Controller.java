@@ -51,4 +51,21 @@ public class Controller {
         stage.show();
     }
 
+    @FXML
+    private void rules(ActionEvent event) throws Exception {
+        Stage stage = null;
+        Parent root = null;
+
+        String rulesCSS = getClass().getResource("../Rules/rules.css").toExternalForm();
+
+        if(event.getSource()==rulesButton){
+            stage = (Stage) rulesButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../Rules/rules.fxml"));
+        }
+        Scene cena = new Scene(root);
+        cena.getStylesheets().add(rulesCSS);
+        stage.setScene(cena);
+        stage.show();
+    }
+
 }

@@ -21,7 +21,7 @@
                     <VBox styleClass="menu">
                         <children>
                             <Button text="INICIAR" styleClass="menuButton" contentDisplay="CENTER" fx:id="startButton" onAction="#login"/>
-                            <Button text="INSTRUCOES" styleClass="menuButton" fx:id="rulesButton"/>
+                            <Button text="INSTRUCOES" styleClass="menuButton" fx:id="rulesButton" onAction="#rules"/>
                             <Button text="CREDITOS" styleClass="menuButton" fx:id="creditsButton" onAction="#credits"/>
                             <Button text="SAIR" styleClass="menuButton" fx:id="closeButton" onAction="#closeButton"/>
                         </children>

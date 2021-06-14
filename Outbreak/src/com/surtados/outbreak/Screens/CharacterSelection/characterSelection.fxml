@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import com.surtados.outbreak.components.characterBox.CharacterBox?>
+<?import com.surtados.outbreak.components.characterBox.TeamBox?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.surtados.outbreak.Screens.CharacterSelection.CharacterSelectionController"
@@ -29,7 +30,7 @@
                 </children>
             </VBox>
             <Separator visible="false" minWidth="190"/>
-            <VBox>
+            <VBox fx:id="lastColumn">
                 <children>
                     <HBox>
                         <children>
@@ -39,13 +40,16 @@
                         </children>
                     </HBox>
                     <Separator visible="false" minHeight="50"/>
-                    <HBox styleClass="teamList">
+                    <HBox styleClass="teamList" fx:id="teamList">
                         <children>
-
                         </children>
                     </HBox>
+                    <Separator visible="false" minHeight="50"/>
+                    <VBox fx:id="characterInfo" minWidth="310" minHeight="253">
+                        <Button visible="false" fx:id="addTeamButton" onMouseClicked="#addCharacterTeam"/>
+                    </VBox>
                 </children>
-                <Separator minHeight="320" visible="false"/>
+                <Separator minHeight="20" visible="false"/>
                 <Button fx:id="btnAvancar" text="AVANÇAR" minWidth="225" minHeight="48" styleClass="botaoAvancar" textFill="white"/>
             </VBox>
         </children>

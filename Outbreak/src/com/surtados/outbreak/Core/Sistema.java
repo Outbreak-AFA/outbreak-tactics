@@ -149,7 +149,6 @@ public class Sistema {
         for (int i=0; i<usuariosArray.length(); i++) {
             JSONObject objTemp = (JSONObject) usuariosArray.get(i);
             if (objTemp.get("email").equals(email) && (objTemp.get("senha").equals(senha))) {
-                System.out.println(objTemp.get("email"));
                 ArrayList<Item> conq = new ArrayList<>();
                 JSONArray conqJson = objTemp.getJSONArray("conquistas");
                 for (int j=0; j< conqJson.length(); j++) {
@@ -168,56 +167,9 @@ public class Sistema {
         return null;
     }
 
-    public static Player registroOuLogin(int index) {
-        Scanner scan = new Scanner(System.in);
-        String nome, email, senha;
+    public static Player registroOuLogin(String email, String senha) {
 
-        System.out.println("======= OUTBREACK TACTICS ======");
-        System.out.println("================================");
-        System.out.println("Jogador " + (index + 1) + ":");
-        System.out.println("[1] - Realizar Login de usuário");
-        System.out.println("[2] - Registrar novo usuário");
-        System.out.println("================================");
-
-        final int escolha = scan.nextInt();
-        scan.nextLine();
-
-        switch (escolha) {
-            case 1:
-                System.out.println("Certo! Vamos efetuar o login!");
-                System.out.print("Por favor, digite o e-mail registrado\n>>> ");
-                email = scan.nextLine();
-                System.out.print("Por favor, digite sua senha\n>>> ");
-                senha = scan.nextLine();
-                Player p1 = login(email, senha);
-                if (p1 == null) {
-                    System.out.println("Login não efetuado :(");
-                    System.out.println("E-mail ou senha incorretos!");
-                    return registroOuLogin(index);
-                }
-                System.out.println("Seja bem vinde, " + p1.getNome() + "!\n Tenha um bom jogo!");
-                return p1;
-            case 2:
-                System.out.println("Certo! Vamos efetuar o cadastro!");
-                System.out.print("Primeiro digite um nickname!\n>>> ");
-                nome = scan.nextLine();
-                System.out.print("Por favor, digite um e-mail\n>>> ");
-                email = scan.nextLine();
-                System.out.print("Por favor, digite uma senha\n>>> ");
-                senha = scan.nextLine();
-
-                boolean reg = registrar(nome, email, senha);
-                if (!reg) {
-                    System.out.println("E-mail já cadastrado! Por favor, utilize outro.");
-                    return registroOuLogin(index);
-                }
-                System.out.println("Você será redirecionado para a tela de login!");
-                return registroOuLogin(index);
-            default:
-                System.out.println("opção inválida!");
-                return registroOuLogin(index);
-        }
-
+        return login(email, senha);
     }
 
     public static Mapa configMapa() {

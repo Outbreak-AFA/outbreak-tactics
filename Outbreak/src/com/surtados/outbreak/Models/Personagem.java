@@ -2,6 +2,7 @@ package com.surtados.outbreak.Models;
 
 import com.surtados.outbreak.Core.Sistema;
 import com.surtados.outbreak.Utils.Dados;
+import com.surtados.outbreak.components.characterBox.TeamBox;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -22,9 +23,18 @@ public abstract class Personagem {
     private String habilidadeEspecial;
     private boolean suporte = false;
     public Player dono;
+    public TeamBox teamBox;
 
     public Personagem(Player p) {
         dono = p;
+    }
+
+    public TeamBox getTeamBox() {
+        return teamBox;
+    }
+
+    public void setTeamBox(TeamBox teamBox) {
+        this.teamBox = teamBox;
     }
 
     public String getNome() {

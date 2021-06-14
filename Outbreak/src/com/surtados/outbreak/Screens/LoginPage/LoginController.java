@@ -1,17 +1,22 @@
 package com.surtados.outbreak.Screens.LoginPage;
 
+import com.surtados.outbreak.Core.Sistema;
+import com.surtados.outbreak.Models.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class LoginController {
 
     @FXML private javafx.scene.control.Button registerButton, enterButton;
+    @FXML private TextField loginField, passwordField;
+    ArrayList<Player> players = new ArrayList<>();
 
     @FXML
     private void registerPage(ActionEvent event) throws Exception {
@@ -32,6 +37,7 @@ public class LoginController {
 
     @FXML
     private void fieldSettings(ActionEvent event) throws Exception {
+        validateLogin();
         Stage stage = null;
         Parent root = null;
 
@@ -47,5 +53,9 @@ public class LoginController {
         stage.show();
     }
 
+    @FXML private void validateLogin() {
+        Player teste = Sistema.login(loginField.getText(), passwordField.getText());
+        players.add(teste);
+    }
 
 }
