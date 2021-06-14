@@ -14,7 +14,12 @@
             <VBox alignment="CENTER_LEFT">
                 <children>
                     <Separator visible="false" minHeight="20"/>
-                    <Label text="Olá Fulano!" textAlignment="LEFT" textFill="white"/>
+                    <HBox>
+                        <children>
+                            <Label text="Olá" textAlignment="LEFT" textFill="white"/>
+                            <Label fx:id="playerName" textFill="white"/>
+                        </children>
+                    </HBox>
                     <Label text="Monte o seu time!!" textAlignment="LEFT" textFill="white"/>
                     <Separator visible="false" minHeight="5"/>
                     <GridPane hgap="5" vgap="5" fx:id="gridPersonagens" styleClass="characterList" onContextMenuRequested="#criaGridPane">

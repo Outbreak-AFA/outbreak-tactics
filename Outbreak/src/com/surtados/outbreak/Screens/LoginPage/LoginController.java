@@ -18,6 +18,10 @@ public class LoginController {
     @FXML private TextField loginField, passwordField;
     ArrayList<Player> players = new ArrayList<>();
 
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
     @FXML
     private void registerPage(ActionEvent event) throws Exception {
         Stage stage = null;

@@ -17,6 +17,9 @@ import java.util.ArrayList;
 
 public class CharacterSelectionController {
 
+
+    @FXML Label playerName;
+
     @FXML private Button btnAvancar, btnAdicionar;
     @FXML private GridPane gridPersonagens;
     @FXML private VBox lastColumn, characterInfo;
@@ -29,7 +32,7 @@ public class CharacterSelectionController {
 
     @FXML private TeamBox actualCharacterBox;
 
-    private Player ficticio = new Player("Felipe" , "ad", "a", 1, 1, conq);
+    private Player ficticio = new Player("Felipe" , "aaa", "123", 1, 1, conq);
     private Guerreira guerreiraCh = new Guerreira("Alice", 1, ficticio);
     private Fadinha opheliaCh = new Fadinha("Ophelia", 2, ficticio);
     private Arqueiro arqueiroCh = new Arqueiro("Arqueiro", 3, ficticio);
@@ -123,6 +126,7 @@ public class CharacterSelectionController {
     }
 
     @FXML private void criaGridPane(ContextMenuEvent event) {
+        playerName.setText(ficticio.getNome());
         gridPersonagens.getColumnConstraints().addAll(setCC(), setCC());
         gridPersonagens.getRowConstraints().addAll(setRC(), setRC(), setRC(), setRC());
     }
