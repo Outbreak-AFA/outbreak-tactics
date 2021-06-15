@@ -134,6 +134,7 @@ public class CharacterSelectionController implements Initializable {
                     removeCharacterTeam(event1);
                 });
                 team.add(actualCharacterBox);
+                Sistema.players.get(Sistema.rodada).time.add(personagemGenerico);
                 cInfo.clear();
                 characterInfo.setVisible(false);
                 System.out.println(team.size());
@@ -167,6 +168,14 @@ public class CharacterSelectionController implements Initializable {
                 btnAvancar.setDisable(true);
             }
             teamList.getChildren().remove(selecionado);
+                TeamBox temp = (TeamBox) selecionado;
+                for (int i=0; i<Sistema.players.get(Sistema.rodada).time.size(); i++) {
+                    if (temp.background.equals(Sistema.players.get(Sistema.rodada).time.get(i).sprite.getPath())) {
+                        Sistema.players.get(Sistema.rodada).time.remove(i);
+                        System.out.println(Sistema.players.get(Sistema.rodada).time.size());
+                        return;
+                    }
+                }
         }
 
     }

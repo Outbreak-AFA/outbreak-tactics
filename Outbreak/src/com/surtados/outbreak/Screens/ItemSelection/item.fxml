@@ -13,6 +13,14 @@
 <VBox>
     <children>
         <Label fx:id="mensagemItem" textFill="white" styleClass="mensagem"/>
+        <Separator visible="false" minHeight="50"/>
+        <HBox alignment="CENTER">
+            <children>
+                <Button text="NÃO, VLW" fx:id="recusarBtn" styleClass="botaoRecusa"/>
+                <Separator visible="false" minWidth="100"/>
+                <Button text="QUERO!!!" fx:id="aceitarBtn" styleClass="botaoAceito"/>
+            </children>
+        </HBox>
     </children>
 </VBox>
 </GridPane>

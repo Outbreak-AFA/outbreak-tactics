@@ -4,7 +4,10 @@ import javafx.scene.layout.VBox;
 
 public class TeamBox extends VBox {
 
+    public String background;
+
     public TeamBox(String bg) {
+        background = bg;
         String nomePersonagem = "";
         if (bg.length() >= 50) {
             nomePersonagem = bg.substring(90);

@@ -17,7 +17,6 @@ public class ItemSelectionController implements Initializable {
     @FXML Button aceitarBtn, recusarBtn;
     int cont = 0;
 
-
     @FXML private void aceitar(MouseEvent event) {
         if (event.getSource() == aceitarBtn) {
 

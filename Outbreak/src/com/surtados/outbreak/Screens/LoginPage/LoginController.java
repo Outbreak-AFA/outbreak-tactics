@@ -5,13 +5,17 @@ import com.surtados.outbreak.Models.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LoginController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LoginController implements Initializable {
 
     @FXML private javafx.scene.control.Button registerButton, enterButton;
     @FXML private TextField loginField, passwordField;
@@ -73,4 +77,8 @@ public class LoginController {
         return null;
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loginText.setText("Faça o login do " + (Sistema.rodada+1) + "º jogador!");
+    }
 }
