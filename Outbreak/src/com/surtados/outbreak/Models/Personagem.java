@@ -1,8 +1,9 @@
 package com.surtados.outbreak.Models;
 
-import com.surtados.outbreak.Core.Sistema;
+import com.surtados.outbreak.Screens.Field.FieldController;
 import com.surtados.outbreak.Utils.Dados;
 import com.surtados.outbreak.components.TeamBox;
+import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 
@@ -249,25 +250,29 @@ public abstract class Personagem {
         return true;
     }
 
-    public void mover(int linha, int coluna, Mapa mapa) {
-        mapa.setMatriz(sprite.getCharacter(), linha, coluna, coord.getLinha(), coord.getColuna());
+    public void mover(int linha, int coluna, Mapa mapa, GridPane tabuleiro) {
+//        mapa.setMatriz(sprite.getCharacter(), linha, coluna, coord.getLinha(), coord.getColuna());
+        FieldController.removeNodeByRowColumnIndex(coord.getLinha(), coord.getColuna(), tabuleiro);
+        FieldController.removeNodeByRowColumnIndex(linha, coluna, tabuleiro);
+        mapa.removerObstaculo((Obstaculo) mapa.getPosicao(linha, coluna));
         coord.setPosicao(linha, coluna);
-        Item temp = null;
 
-        for (Item i : mapa.items) {
-            if (i != null && i.coord.equals(coord)) {
-                System.out.println(getNome() + " encontrou " + i.getNome());
-                if (i.getTipoDeItem().equals("CURA") || i.getTipoDeItem().equals("MANA")) {
-                    inventario.add(i);
-                } else {
-                    temp = i;
-                    Sistema.adicionarConquista(i, dono);
-                }
-            }
-        }
-        if (temp != null) {
-            mapa.removerItem(temp);
-        }
+        tabuleiro.add(getTeamBox(), linha, coluna);
+//        Item temp = null;
+
+//        for (Item i : mapa.items) {
+//            if (i != null && i.coord.equals(coord)) {
+//                if (i.getTipoDeItem().equals("CURA") || i.getTipoDeItem().equals("MANA")) {
+//                    inventario.add(i);
+//                } else {
+//                    temp = i;
+//                    Sistema.adicionarConquista(i, dono);
+//                }
+//            }
+//        }
+//        if (temp != null) {
+//            mapa.removerItem(temp);
+//        }
 
         setMoveu(true);
     }

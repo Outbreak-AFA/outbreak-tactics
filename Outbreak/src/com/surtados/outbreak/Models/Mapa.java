@@ -1,7 +1,5 @@
 package com.surtados.outbreak.Models;
 
-import com.surtados.outbreak.Core.Sistema;
-import com.surtados.outbreak.Screens.Field.FieldController;
 import com.surtados.outbreak.Utils.Dados;
 
 import java.util.ArrayList;
@@ -11,7 +9,7 @@ import java.util.ArrayList;
  *
  * */
 
-public class Mapa extends FieldController {
+public class Mapa {
     public ArrayList<Personagem> personagens = new ArrayList<>();
     public ArrayList<Obstaculo> obstaculos = new ArrayList<>();
     public ArrayList<Item> items = new ArrayList<>();
@@ -39,11 +37,6 @@ public class Mapa extends FieldController {
 
     public void setColunaMax(int colunaMax) {
         this.colunaMax = colunaMax;
-    }
-
-    public void inserirPersonagem(Personagem p) {
-        personagens.add(p);
-        tabuleiro.add(p.getTeamBox(), 0, 0);
     }
 
     public void inserirObsetaculo(Obstaculo o) {
@@ -168,75 +161,5 @@ public class Mapa extends FieldController {
             return true;
         }
         return false;
-    }
-
-    public void organizarPersonagens(ArrayList<Personagem> p1, ArrayList<Personagem> p2) {
-        gerarObstaculosAleatorios();
-        ArrayList<Coordenada> cEsq = new ArrayList<>();
-        ArrayList<Coordenada> cDir = new ArrayList<>();
-        for (Coordenada c : gerarMeio()) {
-            if (c.getColuna() == 1) {
-                cEsq.add(c);
-            } else cDir.add(c);
-        }
-        for (int i=0; i<Sistema.limitePersonagens; i++) {
-            p1.get(i).coord.setPosicao(cEsq.get(i).getLinha(), cEsq.get(i).getColuna());
-            inserirPersonagem(p1.get(i));
-            p2.get(i).coord.setPosicao(cDir.get(i).getLinha(), cDir.get(i).getColuna());
-            inserirPersonagem(p2.get(i));
-        }
-    }
-
-    private ArrayList<Coordenada> gerarMeio() {
-        int meio = getLinhaMax() / 2;
-        int limite = Sistema.limitePersonagens;
-        ArrayList<Coordenada> proibidas = new ArrayList<>();
-        for (int i=0; i<limite; i++) {
-            if (i==0) {
-                Coordenada posEsq = new Coordenada();
-                Coordenada posDir = new Coordenada();
-                posEsq.setPosicao(meio, 1);
-                posDir.setPosicao(meio, getColunaMax() - 2);
-                proibidas.add(posEsq);
-                proibidas.add(posDir);
-            } else if (i%2 != 0) {
-                meio += i;
-                Coordenada posEsq = new Coordenada();
-                Coordenada posDir = new Coordenada();
-                posEsq.setPosicao(meio, 1);
-                posDir.setPosicao(meio, getColunaMax() - 2);
-                proibidas.add(posEsq);
-                proibidas.add(posDir);
-            } else {
-                meio -= i;
-                Coordenada posEsq = new Coordenada();
-                Coordenada posDir = new Coordenada();
-                posEsq.setPosicao(meio, 1);
-                posDir.setPosicao(meio, getColunaMax() - 2);
-                proibidas.add(posEsq);
-                proibidas.add(posDir);
-            }
-        }
-        return proibidas;
-    }
-
-    private void gerarObstaculosAleatorios() {
-        int posLin = 0, posCol = 0;
-        ArrayList<Coordenada> proibidas = gerarMeio();
-        int k = 0;
-        for (int i=0; i<(getColunaMax() + (getColunaMax() / 2)); i++) {
-            while (k == 0) {
-                posLin = Dados.random(getLinhaMax() - 2);
-                posCol = Dados.random(getColunaMax() - 2);
-                for (Coordenada c : proibidas) {
-                    if (c.equals(posLin, posCol)) k = 0;
-                    k = 1;
-                }
-            }
-            k = 0;
-//            Obstaculo obs = new Obstaculo('■');
-//            obs.coord.setPosicao(posLin, posCol);
-//            inserirObsetaculo(obs);
-        }
     }
 }

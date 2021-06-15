@@ -14,6 +14,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -28,13 +29,18 @@ public class FieldController implements Initializable {
 
     @FXML
     public GridPane mapa, tabuleiro = new GridPane();
+
+    Mapa mapaInterno = new Mapa(Mapa.linhas, Mapa.colunas);
+
     public ArrayList<Personagem> personagens = new ArrayList<>();
     public ArrayList<Obstaculo> obstaculos = new ArrayList<>();
+    public ArrayList<Item> items = new ArrayList<>();
+    ArrayList<Coordenada> alcancaveis = new ArrayList<>();
     @FXML private ObservableList<Node> personagensCampo = tabuleiro.getChildren();
     @FXML TeamBox temp;
     Personagem generico;
 
-    @FXML Button botaoPassarTurno = new Button("Passar turno");
+    @FXML Button botaoPassarTurno = new Button("Passar turno"), botaoMover = new Button("Mover");
 
     @FXML
     private void criaGridPane() {
@@ -49,12 +55,37 @@ public class FieldController implements Initializable {
 
     public void inserirPersonagem(Personagem p) {
         personagens.add(p);
+        mapaInterno.personagens.add(p);
         tabuleiro.add(p.getTeamBox(), p.coord.getColuna(), p.coord.getLinha());
     }
 
     public void inserirObsetaculo(Obstaculo o) {
         obstaculos.add(o);
+        mapaInterno.obstaculos.add(o);
         tabuleiro.add(o.getObstaculoBox(), o.coord.getColuna(), o.coord.getLinha());
+    }
+
+    public void removerPersonagem(Personagem p) {
+        Item i;
+        personagens.remove(p);
+        tabuleiro.add(new Label(""), p.coord.getLinha(), p.coord.getColuna());
+        if (Dados.random(100) >= 60) {
+            int pocao = Dados.random(5);
+            if (pocao == 1) {
+                i = new Item("CURA");
+            } else if (pocao == 2){
+                i = new Item("MANA");
+            }else if (pocao == 3){
+                i = new Item("ATK");
+            }else if (pocao == 4){
+                i = new Item("DEF");
+            }else {
+                i = new Item("AGL");
+            }
+            i.coord.setPosicao(p.coord.getLinha(), p.coord.getColuna());
+            items.add(i);
+            tabuleiro.add(i.getItemBox(), i.coord.getLinha(), i.coord.getColuna());
+        }
     }
 
     private RowConstraints setRC() {
@@ -156,6 +187,20 @@ public class FieldController implements Initializable {
         }
     }
 
+    public static Node removeNodeByRowColumnIndex(final int row,final int column,GridPane gridPane) {
+
+        ObservableList<Node> childrens = gridPane.getChildren();
+        for (Node node : childrens) {
+            if (node instanceof TeamBox && gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                TeamBox imageView = new TeamBox("");
+                System.out.println("Entrou no função maluca");
+                gridPane.getChildren().remove(imageView);
+                break;
+            }
+        }
+        return (Node) childrens;
+    }
+
     @FXML public void mostrarDialogin(MouseEvent event, Personagem p) {
         final Stage dialog = new Stage();
         dialog.setTitle(p.getNome() + " | Vida: " + p.getVida() + " | Mana: " + p.getMana());
@@ -173,7 +218,33 @@ public class FieldController implements Initializable {
         dialogVbox.setAlignment(Pos.CENTER);
         ObservableList<Node> opcoes = dialogVbox.getChildren();
         opcoes.add(new Text("Menu de Opções"));
-        opcoes.add(new Button("Mover"));
+        opcoes.add(botaoMover);
+        botaoMover.setOnMouseClicked(event1 -> {
+            dialog.close();
+            ArrayList<Coordenada> coordenadas;
+            coordenadas = p.getAlcance(mapaInterno);
+            alcancaveis = coordenadas;
+            for (Coordenada c : coordenadas) {
+                TeamBox tbGenerico = new TeamBox("");
+                tbGenerico.coord.setPosicao(c.getLinha(), c.getColuna());
+                tbGenerico.setOnMouseClicked(event2 -> {
+                    if (event2.getSource() == tbGenerico) {
+                        p.mover(tbGenerico.coord.getLinha(), tbGenerico.coord.getColuna(), mapaInterno, tabuleiro);
+                        for (Coordenada coord : alcancaveis) {
+                            if (coord != p.coord) {
+                                removeNodeByRowColumnIndex(coord.getLinha(), coord.getColuna(), tabuleiro);
+                                alcancaveis.remove(coord);
+                            }
+                        }
+                        alcancaveis.clear();
+                    }
+                });
+                tabuleiro.add(tbGenerico, c.getColuna(), c.getLinha());
+                Obstaculo obsTemp = new Obstaculo("");
+                obsTemp.coord.setPosicao(c.getLinha(),c.getColuna());
+                mapaInterno.inserirObsetaculo(obsTemp);
+            }
+        });
         opcoes.add(new Button("Atacar"));
         opcoes.add(new Button("Usar item"));
         botaoPassarTurno.setOnMouseClicked(event1 -> {
