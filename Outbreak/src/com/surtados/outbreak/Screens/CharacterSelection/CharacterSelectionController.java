@@ -6,14 +6,19 @@ import com.surtados.outbreak.components.characterBox.CharacterBox;
 import com.surtados.outbreak.components.TeamBox;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -32,58 +37,68 @@ public class CharacterSelectionController implements Initializable {
 
     @FXML private TeamBox actualCharacterBox;
 
-    private Player ficticio = new Player("Felipe" , "aaa", "123", 1, 1, conq);
-    private Guerreira guerreiraCh = new Guerreira("Alice", 1, ficticio);
-    private Fadinha opheliaCh = new Fadinha("Ophelia", 2, ficticio);
-    private Arqueiro arqueiroCh = new Arqueiro("Arqueiro", 3, ficticio);
-    private Gengah gengahCh = new Gengah("Gengah", 4, ficticio);
-    private Gosminha gosminhaCh = new Gosminha("Gosminha", 5, ficticio);
-    private MrCanhao mrCanhaoCh = new MrCanhao("Mr. Canhão", 6, ficticio);
-    private Pyromancer pyromancerCh = new Pyromancer("Pyromancer", 7, ficticio);
-    private Troll trollCh = new Troll("Troll", 8, ficticio);
+    private Guerreira guerreiraCh = new Guerreira("Alice", 1, Sistema.players.get(Sistema.rodada));
+    private Fadinha opheliaCh = new Fadinha("Ophelia", 2, Sistema.players.get(Sistema.rodada));
+    private Arqueiro arqueiroCh = new Arqueiro("Arqueiro", 3, Sistema.players.get(Sistema.rodada));
+    private Gengah gengahCh = new Gengah("Gengah", 4, Sistema.players.get(Sistema.rodada));
+    private Gosminha gosminhaCh = new Gosminha("Gosminha", 5, Sistema.players.get(Sistema.rodada));
+    private MrCanhao mrCanhaoCh = new MrCanhao("Mr. Canhão", 6, Sistema.players.get(Sistema.rodada));
+    private Pyromancer pyromancerCh = new Pyromancer("Pyromancer", 7, Sistema.players.get(Sistema.rodada));
+    private Troll trollCh = new Troll("Troll", 8, Sistema.players.get(Sistema.rodada));
+    private Personagem personagemGenerico;
 
-    @FXML Label playerName = new Label(ficticio.getNome());
-    @FXML Label vitorias = new Label("" + ficticio.getVitorias()), derrotas = new Label("" + ficticio.getDerrotas());
+    @FXML Label playerName = new Label(Sistema.players.get(Sistema.rodada).getNome());
+    @FXML Label vitorias = new Label("" + Sistema.players.get(Sistema.rodada).getVitorias()), derrotas = new Label("" + Sistema.players.get(Sistema.rodada).getDerrotas());
 
     // Função para selecionar o personagem
     @FXML private void selectCharacter(MouseEvent event) {
         resetBorder();
         if (event.getSource() == alice) {
             alice.setStyle("-fx-border-color: rgb(10, 255, 10); -fx-border-radius: 10px; -fx-border-width: 3px;");
+            personagemGenerico = new Guerreira("Alice", 1, Sistema.players.get(Sistema.rodada));
             showCharacterInfo(guerreiraCh);
         }
         else if (event.getSource() == fadinha) {
             fadinha.setStyle("-fx-border-color: rgb(10, 255, 10); -fx-border-radius: 10px; -fx-border-width: 3px;");
+            personagemGenerico = new Fadinha("Ophelia", 2, Sistema.players.get(Sistema.rodada));
             showCharacterInfo(opheliaCh);
         }
         else if (event.getSource() == gengah) {
             gengah.setStyle("-fx-border-color: rgb(10, 255, 10); -fx-border-radius: 10px; -fx-border-width: 3px;");
+            personagemGenerico = new Gengah("Gengah", 4, Sistema.players.get(Sistema.rodada));
             showCharacterInfo(gengahCh);
         }
         else if (event.getSource() == troll) {
             troll.setStyle("-fx-border-color: rgb(10, 255, 10); -fx-border-radius: 10px; -fx-border-width: 3px;");
+            personagemGenerico = new Troll("Troll", 8, Sistema.players.get(Sistema.rodada));
             showCharacterInfo(trollCh);
         }
         else if (event.getSource() == mrcanhao) {
             mrcanhao.setStyle("-fx-border-color: rgb(10, 255, 10); -fx-border-radius: 10px; -fx-border-width: 3px;");
+            personagemGenerico = new MrCanhao("Mr. Canhão", 6, Sistema.players.get(Sistema.rodada));
             showCharacterInfo(mrCanhaoCh);
         }
         else if (event.getSource() == arqueiro) {
             arqueiro.setStyle("-fx-border-color: rgb(10, 255, 10); -fx-border-radius: 10px; -fx-border-width: 3px;");
+            personagemGenerico = new Arqueiro("Arqueiro", 3, Sistema.players.get(Sistema.rodada));
             showCharacterInfo(arqueiroCh);
         }
         else if (event.getSource() == pyromancer) {
             pyromancer.setStyle("-fx-border-color: rgb(10, 255, 10); -fx-border-radius: 10px; -fx-border-width: 3px;");
+            personagemGenerico = new Pyromancer("Pyromancer", 7, Sistema.players.get(Sistema.rodada));
             showCharacterInfo(pyromancerCh);
         }
         else if (event.getSource() == gosminha) {
             gosminha.setStyle("-fx-border-color: rgb(10, 255, 10); -fx-border-radius: 10px; -fx-border-width: 3px;");
+            personagemGenerico = new Gosminha("Gosminha", 5, Sistema.players.get(Sistema.rodada));
             showCharacterInfo(gosminhaCh);
         }
 
     }
 
     @FXML private void showCharacterInfo(Personagem character) {
+        actualCharacterBox = new TeamBox("");
+        characterInfo.setVisible(true);
         ObservableList<Node> cInfo = characterInfo.getChildren();
         cInfo.clear();
         character.setTeamBox(new TeamBox(character.sprite.getPath()));
@@ -112,11 +127,21 @@ public class CharacterSelectionController implements Initializable {
 
     @FXML private void addCharacterTeam(MouseEvent event) {
         if (event.getSource() == addTeamButton) {
+            ObservableList<Node> cInfo = characterInfo.getChildren();
             ObservableList<Node> team = teamList.getChildren();
             if (team.size() < Sistema.limitePersonagens) {
+                actualCharacterBox.setOnMouseClicked(event1 -> {
+                    removeCharacterTeam(event1);
+                });
                 team.add(actualCharacterBox);
+                cInfo.clear();
+                characterInfo.setVisible(false);
                 System.out.println(team.size());
                 System.out.println(Sistema.limitePersonagens);
+                if (team.size() == Sistema.limitePersonagens) {
+                    btnAvancar.setDisable(false);
+                    btnAvancar.setStyle("-fx-background-color: rgb(234, 85, 85);");
+                }
             }
         }
     }
@@ -133,19 +158,69 @@ public class CharacterSelectionController implements Initializable {
     }
 
     // Função para remover o personagem do time
-    @FXML private void removeCharacterTeam() {}
+    @FXML private void removeCharacterTeam(MouseEvent event) {
+        System.out.println("Entrei na função");
+        Object selecionado = event.getSource();
+        if (teamList.getChildren().contains(selecionado)) {
+            System.out.println("REMOVI");
+            if (teamList.getChildren().size() == Sistema.limitePersonagens) {
+                btnAvancar.setDisable(true);
+            }
+            teamList.getChildren().remove(selecionado);
+        }
+
+    }
 
     // Função para confirmar o time e ir para a próxima página
-    @FXML private void confirmTeamNextPage() {}
+    @FXML private void pageSelectItems(MouseEvent event) throws IOException {
+        if (event.getSource() == btnAvancar) {
+            Stage stage = null;
+            Parent root = null;
 
-    @FXML private void botaoAvancarConfig() {
-        btnAvancar.setDisable(true);
+            if (Sistema.rodada == 0) {
+                Sistema.rodada++;
+
+                stage = null;
+                root = null;
+
+                String characterSelectionCSS = getClass().getResource("../CharacterSelection/characterSelecion.css").toExternalForm();
+
+                if(event.getSource()==btnAvancar){
+                    stage = (Stage) btnAvancar.getScene().getWindow();
+                    root = FXMLLoader.load(getClass().getResource("../CharacterSelection/characterSelection.fxml"));
+                }
+                Scene cena = new Scene(root);
+                teamList.getChildren().clear();
+                characterInfo.getChildren().clear();
+                cena.getStylesheets().add(characterSelectionCSS);
+                stage.setScene(cena);
+                stage.show();
+
+
+            } else {
+                Sistema.rodada = 0;
+                if (Sistema.players.get(Sistema.rodada).conquistas.size() > 0) {
+                    String itemPageCSS = getClass().getResource("../ItemSelection/item.css").toExternalForm();
+
+                    if(event.getSource()==btnAvancar){
+                        stage = (Stage) btnAvancar.getScene().getWindow();
+                        root = FXMLLoader.load(getClass().getResource("../ItemSelection/item.fxml"));
+                    }
+                    Scene cena = new Scene(root);
+                    cena.getStylesheets().add(itemPageCSS);
+                    stage.setScene(cena);
+                    stage.show();
+                }
+            }
+
+
+        }
     }
 
     @FXML private void criaGridPane() {
-        playerName.setText(ficticio.getNome());
-        vitorias.setText(""+ficticio.getVitorias());
-        derrotas.setText("" + ficticio.getDerrotas());
+        playerName.setText(Sistema.players.get(Sistema.rodada).getNome());
+        vitorias.setText(""+Sistema.players.get(Sistema.rodada).getVitorias());
+        derrotas.setText("" + Sistema.players.get(Sistema.rodada).getDerrotas());
         gridPersonagens.getColumnConstraints().addAll(setCC(), setCC());
         gridPersonagens.getRowConstraints().addAll(setRC(), setRC(), setRC(), setRC());
     }
@@ -164,5 +239,6 @@ public class CharacterSelectionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         criaGridPane();
+        btnAvancar.setDisable(true);
     }
 }

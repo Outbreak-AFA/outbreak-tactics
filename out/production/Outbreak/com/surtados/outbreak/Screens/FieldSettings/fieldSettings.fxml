@@ -26,10 +26,10 @@
                     <HBox alignment="CENTER_LEFT">
                         <children>
                             <Label text="Largura:" textFill="white"/>
-                            <TextField maxWidth="40" minHeight="36"></TextField>
+                            <TextField maxWidth="40" fx:id="fieldRow" minHeight="36"></TextField>
                             <Separator visible="false" minWidth="50"/>
                             <Label text="Altura:" textFill="white"/>
-                            <TextField maxWidth="40" minHeight="36"></TextField>
+                            <TextField maxWidth="40" fx:id="fieldColumn" minHeight="36"></TextField>
                         </children>
                     </HBox>
                     <HBox alignment="CENTER">

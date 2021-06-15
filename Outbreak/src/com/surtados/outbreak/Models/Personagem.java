@@ -28,7 +28,6 @@ public abstract class Personagem {
     public Personagem(Player p, String path) {
         dono = p;
         sprite.setPath(path);
-
     }
 
     public TeamBox getTeamBox() {

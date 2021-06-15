@@ -7,20 +7,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class LoginController {
 
     @FXML private javafx.scene.control.Button registerButton, enterButton;
     @FXML private TextField loginField, passwordField;
-    ArrayList<Player> players = new ArrayList<>();
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
+    @FXML
+    Label loginText;
 
     @FXML
     private void registerPage(ActionEvent event) throws Exception {
@@ -46,24 +43,34 @@ public class LoginController {
         Parent root = null;
 
         if (pValidate != null) {
-            String registerPageCSS = getClass().getResource("../FieldSettings/fieldSettings.css").toExternalForm();
+            loginText.setText("Faça o login do 2º jogador!");
+            Sistema.players.add(pValidate);
+            Sistema.rodada ++;
+            loginField.clear();
+            passwordField.clear();
+            if (Sistema.rodada > 1) {
+                String registerPageCSS = getClass().getResource("../FieldSettings/fieldSettings.css").toExternalForm();
 
-            if(event.getSource()==enterButton){
-                stage = (Stage) enterButton.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("../FieldSettings/fieldSettings.fxml"));
+                if(event.getSource()==enterButton){
+                    stage = (Stage) enterButton.getScene().getWindow();
+                    root = FXMLLoader.load(getClass().getResource("../FieldSettings/fieldSettings.fxml"));
+                }
+                Scene cena = new Scene(root);
+                Sistema.rodada = 0;
+                cena.getStylesheets().add(registerPageCSS);
+                stage.setScene(cena);
+                stage.show();
             }
-            Scene cena = new Scene(root);
-            cena.getStylesheets().add(registerPageCSS);
-            stage.setScene(cena);
-            stage.show();
         }
         return;
     }
 
     @FXML private Player validateLogin() {
-        Player teste = Sistema.login(loginField.getText(), passwordField.getText());
-        players.add(teste);
-        return teste;
+        while (Sistema.rodada <= 1) {
+            Player player = Sistema.login(loginField.getText(), passwordField.getText());
+            return player;
+        }
+        return null;
     }
 
 }

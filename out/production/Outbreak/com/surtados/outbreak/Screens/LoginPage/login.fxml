@@ -17,7 +17,7 @@
             <Separator minHeight="200" visible="false"/>
             <VBox styleClass="loginMenu">
                 <children>
-                    <Label styleClass="loginText" text="Faça o login do 1º jogador!" />
+                    <Label styleClass="loginText" text="Faça o login do 1º jogador!" fx:id="loginText"/>
                     <TextField fx:id="loginField"></TextField>
                     <TextField fx:id="passwordField"></TextField>
                     <HBox styleClass="opcoes">

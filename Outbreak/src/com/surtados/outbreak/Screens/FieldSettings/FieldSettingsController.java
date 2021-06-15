@@ -13,11 +13,12 @@ public class FieldSettingsController {
     @FXML private javafx.scene.control.Button botaoStart;
 
     @FXML
-    TextField teamLimit;
+    TextField teamLimit, fieldRow, fieldColumn;
 
     @FXML
     private void characterSelection(ActionEvent event) throws Exception {
         setTeamLimit();
+        setMapaSize();
         Stage stage = null;
         Parent root = null;
 
@@ -39,5 +40,9 @@ public class FieldSettingsController {
             return;
         }
         Sistema.limitePersonagens = Integer.parseInt(teamLimit.getText());
+    }
+
+    @FXML private void setMapaSize() {
+        Sistema.configMapa(Integer.parseInt(fieldColumn.getText()), Integer.parseInt(fieldRow.getText()));
     }
 }

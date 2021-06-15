@@ -1,0 +1,19 @@
+.root {
+     -fx-font-family: 'Press Start 2P', cursive;
+}
+
+.mainBox {
+    -fx-background-image: url("../../Assets/forest.png");
+}
+
+.mensagem {
+    -fx-font-size: 24px;
+}
+
+.botaoRecusa {
+
+}
+
+.botaoAceito {
+
+}

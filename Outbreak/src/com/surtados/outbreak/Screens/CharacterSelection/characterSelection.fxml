@@ -57,7 +57,7 @@
                     </VBox>
                 </children>
                 <Separator minHeight="20" visible="false"/>
-                <Button fx:id="btnAvancar" text="AVANÇAR" minWidth="225" minHeight="48" styleClass="botaoAvancar" textFill="white"/>
+                <Button fx:id="btnAvancar" text="AVANÇAR" minWidth="225" minHeight="48" styleClass="botaoAvancar" textFill="white" onMouseClicked="#pageSelectItems"/>
             </VBox>
         </children>
     </HBox>

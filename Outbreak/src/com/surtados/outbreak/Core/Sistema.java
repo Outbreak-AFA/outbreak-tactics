@@ -12,6 +12,9 @@ import java.util.Scanner;
 public class Sistema {
 
     public static int limitePersonagens;
+    public static Player playerGlobal;
+    public static ArrayList<Player> players = new ArrayList<>();
+    public static int rodada = 0;
 
     public static boolean acertou(Personagem p) {
         int valor = Dados.random(20, p.getAgl() * (-1));
@@ -154,7 +157,7 @@ public class Sistema {
                 for (int j=0; j< conqJson.length(); j++) {
                     conq.add(new Item(conqJson.get(j).toString()));
                 }
-                return new Player(
+                playerGlobal = new Player(
                         objTemp.get("nome").toString(),
                         objTemp.get("email").toString(),
                         objTemp.get("senha").toString(),
@@ -162,6 +165,7 @@ public class Sistema {
                         (int) objTemp.get("derrotas"),
                         conq
                 );
+                return playerGlobal;
             }
         }
         return null;
@@ -172,13 +176,7 @@ public class Sistema {
         return login(email, senha);
     }
 
-    public static Mapa configMapa() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Por favor insira a largura do mapa (min sugerido: 10 | max sugerido: 20): ");
-        int largura = scan.nextInt();
-        System.out.println("Por favor insira a altura do mapa (min sugerido: 10 | max sugerido: 20): ");
-        int altura = scan.nextInt();
-
+    public static Mapa configMapa(int altura, int largura) {
         return new Mapa(altura, largura);
     }
 
