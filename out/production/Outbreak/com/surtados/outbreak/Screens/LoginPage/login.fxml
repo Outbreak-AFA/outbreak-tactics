@@ -18,8 +18,8 @@
             <VBox styleClass="loginMenu">
                 <children>
                     <Label styleClass="loginText" text="Faça o login do 1º jogador!" />
-                    <TextField styleClass="loginField"></TextField>
-                    <TextField></TextField>
+                    <TextField fx:id="loginField"></TextField>
+                    <TextField fx:id="passwordField"></TextField>
                     <HBox styleClass="opcoes">
                         <children>
                             <Button styleClass="novoCadastro" fx:id="registerButton" onAction="#registerPage">novo cadastro</Button>

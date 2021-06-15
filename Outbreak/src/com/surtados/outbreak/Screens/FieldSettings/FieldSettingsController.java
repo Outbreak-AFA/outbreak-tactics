@@ -1,17 +1,23 @@
 package com.surtados.outbreak.Screens.FieldSettings;
 
+import com.surtados.outbreak.Core.Sistema;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class FieldSettingsController {
     @FXML private javafx.scene.control.Button botaoStart;
 
     @FXML
+    TextField teamLimit;
+
+    @FXML
     private void characterSelection(ActionEvent event) throws Exception {
+        setTeamLimit();
         Stage stage = null;
         Parent root = null;
 
@@ -28,4 +34,10 @@ public class FieldSettingsController {
         stage.show();
     }
 
+    @FXML private void setTeamLimit() {
+        if (teamLimit.getText() == null || teamLimit.getText().isEmpty() || teamLimit.getText().isBlank()) {
+            return;
+        }
+        Sistema.limitePersonagens = Integer.parseInt(teamLimit.getText());
+    }
 }

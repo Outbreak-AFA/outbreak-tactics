@@ -3,13 +3,39 @@
   <component name="ChangeListManager">
     <list default="true" id="199cc1ae-2031-47a1-9dc6-502e6c97dd7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Arqueiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Arqueiro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Fadinha.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Fadinha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Gengah.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Gengah.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Gosminha.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Gosminha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Guerreira.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Guerreira.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/LapaGod.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/LapaGod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/MrCanhao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/MrCanhao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Personagem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Pyromancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Pyromancer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Troll.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Troll.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/CharacterSelectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/CharacterSelectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/characterSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/characterSelection.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FieldSettings/FieldSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FieldSettings/FieldSettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FieldSettings/fieldSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/FieldSettings/fieldSettings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/components/characterBox/TeamBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/components/TeamBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/usuarios.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/CharacterSelection/characterSelecion.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/CharacterSelection/characterSelecion.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/CharacterSelection/characterSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/CharacterSelection/characterSelection.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/FirstPage/first_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/FirstPage/first_page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/FirstPage/first_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/FirstPage/first_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/LoginPage/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/LoginPage/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/RegisterPage/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/com/surtados/outbreak/Screens/RegisterPage/register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/usuarios.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -44,7 +70,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Programs/javafx-sdk-11.0.2/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -58,7 +84,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.surtados.outbreak.App" />
       <module name="Outbreak" />
       <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../../../../../Programs/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml " />
@@ -72,11 +98,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.App" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

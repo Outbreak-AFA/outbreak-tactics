@@ -1,13 +1,12 @@
 package com.surtados.outbreak.Models;
 
 import com.surtados.outbreak.Core.Sistema;
-import com.surtados.outbreak.Models.Personagem;
 
 import java.util.ArrayList;
 
 public class Gosminha extends Personagem {
    public Gosminha(String nome, int id, Player p){
-       super(p);
+       super(p, "E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/gosminha.png");
        setPlayerId(id);
          setNome(nome);
          setVida(250);

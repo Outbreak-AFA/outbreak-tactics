@@ -2,7 +2,7 @@ package com.surtados.outbreak.Models;
 
 import com.surtados.outbreak.Core.Sistema;
 import com.surtados.outbreak.Utils.Dados;
-import com.surtados.outbreak.components.characterBox.TeamBox;
+import com.surtados.outbreak.components.TeamBox;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -25,8 +25,10 @@ public abstract class Personagem {
     public Player dono;
     public TeamBox teamBox;
 
-    public Personagem(Player p) {
+    public Personagem(Player p, String path) {
         dono = p;
+        sprite.setPath(path);
+
     }
 
     public TeamBox getTeamBox() {

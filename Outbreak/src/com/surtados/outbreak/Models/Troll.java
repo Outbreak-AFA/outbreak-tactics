@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Troll extends Personagem {
         public Troll(String nome, int id, Player p){
-            super(p);
+            super(p, "E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/troll.png");
          setPlayerId(id);
          setNome(nome);
          setVida(200);

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Gengah extends Personagem {
     public Gengah(String nome, int id, Player p){
-        super(p);
+        super(p, "E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/gengah.png");
         setPlayerId(id);
         setNome(nome);
         setAtk(4);

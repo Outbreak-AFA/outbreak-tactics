@@ -41,25 +41,29 @@ public class LoginController {
 
     @FXML
     private void fieldSettings(ActionEvent event) throws Exception {
-        validateLogin();
+        Player pValidate = validateLogin();
         Stage stage = null;
         Parent root = null;
 
-        String registerPageCSS = getClass().getResource("../FieldSettings/fieldSettings.css").toExternalForm();
+        if (pValidate != null) {
+            String registerPageCSS = getClass().getResource("../FieldSettings/fieldSettings.css").toExternalForm();
 
-        if(event.getSource()==enterButton){
-            stage = (Stage) enterButton.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../FieldSettings/fieldSettings.fxml"));
+            if(event.getSource()==enterButton){
+                stage = (Stage) enterButton.getScene().getWindow();
+                root = FXMLLoader.load(getClass().getResource("../FieldSettings/fieldSettings.fxml"));
+            }
+            Scene cena = new Scene(root);
+            cena.getStylesheets().add(registerPageCSS);
+            stage.setScene(cena);
+            stage.show();
         }
-        Scene cena = new Scene(root);
-        cena.getStylesheets().add(registerPageCSS);
-        stage.setScene(cena);
-        stage.show();
+        return;
     }
 
-    @FXML private void validateLogin() {
+    @FXML private Player validateLogin() {
         Player teste = Sistema.login(loginField.getText(), passwordField.getText());
         players.add(teste);
+        return teste;
     }
 
 }

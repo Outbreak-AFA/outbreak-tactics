@@ -24,8 +24,61 @@
     -fx-padding: 17;
 }
 
+.alice {
+    -fx-background-image: url('../../Assets/alice.png');
+    -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+
+.fadinha {
+    -fx-background-image: url('../../Assets/fadinha.png');
+    -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+
+.pyromancer {
+    -fx-background-image: url('../../Assets/pyromancer.png');
+    -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+
+.gosminha {
+    -fx-background-image: url('../../Assets/gosminha.png');
+    -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+
+.gengah {
+    -fx-background-image: url('../../Assets/gengah.png');
+    -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+
+.mrcanhao {
+    -fx-background-image: url('../../Assets/mrcanhao.png');
+    -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+
+.troll {
+    -fx-background-image: url('../../Assets/troll.png');
+    -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+
+.arqueiro {
+    -fx-background-image: url('../../Assets/arqueiro.png');
+    -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+
+
 .characterBox {
     -fx-background-color: rgba(196, 196, 196, 1);
+    -fx-background-radius: 10px;
+}
+.characterBox:hover {
+    -fx-background-color: rgba(255, 255, 255, 1);
 }
 
 .teamList {

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.surtados.outbreak.Screens.Rules.RulesController"
+            prefHeight="600.0" prefWidth="800.0" styleClass="mainBox" alignment="CENTER">
+    <VBox>
+        <children>
+            <VBox styleClass="rulesField">
+                <children>
+                    <Label text="1-Ao iniciar o jogo será solicitado o login ou o cadastro do usuário;" textFill="white"/>
+                    <Label text="2-Em seguida, o player poderá configura o mapa com a largura e altura desejada;" textFill="white"/>
+                    <Label text="3-O jogador deverá escolher o modo de jogo de sua preferência;" textFill="white"/>
+                    <Label text="4-Surgirá o inventario de cada usuário, afim do mesmo selecionar, caso queira, os itens 'recebidos' nas partidas anteriores;" textFill="white"/>
+                    <Label text="5-O player1 fará a seleção de personagens, logo em seguida, o player2;" textFill="white"/>
+                    <Label text="6-O jogador deverá selecionar o personagem que terá acesso ao item pré-selecionado do inventario;" textFill="white"/>
+                    <Label text="7-O jogo é iniciado, com os personagens já posicionado;" textFill="white"/>
+                    <Label text="8-Haverá o sorteio para qual dos players jogará primeiro;" textFill="white"/>
+                    <Label text="9-Á cada turno 1'avatar' poderá ser escolhido pelo player para fazer suas ações(mover, atacar e/ou usar item." textFill="white"/>
+                    <Label text="Depois dessa ação o turno é encerrado;" textFill="white"/>
+                    <Label text="10-Existem dois tipos de itens, consumiveis, são utilizados somente 1 vez, sumindo do inventario logo em seguida." textFill="white"/>
+                    <Label text="Já os usaveis, são elementos que podem ser usados até o final da partida;" textFill="white"/>
+                    <Label text="11-Os consumiveis são possuem a probabilidade de aparecer aleatoriamente, e os usaveis" textFill="white"/>
+                    <Label text="podendo ser obtidos caso, ao morrer, um de seus oponentes deixe cair, porém para que o outro personagem possa pegar" textFill="white"/>
+                    <Label text="esse item é necessário ele ficar em cima do local que o item caiu.Caso o item seja do tipo usável esse item" textFill="white"/>
+                    <Label text="será registrado na conta do jogador para ser utilizado em outras batalhas;" textFill="white"/>
+                    <Label text="12-Ao decorrer do jogo, os personagens vão acumulando pontos de surto, e quanto essa pontuação chega no limite" textFill="white"/>
+                    <Label text="o personagem libera opção de surtar;" textFill="white"/>
+                    <Label text="13- Ganha quem estiver com personagens ainda no jogo;" textFill="white"/>
+                    <Label text="14- Após jogo ser encerrado terá uma opção de encerrar jogo ou iniciar uma nova partida, caso queira" textFill="white"/>
+                    <Label text="encerrar serão levados para tela inicial, caso queiram uma nova serão levados para o item 4." textFill="white"/>
+                </children>
+            </VBox>
+        </children>
+    </VBox>
+</GridPane>

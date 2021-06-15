@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Fadinha extends Personagem {
    public Fadinha(String nome, int id, Player p){
-       super(p);
+       super(p, "E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/fadinha.png");
          setPlayerId(id);
          setNome(nome);
          setVida(300);

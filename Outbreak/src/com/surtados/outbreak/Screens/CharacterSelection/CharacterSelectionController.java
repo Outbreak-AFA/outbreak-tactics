@@ -1,24 +1,24 @@
 package com.surtados.outbreak.Screens.CharacterSelection;
 
+import com.surtados.outbreak.Core.Sistema;
 import com.surtados.outbreak.Models.*;
 import com.surtados.outbreak.components.characterBox.CharacterBox;
-import com.surtados.outbreak.components.characterBox.TeamBox;
+import com.surtados.outbreak.components.TeamBox;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class CharacterSelectionController {
-
-
-    @FXML Label playerName;
+public class CharacterSelectionController implements Initializable {
 
     @FXML private Button btnAvancar, btnAdicionar;
     @FXML private GridPane gridPersonagens;
@@ -42,9 +42,12 @@ public class CharacterSelectionController {
     private Pyromancer pyromancerCh = new Pyromancer("Pyromancer", 7, ficticio);
     private Troll trollCh = new Troll("Troll", 8, ficticio);
 
+    @FXML Label playerName = new Label(ficticio.getNome());
+    @FXML Label vitorias = new Label("" + ficticio.getVitorias()), derrotas = new Label("" + ficticio.getDerrotas());
 
     // Função para selecionar o personagem
     @FXML private void selectCharacter(MouseEvent event) {
+        resetBorder();
         if (event.getSource() == alice) {
             alice.setStyle("-fx-border-color: rgb(10, 255, 10); -fx-border-radius: 10px; -fx-border-width: 3px;");
             showCharacterInfo(guerreiraCh);
@@ -83,8 +86,8 @@ public class CharacterSelectionController {
     @FXML private void showCharacterInfo(Personagem character) {
         ObservableList<Node> cInfo = characterInfo.getChildren();
         cInfo.clear();
-        character.setTeamBox(new TeamBox("../../Assets/" + character.getNome().toLowerCase() + ".png"));
-        System.out.println("../../Assets/" + character.getNome().toLowerCase() + ".png");
+        character.setTeamBox(new TeamBox(character.sprite.getPath()));
+        System.out.println(character.sprite.getPath());
         characterInfo.setStyle("    -fx-alignment: center;\n" +
                 "    -fx-spacing: 10;\n" +
                 "    -fx-border-style: solid;\n" +
@@ -94,7 +97,7 @@ public class CharacterSelectionController {
                 "    -fx-background-radius: 22px;\n" +
                 "    -fx-background-color: rgba(166, 161, 161, 0.3);\n" +
                 "    -fx-padding: 20;\n");
-        Label characterName = new Label("Nome: " + character.getNome().toLowerCase() + "\nDescrição:\n");
+        Label characterName = new Label("Nome: " + character.getNome() + "\nDescrição:\n");
         Label characterDescription = new Label(character.descricao());
         characterName.setTextFill(Color.rgb(255, 255, 255));
         cInfo.add(characterName);
@@ -110,9 +113,23 @@ public class CharacterSelectionController {
     @FXML private void addCharacterTeam(MouseEvent event) {
         if (event.getSource() == addTeamButton) {
             ObservableList<Node> team = teamList.getChildren();
-            team.add(actualCharacterBox);
-            System.out.println(team.get(0));
+            if (team.size() < Sistema.limitePersonagens) {
+                team.add(actualCharacterBox);
+                System.out.println(team.size());
+                System.out.println(Sistema.limitePersonagens);
+            }
         }
+    }
+
+    @FXML private void resetBorder() {
+        alice.setStyle("-fx-border-color: transparent; -fx-border-radius: 0px; -fx-border-width: 0px;");
+        gosminha.setStyle("-fx-border-color: transparent; -fx-border-radius: 0px; -fx-border-width: 0px;");
+        troll.setStyle("-fx-border-color: transparent; -fx-border-radius: 0px; -fx-border-width: 0px;");
+        pyromancer.setStyle("-fx-border-color: transparent; -fx-border-radius: 0px; -fx-border-width: 0px;");
+        fadinha.setStyle("-fx-border-color: transparent; -fx-border-radius: 0px; -fx-border-width: 0px;");
+        arqueiro.setStyle("-fx-border-color: transparent; -fx-border-radius: 0px; -fx-border-width: 0px;");
+        mrcanhao.setStyle("-fx-border-color: transparent; -fx-border-radius: 0px; -fx-border-width: 0px;");
+        gengah.setStyle("-fx-border-color: transparent; -fx-border-radius: 0px; -fx-border-width: 0px;");
     }
 
     // Função para remover o personagem do time
@@ -125,8 +142,10 @@ public class CharacterSelectionController {
         btnAvancar.setDisable(true);
     }
 
-    @FXML private void criaGridPane(ContextMenuEvent event) {
+    @FXML private void criaGridPane() {
         playerName.setText(ficticio.getNome());
+        vitorias.setText(""+ficticio.getVitorias());
+        derrotas.setText("" + ficticio.getDerrotas());
         gridPersonagens.getColumnConstraints().addAll(setCC(), setCC());
         gridPersonagens.getRowConstraints().addAll(setRC(), setRC(), setRC(), setRC());
     }
@@ -140,5 +159,10 @@ public class CharacterSelectionController {
         ColumnConstraints cc = new ColumnConstraints();
         cc.setFillWidth(true);
         return cc;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        criaGridPane();
     }
 }

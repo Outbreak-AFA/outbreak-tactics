@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Guerreira extends Personagem{
     public Guerreira(String nome, int id, Player p){
-        super(p);
+        super(p, "E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/alice.png");
          setPlayerId(id);
         setNome(nome);
          setVida(200);

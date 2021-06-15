@@ -18,10 +18,10 @@
             <VBox styleClass="registerMenu">
                 <children>
                     <Label styleClass="registerText">Faça o cadastro de um jogador!</Label>
-                    <TextField></TextField>
-                    <TextField></TextField>
-                    <TextField></TextField>
-                    <Button text="CADASTRAR" styleClass="botaoCadastrar"/>
+                    <TextField fx:id="nameField"></TextField>
+                    <TextField fx:id="emailField"></TextField>
+                    <TextField fx:id="passwordField"></TextField>
+                    <Button text="CADASTRAR" styleClass="botaoCadastrar" fx:id="registerButton" onAction="#backLogin"/>
                 </children>
             </VBox>
         </children>

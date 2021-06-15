@@ -1,51 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.shape.Box?>
-<?import com.sun.javafx.scene.control.IntegerField?>
+<?import com.surtados.outbreak.components.characterBox.CharacterBox?>
+<?import com.surtados.outbreak.components.TeamBox?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.surtados.outbreak.Screens.CharacterSelection.CharacterSelectionController"
           prefHeight="600.0" prefWidth="800.0" styleClass="mainBox">
-
     <HBox styleClass="secondaryBox">
         <children>
             <VBox alignment="CENTER_LEFT">
                 <children>
                     <Separator visible="false" minHeight="20"/>
-                    <Label text="Olá Fulano!" textAlignment="LEFT" textFill="white"/>
+                    <HBox>
+                        <children>
+                            <Label text="Olá " textAlignment="LEFT" textFill="white"/>
+                            <Label fx:id="playerName" textFill="white"/>
+                        </children>
+                    </HBox>
                     <Label text="Monte o seu time!!" textAlignment="LEFT" textFill="white"/>
                     <Separator visible="false" minHeight="5"/>
-                    <VBox styleClass="characterList">
-                        <children>
-                        </children>
-                    </VBox>
+                    <GridPane hgap="5" vgap="5" fx:id="gridPersonagens" styleClass="characterList">
+                        <CharacterBox fx:id="fadinha" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="fadinha" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="pyromancer" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="pyromancer" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="alice" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="alice" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="troll" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="troll" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="arqueiro" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="arqueiro" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="gengah" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="gengah" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="gosminha" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="gosminha" onMouseClicked="#selectCharacter"/>
+                        <CharacterBox fx:id="mrcanhao" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="mrcanhao" onMouseClicked="#selectCharacter"/>
+                    </GridPane>
                 </children>
             </VBox>
             <Separator visible="false" minWidth="190"/>
-            <VBox>
+            <VBox fx:id="lastColumn">
                 <children>
                     <HBox>
                         <children>
                             <Label text="VITÓRIAS: " textFill="white"/>
+                            <Label fx:id="vitorias" textFill="white"/>
                             <Separator visible="false" minWidth="15"/>
                             <Label text="DERROTAS: " textFill="white"/>
+                            <Label fx:id="derrotas" textFill="white"/>
                         </children>
                     </HBox>
                     <Separator visible="false" minHeight="50"/>
-                    <HBox styleClass="teamList">
+                    <HBox styleClass="teamList" fx:id="teamList" spacing="5">
                         <children>
-
                         </children>
                     </HBox>
+                    <Separator visible="false" minHeight="50"/>
+                    <VBox fx:id="characterInfo" minWidth="310" minHeight="253">
+                        <Button visible="false" fx:id="addTeamButton" onMouseClicked="#addCharacterTeam"/>
+                    </VBox>
                 </children>
-                <Separator minHeight="320" visible="false"/>
-                <Button text="AVANÇAR" minWidth="225" minHeight="48" styleClass="botaoAvancar" textFill="white"/>
+                <Separator minHeight="20" visible="false"/>
+                <Button fx:id="btnAvancar" text="AVANÇAR" minWidth="225" minHeight="48" styleClass="botaoAvancar" textFill="white"/>
             </VBox>
         </children>
     </HBox>

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class LapaGod extends Personagem {
     public LapaGod(String nome, int id, Player p){
-        super(p);
+        super(p, "");
         setPlayerId(id);
         setNome(nome);
         setVida(300);

@@ -1,0 +1,67 @@
+.root {
+    -fx-font-family: 'Press Start 2P', cursive;
+}
+
+.mainBox {
+    -fx-alignment: center;
+    -fx-min-width: 800px;
+    -fx-min-height: 600px;
+    -fx-max-width: 800px;
+    -fx-max-height: 600px;
+    -fx-background-image: url("../../Assets/background.png");
+}
+
+.devsField {
+    -fx-alignment: center;
+    -fx-max-width: 500;
+    -fx-min-height: 210;
+    -fx-spacing: 10;
+    -fx-border-style: solid;
+    -fx-border-color: rgba(248, 255, 220, 0.5);
+    -fx-border-width: 3px;
+    -fx-border-radius: 22px;
+    -fx-background-radius: 22px;
+    -fx-background-color: rgba(166, 161, 161, 0.3);
+}
+
+.teamTitle {
+    -fx-font-size: 14px;
+}
+
+.devList {
+    -fx-spacing: 100;
+}
+
+.devName {
+    -fx-spacing: 100;
+}
+
+.felipe {
+    -fx-border-style: solid;
+    -fx-border-color: rgba(248, 255, 220, 0.5);
+    -fx-border-width: 3px;
+    -fx-border-radius: 18px;
+    -fx-background-radius: 22px;
+    -fx-background-image: url("../../Assets/felipe.jpg");
+    -fx-background-size: 80 80;
+}
+
+.antonio {
+    -fx-border-style: solid;
+    -fx-border-color: rgba(248, 255, 220, 0.5);
+    -fx-border-width: 3px;
+    -fx-border-radius: 18px;
+    -fx-background-radius: 18px;
+    -fx-background-image: url("../../Assets/antonio.jpg");
+    -fx-background-size: 80 80;
+}
+
+.mandy {
+    -fx-border-style: solid;
+    -fx-border-color: rgba(248, 255, 220, 0.5);
+    -fx-border-width: 3px;
+    -fx-border-radius: 18px;
+    -fx-background-radius: 18px;
+    -fx-background-image: url("../../Assets/mandy.png");
+    -fx-background-size: 80 80;
+}

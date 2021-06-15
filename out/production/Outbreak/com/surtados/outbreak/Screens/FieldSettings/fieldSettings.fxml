@@ -35,7 +35,7 @@
                     <HBox alignment="CENTER">
                         <children>
                             <Label text="Quantidade de personagens:" textFill="white"/>
-                            <TextField maxWidth="40" minHeight="36"></TextField>
+                            <TextField maxWidth="40" minHeight="36" fx:id="teamLimit"></TextField>
                         </children>
                     </HBox>
                     <Button text="INICIAR" styleClass="botaoIniciar" textFill="white" fx:id="botaoStart" onAction="#characterSelection"/>
