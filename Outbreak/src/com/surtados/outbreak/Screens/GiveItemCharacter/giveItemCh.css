@@ -1,0 +1,36 @@
+.root {
+     -fx-font-family: 'Press Start 2P', cursive;
+}
+
+.mainBox {
+    -fx-background-image: url("../../Assets/forest.png");
+}
+
+.teamList {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-border-style: solid;
+    -fx-border-color: rgba(248, 255, 220, 0.5);
+    -fx-border-width: 3px;
+    -fx-border-radius: 22px;
+    -fx-background-radius: 22px;
+    -fx-background-color: rgba(166, 161, 161, 0.3);
+    -fx-padding: 20;
+}
+
+.characterBox {
+    -fx-alignment: center;
+    -fx-border-style: solid;
+    -fx-border-color: rgba(248, 255, 220, 0.5);
+    -fx-border-width: 3px;
+    -fx-border-radius: 22px;
+    -fx-background-radius: 22px;
+    -fx-background-color: rgba(166, 161, 161, 0.3);
+}
+
+.btnAvancar {
+    -fx-font-family: 'Press Start 2P', cursive;
+    -fx-background-color: rgba(234, 85, 85, 1);
+    -fx-font-size: 14;
+    -fx-text-fill: rgba(255, 255, 255, 1);
+}

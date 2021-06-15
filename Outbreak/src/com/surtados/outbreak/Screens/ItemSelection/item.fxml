@@ -9,7 +9,7 @@
 <GridPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.surtados.outbreak.Screens.ItemSelection.ItemSelectionController"
-            prefHeight="600.0" prefWidth="800.0" styleClass="mainBox" alignment="CENTER">
+            prefHeight="600.0" prefWidth="800.0" styleClass="mainBox" alignment="CENTER" fx:id="grid">
 <VBox>
     <children>
         <Label fx:id="mensagemItem" textFill="white" styleClass="mensagem"/>

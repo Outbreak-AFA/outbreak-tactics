@@ -3,13 +3,18 @@ package com.surtados.outbreak.Screens.GiveItems;
 import com.surtados.outbreak.Core.Sistema;
 import com.surtados.outbreak.Models.Item;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -62,13 +67,28 @@ public class GiveItemsController implements Initializable {
         itemDef.setStyle("-fx-border-color: transparent; -fx-border-radius: 0px; -fx-border-width: 0px; -fx-background-image: url('file:///E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/def.png');");
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         giveMessage.setText("Escolha um item mágico para\nconcedê-lo a um personagem de seu\ntime!");
-        itemAgl.setStyle("-fx-border-radius: 10px; -fx-border-width: 3px; -fx-background-image: url('file:///E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/agl.png')");
-        itemAtk.setStyle("-fx-border-radius: 10px; -fx-border-width: 3px; -fx-background-image: url('file:///E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/atk.png')");
-        itemDef.setStyle("-fx-border-radius: 10px; -fx-border-width: 3px; -fx-background-image: url('file:///E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/def.png')");
+        itemAgl.setStyle("-fx-border-color: transparent; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-background-image: url('file:///E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/agl.png')");
+        itemAtk.setStyle("-fx-border-color: transparent; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-background-image: url('file:///E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/atk.png')");
+        itemDef.setStyle("-fx-border-color: transparent; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-background-image: url('file:///E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/def.png')");
         temItem();
+    }
+
+    @FXML private void giveToCharacterPage(MouseEvent event) throws IOException {
+        Stage stage = null;
+        Parent root = null;
+
+        String atribuirPersonagemCSS = getClass().getResource("../GiveItemCharacter/giveItemCh.css").toExternalForm();
+
+        if(event.getSource()==btnAvancar){
+            stage = (Stage) btnAvancar.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../GiveItemCharacter/giveItemCh.fxml"));
+        }
+        Scene cena = new Scene(root);
+        cena.getStylesheets().add(atribuirPersonagemCSS);
+        stage.setScene(cena);
+        stage.show();
     }
 }

@@ -25,7 +25,7 @@
         <Separator visible="false" minHeight="50"/>
         <Label text="" fx:id="itemDescription" textFill="white"/>
         <Separator visible="false" minHeight="50"/>
-        <Button text="AVANÇAR" disable="true" fx:id="btnAvancar" styleClass="btnAvancar"/>
+        <Button text="AVANÇAR" disable="true" fx:id="btnAvancar" styleClass="btnAvancar" onMouseClicked="#giveToCharacterPage"/>
     </children>
 </VBox>
 </GridPane>
