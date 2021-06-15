@@ -2,11 +2,16 @@ package com.surtados.outbreak.Screens.ItemSelection;
 
 import com.surtados.outbreak.Core.Sistema;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,9 +22,20 @@ public class ItemSelectionController implements Initializable {
     @FXML Button aceitarBtn, recusarBtn;
     int cont = 0;
 
-    @FXML private void aceitar(MouseEvent event) {
-        if (event.getSource() == aceitarBtn) {
+    @FXML private void aceitar(MouseEvent event) throws IOException {
+        Stage stage = null;
+        Parent root = null;
+        String giveItemsCSS = getClass().getResource("../GiveItems/give.css").toExternalForm();
 
+        if (event.getSource() == aceitarBtn) {
+            stage = (Stage) aceitarBtn.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../GiveItems/give.fxml"));
+
+            Scene cena = new Scene(root);
+            cena.getStylesheets().add(giveItemsCSS);
+            stage.setScene(cena);
+
+            stage.show();
         }
     }
 

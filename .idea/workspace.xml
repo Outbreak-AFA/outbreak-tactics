@@ -3,15 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="199cc1ae-2031-47a1-9dc6-502e6c97dd7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/CharacterSelectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/CharacterSelection/CharacterSelectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Core/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Core/Sistema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Models/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/ItemSelection/ItemSelectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/ItemSelection/ItemSelectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/ItemSelection/item.css" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/ItemSelection/item.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/ItemSelection/item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/ItemSelection/item.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/Screens/LoginPage/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/components/TeamBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/com/surtados/outbreak/components/TeamBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outbreak/src/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/Outbreak/src/usuarios.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Outbreak/usuarios.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Outbreak/usuarios.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>

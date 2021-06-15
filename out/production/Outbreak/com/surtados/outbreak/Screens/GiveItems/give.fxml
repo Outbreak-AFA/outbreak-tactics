@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.surtados.outbreak.components.ItemBox?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.surtados.outbreak.Screens.GiveItems.GiveItemsController"
+          prefHeight="600.0" prefWidth="800.0" styleClass="mainBox" alignment="CENTER">
+<VBox alignment="CENTER">
+    <children>
+        <Label fx:id="giveMessage" textFill="white"/>
+        <Separator visible="false" minHeight="50"/>
+        <HBox styleClass="itemList" fx:id="itemList" minWidth="800">
+            <children>
+                <VBox disable="true" minHeight="80" minWidth="80" maxHeight="80" maxWidth="80" fx:id="itemAtk" styleClass="itemBox" onMouseClicked="#selecionarItem"></VBox>
+                <VBox disable="true" minHeight="80" minWidth="80" maxHeight="80" maxWidth="80" fx:id="itemAgl" styleClass="itemBox" onMouseClicked="#selecionarItem"></VBox>
+                <VBox disable="true" minHeight="80" minWidth="80" maxHeight="80" maxWidth="80" fx:id="itemDef" styleClass="itemBox" onMouseClicked="#selecionarItem"></VBox>
+            </children>
+        </HBox>
+        <Separator visible="false" minHeight="50"/>
+        <Label text="" fx:id="itemDescription" textFill="white"/>
+        <Separator visible="false" minHeight="50"/>
+        <Button text="AVANÇAR" disable="true" fx:id="btnAvancar" styleClass="btnAvancar"/>
+    </children>
+</VBox>
+</GridPane>

@@ -16,6 +16,8 @@ public class Sistema {
     public static ArrayList<Player> players = new ArrayList<>();
     public static int rodada = 0;
 
+    public static String conquistaEspecialEscolhida;
+
     public static boolean acertou(Personagem p) {
         int valor = Dados.random(20, p.getAgl() * (-1));
         if (valor >= 5) return  true;
