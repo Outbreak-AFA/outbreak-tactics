@@ -5,7 +5,6 @@ import com.surtados.outbreak.Utils.Dados;
 import com.surtados.outbreak.components.TeamBox;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public abstract class Personagem {
     private int playerId;
@@ -439,134 +438,134 @@ public abstract class Personagem {
     }
     public abstract ArrayList<Coordenada> getAlcanceAtkProibido(int opcao);
 
-    public void menuOpcoes(Mapa mapa) {
-        System.out.println("===================================================");
-        System.out.println("Escolha uma ação para " + getNome());
-        System.out.println("[1] - Mover");
-        System.out.println("[2] - Atacar");
-        System.out.println("[3] - Item");
-        System.out.println("[4] - Concluir");
-        if (podeSurtar()) System.out.println("[5] - SURTAR");
-        System.out.println("===================================================");
-        System.out.print(">>> ");
-        Scanner scan = new Scanner(System.in);
-        int opcao = scan.nextInt();
-        if (opcao == 1  && !moveu()) {
-            ArrayList<Coordenada> alcance = getAlcance(mapa);
-            System.out.println("Escolha a posição para a qual deseja mover: ");
-            ArrayList<Obstaculo> obstaculos = new ArrayList<>();
-            for (Coordenada c : alcance) {
-                Obstaculo obs = new Obstaculo('#');
-                obs.coord.setPosicao(c.getLinha(), c.getColuna());
-                obstaculos.add(obs);
-                mapa.inserirObsetaculo(obs);
-            }
-            mapa.plotarMatriz();
-            System.out.println("Posição atual: " + "(" + coord.getLinha() + ", " + coord.getColuna() + ")");
-            for (Coordenada co : alcance) {
-                System.out.println("[" + (alcance.indexOf(co) + 1) + "] - (" + co.getLinha() + ", " + co.getColuna() + ")");
-            }
-            System.out.println("[" + (alcance.size()+1) + "] - Voltar menu.");
-            int escolha = scan.nextInt();
-            for (Obstaculo o : obstaculos) {
-                mapa.removerObstaculo(o);
-            }
-            if (escolha == alcance.size() + 1) {
-                System.out.println("Certo! Voltando para menu de ações.");
-                menuOpcoes(mapa);
-                return;
-            }
-            if (escolha < 1 || escolha > alcance.size()) {
-                System.out.println("Opção inválida");
-                menuOpcoes(mapa);
-                return;
-            }
-            mover(alcance.get(escolha-1).getLinha(), alcance.get(escolha-1).getColuna(), mapa);
-            menuOpcoes(mapa);
-            return;
-        } else if (opcao == 2 && !atacou()) {
-            System.out.println("Ótimo! Escolha qual tipo de ataque realizar:");
-            System.out.println("[1] - " + getAtkNatural());
-            System.out.println("[2] - " + getHabilidadeEspecial());
-            int optAtk = scan.nextInt();
-
-            if (optAtk != 1 && optAtk != 2) {
-                System.out.println("Opção Inválida!");
-                menuOpcoes(mapa);
-                return;
-            }
-
-            System.out.println("Escolha o oponente em que irá atacar: ");
-            ArrayList<Coordenada> alcance = getAlcanceAtk(optAtk, mapa);
-            ArrayList<Personagem> alvos = new ArrayList<>();
-            for (Coordenada c : alcance) {
-                Personagem p = mapa.getPosicaoPersonagem(c.getLinha(), c.getColuna());
-                if (isSuporte() && optAtk == 2 && p != null) {
-                    alvos.add(p);
-                }
-                else if (p != null && p.getPlayerId() != getPlayerId()) alvos.add(p);
-            }
-
-            for (Personagem p : alvos) {
-                System.out.println("[" + (alvos.indexOf(p) + 1) + "] - " + p.getNome());
-            }
-            System.out.println("["+ (alvos.size() + 1)+"] - Cancelar");
-            System.out.print(">>> ");
-            int vitima = scan.nextInt();
-            if (vitima == alvos.size() + 1) {
-                System.out.println("Certo! Voltando para menu de ações.");
-                menuOpcoes(mapa);
-                return;
-            }
-            if (vitima < 1 || vitima > alvos.size()) {
-                System.out.println("Opção inválida");
-                menuOpcoes(mapa);
-                return;
-            }
-            if (optAtk == 1) atacarNatural(alvos.get(vitima-1));
-            else if (optAtk == 2) habilidadeEspecial(alvos.get(vitima-1));
-            setAtacou(true);
-            menuOpcoes(mapa);
-            return;
-        }
-        else if (opcao == 3 && !atacou()) {
-            System.out.println("Abrindo o inventário de " + getNome() + "...");
-            System.out.println("Escolha qual item utilizar: ");
-            for (Item i : inventario) {
-                System.out.println("[" + (inventario.indexOf(i) + 1) + "] - " + i.getNome());
-            }
-            System.out.println("[ "+ (inventario.size() + 1)+"] - Voltar");
-            System.out.print(">>> ");
-            int itemEscolhido = scan.nextInt();
-
-            if (itemEscolhido == inventario.size() + 1) {
-                System.out.println("Certo! Voltando para menu de ações.");
-                menuOpcoes(mapa);
-                return;
-            }
-            if (itemEscolhido < 1 || itemEscolhido > inventario.size()) {
-                System.out.println("Opção inválida");
-                menuOpcoes(mapa);
-                return;
-            }
-            System.out.println(usarItem(inventario.get(itemEscolhido - 1)));
-            menuOpcoes(mapa);
-            return;
-        }
-        else if (opcao == 4) {
-            passarTurno();
-        }
-        else if (opcao == 5 && podeSurtar()) {
-            System.out.println(getNome() + " acumulou muitos os pontos de surto!!");
-            System.out.println(getNome() + " está SURTANDOOOO");
-            ativarModoSurto();
-            menuOpcoes(mapa);
-            return;
-        }
-        else {
-            System.out.println("Essa opção ou é inválida ou já foi utilizada!");
-            menuOpcoes(mapa);
-            return;
-        }
-    }
+//    public void menuOpcoes(Mapa mapa) {
+//        System.out.println("===================================================");
+//        System.out.println("Escolha uma ação para " + getNome());
+//        System.out.println("[1] - Mover");
+//        System.out.println("[2] - Atacar");
+//        System.out.println("[3] - Item");
+//        System.out.println("[4] - Concluir");
+//        if (podeSurtar()) System.out.println("[5] - SURTAR");
+//        System.out.println("===================================================");
+//        System.out.print(">>> ");
+//        Scanner scan = new Scanner(System.in);
+//        int opcao = scan.nextInt();
+//        if (opcao == 1  && !moveu()) {
+//            ArrayList<Coordenada> alcance = getAlcance(mapa);
+//            System.out.println("Escolha a posição para a qual deseja mover: ");
+//            ArrayList<Obstaculo> obstaculos = new ArrayList<>();
+//            for (Coordenada c : alcance) {
+////                Obstaculo obs = new Obstaculo(obs.sprite.getPath());
+//                obs.coord.setPosicao(c.getLinha(), c.getColuna());
+//                obstaculos.add(obs);
+//                mapa.inserirObsetaculo(obs);
+//            }
+//            mapa.plotarMatriz();
+//            System.out.println("Posição atual: " + "(" + coord.getLinha() + ", " + coord.getColuna() + ")");
+//            for (Coordenada co : alcance) {
+//                System.out.println("[" + (alcance.indexOf(co) + 1) + "] - (" + co.getLinha() + ", " + co.getColuna() + ")");
+//            }
+//            System.out.println("[" + (alcance.size()+1) + "] - Voltar menu.");
+//            int escolha = scan.nextInt();
+//            for (Obstaculo o : obstaculos) {
+//                mapa.removerObstaculo(o);
+//            }
+//            if (escolha == alcance.size() + 1) {
+//                System.out.println("Certo! Voltando para menu de ações.");
+//                menuOpcoes(mapa);
+//                return;
+//            }
+//            if (escolha < 1 || escolha > alcance.size()) {
+//                System.out.println("Opção inválida");
+//                menuOpcoes(mapa);
+//                return;
+//            }
+//            mover(alcance.get(escolha-1).getLinha(), alcance.get(escolha-1).getColuna(), mapa);
+//            menuOpcoes(mapa);
+//            return;
+//        } else if (opcao == 2 && !atacou()) {
+//            System.out.println("Ótimo! Escolha qual tipo de ataque realizar:");
+//            System.out.println("[1] - " + getAtkNatural());
+//            System.out.println("[2] - " + getHabilidadeEspecial());
+//            int optAtk = scan.nextInt();
+//
+//            if (optAtk != 1 && optAtk != 2) {
+//                System.out.println("Opção Inválida!");
+//                menuOpcoes(mapa);
+//                return;
+//            }
+//
+//            System.out.println("Escolha o oponente em que irá atacar: ");
+//            ArrayList<Coordenada> alcance = getAlcanceAtk(optAtk, mapa);
+//            ArrayList<Personagem> alvos = new ArrayList<>();
+//            for (Coordenada c : alcance) {
+//                Personagem p = mapa.getPosicaoPersonagem(c.getLinha(), c.getColuna());
+//                if (isSuporte() && optAtk == 2 && p != null) {
+//                    alvos.add(p);
+//                }
+//                else if (p != null && p.getPlayerId() != getPlayerId()) alvos.add(p);
+//            }
+//
+//            for (Personagem p : alvos) {
+//                System.out.println("[" + (alvos.indexOf(p) + 1) + "] - " + p.getNome());
+//            }
+//            System.out.println("["+ (alvos.size() + 1)+"] - Cancelar");
+//            System.out.print(">>> ");
+//            int vitima = scan.nextInt();
+//            if (vitima == alvos.size() + 1) {
+//                System.out.println("Certo! Voltando para menu de ações.");
+//                menuOpcoes(mapa);
+//                return;
+//            }
+//            if (vitima < 1 || vitima > alvos.size()) {
+//                System.out.println("Opção inválida");
+//                menuOpcoes(mapa);
+//                return;
+//            }
+//            if (optAtk == 1) atacarNatural(alvos.get(vitima-1));
+//            else if (optAtk == 2) habilidadeEspecial(alvos.get(vitima-1));
+//            setAtacou(true);
+//            menuOpcoes(mapa);
+//            return;
+//        }
+//        else if (opcao == 3 && !atacou()) {
+//            System.out.println("Abrindo o inventário de " + getNome() + "...");
+//            System.out.println("Escolha qual item utilizar: ");
+//            for (Item i : inventario) {
+//                System.out.println("[" + (inventario.indexOf(i) + 1) + "] - " + i.getNome());
+//            }
+//            System.out.println("[ "+ (inventario.size() + 1)+"] - Voltar");
+//            System.out.print(">>> ");
+//            int itemEscolhido = scan.nextInt();
+//
+//            if (itemEscolhido == inventario.size() + 1) {
+//                System.out.println("Certo! Voltando para menu de ações.");
+//                menuOpcoes(mapa);
+//                return;
+//            }
+//            if (itemEscolhido < 1 || itemEscolhido > inventario.size()) {
+//                System.out.println("Opção inválida");
+//                menuOpcoes(mapa);
+//                return;
+//            }
+//            System.out.println(usarItem(inventario.get(itemEscolhido - 1)));
+//            menuOpcoes(mapa);
+//            return;
+//        }
+//        else if (opcao == 4) {
+//            passarTurno();
+//        }
+//        else if (opcao == 5 && podeSurtar()) {
+//            System.out.println(getNome() + " acumulou muitos os pontos de surto!!");
+//            System.out.println(getNome() + " está SURTANDOOOO");
+//            ativarModoSurto();
+//            menuOpcoes(mapa);
+//            return;
+//        }
+//        else {
+//            System.out.println("Essa opção ou é inválida ou já foi utilizada!");
+//            menuOpcoes(mapa);
+//            return;
+//        }
+//    }
 }

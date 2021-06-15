@@ -1,7 +1,7 @@
 package com.surtados.outbreak.Models;
 
 import com.surtados.outbreak.Core.Sistema;
-import com.surtados.outbreak.Utils.Cores;
+import com.surtados.outbreak.Screens.Field.FieldController;
 import com.surtados.outbreak.Utils.Dados;
 
 import java.util.ArrayList;
@@ -11,8 +11,7 @@ import java.util.ArrayList;
  *
  * */
 
-public class Mapa {
-    private char[][] matriz;
+public class Mapa extends FieldController {
     public ArrayList<Personagem> personagens = new ArrayList<>();
     public ArrayList<Obstaculo> obstaculos = new ArrayList<>();
     public ArrayList<Item> items = new ArrayList<>();
@@ -23,7 +22,7 @@ public class Mapa {
     public Mapa(int linha, int coluna) {
         setColunaMax(coluna);
         setLinhaMax(linha);
-        matriz = preencherMapa(linha, coluna);
+//        matriz = preencherMapa(linha, coluna);
     }
 
     public int getLinhaMax() {
@@ -44,32 +43,31 @@ public class Mapa {
 
     public void inserirPersonagem(Personagem p) {
         personagens.add(p);
-        matriz[p.coord.getLinha()][p.coord.getColuna()] = p.sprite.getCharacter();
+        tabuleiro.add(p.getTeamBox(), 0, 0);
     }
 
     public void inserirObsetaculo(Obstaculo o) {
         obstaculos.add(o);
-        matriz[o.coord.getLinha()][o.coord.getColuna()] = o.sprite.getCharacter();
     }
 
     public void inserirItem(Item i) {
         items.add(i);
-        matriz[i.coord.getLinha()][i.coord.getColuna()] = i.sprite.getCharacter();
+//        matriz[i.coord.getLinha()][i.coord.getColuna()] = i.sprite.getCharacter();
     }
 
     public void removerObstaculo(Obstaculo o) {
         obstaculos.remove(o);
-        matriz[o.coord.getLinha()][o.coord.getColuna()] = ' ';
+//        matriz[o.coord.getLinha()][o.coord.getColuna()] = ' ';
     }
     public void removerItem(Item i) {
         items.remove(i);
-        matriz[i.coord.getLinha()][i.coord.getColuna()] = ' ';
+//        matriz[i.coord.getLinha()][i.coord.getColuna()] = ' ';
     }
 
     public void removerPersonagem(Personagem p) {
         Item i;
         personagens.remove(p);
-        matriz[p.coord.getLinha()][p.coord.getColuna()] = ' ';
+//        matriz[p.coord.getLinha()][p.coord.getColuna()] = ' ';
         if (Dados.random(100) >= 60) {
             int pocao = Dados.random(5);
             if (pocao == 1) {
@@ -85,42 +83,42 @@ public class Mapa {
             }
             i.coord.setPosicao(p.coord.getLinha(), p.coord.getColuna());
             items.add(i);
-            matriz[p.coord.getLinha()][p.coord.getColuna()] = i.sprite.getCharacter();
+//            matriz[p.coord.getLinha()][p.coord.getColuna()] = i.sprite.getCharacter();
         }
     }
 
-    public char[][] preencherMapa(int linha, int coluna) {
-        char[][] matrizTemp = new char[linha][coluna];
-        Obstaculo muro = new Obstaculo('=');
-        for (int i=0; i<linha; i++) {
-            for (int j=0; j<coluna; j++) {
-                if (j == 0 || j == coluna-1) {
-                    muro.coord.setPosicao(i, j);
-                    obstaculos.add(muro);
-                    matrizTemp[i][j] = muro.sprite.getCharacter();
-                } else if (i == 0 || i == linha-1) {
-                    muro.coord.setPosicao(i, j);
-                    obstaculos.add(muro);
-                    matrizTemp[i][j] = muro.sprite.getCharacter();
-                } else matrizTemp[i][j] = ' ';
-            }
-        }
-        return matrizTemp;
-    }
+//    public char[][] preencherMapa(int linha, int coluna) {
+//        char[][] matrizTemp = new char[linha][coluna];
+////        Obstaculo muro = new Obstaculo('=');
+//        for (int i=0; i<linha; i++) {
+//            for (int j=0; j<coluna; j++) {
+//                if (j == 0 || j == coluna-1) {
+//                    muro.coord.setPosicao(i, j);
+//                    obstaculos.add(muro);
+//                    matrizTemp[i][j] = muro.sprite.getCharacter();
+//                } else if (i == 0 || i == linha-1) {
+//                    muro.coord.setPosicao(i, j);
+//                    obstaculos.add(muro);
+//                    matrizTemp[i][j] = muro.sprite.getCharacter();
+//                } else matrizTemp[i][j] = ' ';
+//            }
+//        }
+//        return matrizTemp;
+//    }
 
     public void setMatriz(char c, int linha, int coluna, int linhaAnt, int colunaAnt) {
-        matriz[linhaAnt][colunaAnt] = ' ';
-        matriz[linha][coluna] = c;
+//        matriz[linhaAnt][colunaAnt] = ' ';
+//        matriz[linha][coluna] = c;
     }
 
     public void plotarMatriz() {
         System.out.println("------".repeat(getColunaMax()));
         for (int i=0; i<getLinhaMax(); i++) {
             for (int j = 0; j < getColunaMax(); j++) {
-                if (matriz[i][j] == '#') {
-                    System.out.print(Cores.ANSI_GREEN + "  " + matriz[i][j] + Cores.ANSI_RESET + "  |");
-                } else
-                    System.out.print("  " + matriz[i][j] + "  |");
+//                if (matriz[i][j] == '#') {
+//                    System.out.print(Cores.ANSI_GREEN + "  " + matriz[i][j] + Cores.ANSI_RESET + "  |");
+//                } else
+//                    System.out.print("  " + matriz[i][j] + "  |");
             }
             System.out.println();
         }
@@ -236,9 +234,9 @@ public class Mapa {
                 }
             }
             k = 0;
-            Obstaculo obs = new Obstaculo('■');
-            obs.coord.setPosicao(posLin, posCol);
-            inserirObsetaculo(obs);
+//            Obstaculo obs = new Obstaculo('■');
+//            obs.coord.setPosicao(posLin, posCol);
+//            inserirObsetaculo(obs);
         }
     }
 }
