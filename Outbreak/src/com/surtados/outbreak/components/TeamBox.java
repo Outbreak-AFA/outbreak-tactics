@@ -6,12 +6,14 @@ public class TeamBox extends VBox {
 
     public String background;
     public String iconBackground;
+    public String nome;
 
     public TeamBox(String bg) {
         background = bg;
         String nomePersonagem = "";
         if (bg.length() >= 50) {
             nomePersonagem = bg.substring(90);
+            nome = nomePersonagem;
         }
         String novoCaminho = "icon-".concat(nomePersonagem);
         novoCaminho = "E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/" + novoCaminho;

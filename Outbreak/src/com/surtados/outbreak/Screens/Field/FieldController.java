@@ -1,10 +1,7 @@
 package com.surtados.outbreak.Screens.Field;
 
 import com.surtados.outbreak.Core.Sistema;
-import com.surtados.outbreak.Models.Coordenada;
-import com.surtados.outbreak.Models.Mapa;
-import com.surtados.outbreak.Models.Obstaculo;
-import com.surtados.outbreak.Models.Personagem;
+import com.surtados.outbreak.Models.*;
 import com.surtados.outbreak.Utils.Dados;
 import com.surtados.outbreak.components.ObstaculoBox;
 import com.surtados.outbreak.components.TeamBox;
@@ -12,12 +9,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,6 +31,10 @@ public class FieldController implements Initializable {
     public ArrayList<Personagem> personagens = new ArrayList<>();
     public ArrayList<Obstaculo> obstaculos = new ArrayList<>();
     @FXML private ObservableList<Node> personagensCampo = tabuleiro.getChildren();
+    @FXML TeamBox temp;
+    Personagem generico;
+
+    @FXML Button botaoPassarTurno = new Button("Passar turno");
 
     @FXML
     private void criaGridPane() {
@@ -138,16 +143,70 @@ public class FieldController implements Initializable {
         for (int i=0; i<Sistema.limitePersonagens; i++) {
             p1.get(i).coord.setPosicao(cEsq.get(i).getLinha(), cEsq.get(i).getColuna());
             p1.get(i).setTeamBox(new TeamBox(p1.get(i).sprite.getPath()));
+            p1.get(i).getTeamBox().setOnMouseClicked(event -> {
+                selectCharacter(event);
+            });
             inserirPersonagem(p1.get(i));
             p2.get(i).coord.setPosicao(cDir.get(i).getLinha(), cDir.get(i).getColuna());
             p2.get(i).setTeamBox(new TeamBox(p2.get(i).sprite.getPath()));
+            p2.get(i).getTeamBox().setOnMouseClicked(event -> {
+                selectCharacter(event);
+            });
             inserirPersonagem(p2.get(i));
+        }
+    }
+
+    @FXML public void mostrarDialogin(MouseEvent event, Personagem p) {
+        final Stage dialog = new Stage();
+        dialog.setTitle(p.getNome() + " | Vida: " + p.getVida() + " | Mana: " + p.getMana());
+        dialog.setResizable(false);
+        dialog.setOnCloseRequest(evento -> {
+            if (Sistema.rodada == 1) {
+                Sistema.rodada = 0;
+                return;
+            }
+            Sistema.rodada++;
+        });
+        dialog.initModality(Modality.WINDOW_MODAL);
+//        dialog.initOwner(primaryStage);
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.setAlignment(Pos.CENTER);
+        ObservableList<Node> opcoes = dialogVbox.getChildren();
+        opcoes.add(new Text("Menu de Opções"));
+        opcoes.add(new Button("Mover"));
+        opcoes.add(new Button("Atacar"));
+        opcoes.add(new Button("Usar item"));
+        botaoPassarTurno.setOnMouseClicked(event1 -> {
+            dialog.close();
+            if (Sistema.rodada == 1) {
+                Sistema.rodada = 0;
+                return;
+            }
+            Sistema.rodada++;
+        });
+        opcoes.add(botaoPassarTurno);
+        Scene dialogScene = new Scene(dialogVbox, 400, 200);
+
+        dialog.setScene(dialogScene);
+        dialog.show();
+    }
+
+    @FXML private void selectCharacter(MouseEvent event) {
+        TeamBox selecionado = (TeamBox) event.getSource();
+        for (Personagem p : Sistema.players.get(Sistema.rodada).time) {
+            if (p.getTeamBox() == selecionado) {
+                mostrarDialogin(event, p);
+                return;
+            }
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Sistema.rodada = 0;
+        Sistema.sortearPlayers(Sistema.players);
         criaGridPane();
         organizarPersonagens(Sistema.players.get(0).time, Sistema.players.get(1).time);
+        System.out.println("RODADA: " + Sistema.rodada);
     }
 }
