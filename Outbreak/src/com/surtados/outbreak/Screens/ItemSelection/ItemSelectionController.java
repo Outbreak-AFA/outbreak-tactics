@@ -45,27 +45,36 @@ public class ItemSelectionController implements Initializable {
     }
 
     @FXML private void recusar(MouseEvent event) throws IOException {
-        Stage stage = null;
-        Parent root = null;
-        String mapaCSS = getClass().getResource("../Mapa/mapa.css").toExternalForm();
 
-        if (event.getSource() == recusarBtn) {
-            stage = (Stage) recusarBtn.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../Mapa/mapa.fxml"));
+        if (Sistema.rodada >= 1) {
+            Stage stage = null;
+            Parent root = null;
+            String mapaCSS = getClass().getResource("../Field/field.css").toExternalForm();
 
-            Scene cena = new Scene(root);
-            cena.getStylesheets().add(mapaCSS);
-            stage.setScene(cena);
+            if (event.getSource() == recusarBtn) {
+                stage = (Stage) recusarBtn.getScene().getWindow();
+                root = FXMLLoader.load(getClass().getResource("../Field/field.fxml"));
 
-            stage.show();
+                Scene cena = new Scene(root);
+                cena.getStylesheets().add(mapaCSS);
+                stage.setScene(cena);
+
+                stage.show();
+            }
+        } else {
+            System.out.println("Entrou no ELSE");
+            Sistema.rodada++;
+            reload();
         }
+
     }
 
     public void reload() {
+        initialize(null, null);
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
-                    Thread.sleep(1000); // Wait for 1 sec before updating the color
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -76,6 +85,7 @@ public class ItemSelectionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Rodada: " + Sistema.rodada);
         if (Sistema.players.get(Sistema.rodada).conquistas.size() > 0) {
             mensagemItem.setText("Opa, " + Sistema.players.get(Sistema.rodada).getNome() + "! Pelo visto você\npossui itens especiais.\nDeseja adicionar algum deles\nao seu time?");
         } else {
@@ -83,11 +93,11 @@ public class ItemSelectionController implements Initializable {
              Sistema.rodada = 0;
              Stage stage = null;
              Parent root = null;
-             String giveItemsCSS = getClass().getResource("../Mapa/mapa.css").toExternalForm();
+             String giveItemsCSS = getClass().getResource("../Field/field.css").toExternalForm();
 
              stage = (Stage) grid.getScene().getWindow();
              try {
-                 root = FXMLLoader.load(getClass().getResource("../Mapa/mapa.fxml"));
+                 root = FXMLLoader.load(getClass().getResource("../Field/field.fxml"));
              } catch (IOException e) {
                  e.printStackTrace();
              }

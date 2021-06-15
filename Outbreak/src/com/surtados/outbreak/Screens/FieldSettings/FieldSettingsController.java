@@ -1,6 +1,7 @@
 package com.surtados.outbreak.Screens.FieldSettings;
 
 import com.surtados.outbreak.Core.Sistema;
+import com.surtados.outbreak.Models.Mapa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +44,7 @@ public class FieldSettingsController {
     }
 
     @FXML private void setMapaSize() {
-        Sistema.configMapa(Integer.parseInt(fieldColumn.getText()), Integer.parseInt(fieldRow.getText()));
+        Mapa.colunas = Integer.parseInt(fieldColumn.getText());
+        Mapa.linhas = Integer.parseInt(fieldRow.getText());
     }
 }

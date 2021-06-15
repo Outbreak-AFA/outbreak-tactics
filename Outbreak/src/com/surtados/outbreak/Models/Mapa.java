@@ -18,6 +18,8 @@ public class Mapa {
     public ArrayList<Item> items = new ArrayList<>();
     private int linhaMax, colunaMax;
 
+    public static int colunas, linhas;
+
     public Mapa(int linha, int coluna) {
         setColunaMax(coluna);
         setLinhaMax(linha);

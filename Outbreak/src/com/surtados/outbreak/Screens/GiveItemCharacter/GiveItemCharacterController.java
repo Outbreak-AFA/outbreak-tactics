@@ -64,14 +64,14 @@ public class GiveItemCharacterController implements Initializable {
         Stage stage = null;
         Parent root = null;
 
-        if (Sistema.rodada > 1) {
+        if (Sistema.rodada >= 1) {
     // TODO SORTEAR PLAYERS
             Sistema.rodada = 0;
-            String nextPageCSS = getClass().getResource("../Mapa/mapa.css").toExternalForm();
+            String nextPageCSS = getClass().getResource("../Field/field.css").toExternalForm();
 
             if(event.getSource()==btnAvancar){
                 stage = (Stage) btnAvancar.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("../Mapa/mapa.fxml"));
+                root = FXMLLoader.load(getClass().getResource("../Field/field.fxml"));
             }
             Scene cena = new Scene(root);
             cena.getStylesheets().add(nextPageCSS);

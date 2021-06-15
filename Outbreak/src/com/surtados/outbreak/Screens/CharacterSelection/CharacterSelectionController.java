@@ -219,6 +219,19 @@ public class CharacterSelectionController implements Initializable {
                     cena.getStylesheets().add(itemPageCSS);
                     stage.setScene(cena);
                     stage.show();
+                } else {
+                    Sistema.rodada ++;
+                    String itemPageCSS = getClass().getResource("../ItemSelection/item.css").toExternalForm();
+
+                    if(event.getSource()==btnAvancar){
+                        stage = (Stage) btnAvancar.getScene().getWindow();
+                        root = FXMLLoader.load(getClass().getResource("../ItemSelection/item.fxml"));
+                    }
+                    Scene cena = new Scene(root);
+                    cena.getStylesheets().add(itemPageCSS);
+                    stage.setScene(cena);
+                    stage.show();
+
                 }
             }
 

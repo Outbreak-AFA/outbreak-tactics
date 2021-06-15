@@ -16,7 +16,7 @@
         <Separator visible="false" minHeight="50"/>
         <HBox alignment="CENTER">
             <children>
-                <Button text="NÃO, VLW" fx:id="recusarBtn" styleClass="botaoRecusa"/>
+                <Button text="NÃO, VLW" fx:id="recusarBtn" styleClass="botaoRecusa" onMouseClicked="#recusar"/>
                 <Separator visible="false" minWidth="100"/>
                 <Button text="QUERO!!!" fx:id="aceitarBtn" styleClass="botaoAceito" onMouseClicked="#aceitar"/>
             </children>
