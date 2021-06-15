@@ -1,6 +1,7 @@
 package com.surtados.outbreak.Screens.ItemSelection;
 
 import com.surtados.outbreak.Core.Sistema;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,6 +44,36 @@ public class ItemSelectionController implements Initializable {
         }
     }
 
+    @FXML private void recusar(MouseEvent event) throws IOException {
+        Stage stage = null;
+        Parent root = null;
+        String mapaCSS = getClass().getResource("../Mapa/mapa.css").toExternalForm();
+
+        if (event.getSource() == recusarBtn) {
+            stage = (Stage) recusarBtn.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../Mapa/mapa.fxml"));
+
+            Scene cena = new Scene(root);
+            cena.getStylesheets().add(mapaCSS);
+            stage.setScene(cena);
+
+            stage.show();
+        }
+    }
+
+    public void reload() {
+        new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                try {
+                    Thread.sleep(1000); // Wait for 1 sec before updating the color
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Platform.runLater(() -> grid.requestLayout());// Update on JavaFX Application Thread
+            }
+        }).start();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (Sistema.players.get(Sistema.rodada).conquistas.size() > 0) {
@@ -68,21 +99,7 @@ public class ItemSelectionController implements Initializable {
          } else {
              Sistema.rodada++;
 
-             Stage stage = null;
-             Parent root = null;
-             String itemSelCSS = getClass().getResource("../ItemSelection/item.css").toExternalForm();
-
-             stage = (Stage) aceitarBtn.getScene().getWindow();
-             try {
-                 root = FXMLLoader.load(getClass().getResource("../ItemSelection/item.fxml"));
-             } catch (IOException e) {
-                 e.printStackTrace();
-             }
-             Scene cena = new Scene(root);
-             cena.getStylesheets().add(itemSelCSS);
-             stage.setScene(cena);
-
-             stage.show();
+             reload();
             }
         }
     }
