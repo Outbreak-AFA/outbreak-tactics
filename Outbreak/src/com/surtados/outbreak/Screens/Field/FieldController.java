@@ -21,7 +21,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -195,18 +194,17 @@ public class FieldController implements Initializable {
         }
     }
 
-    public static Node removeNodeByRowColumnIndex(final int row,final int column,GridPane gridPane) {
-
+    public static Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
+        Node result = null;
         ObservableList<Node> childrens = gridPane.getChildren();
+
         for (Node node : childrens) {
-            if (node instanceof TeamBox && gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
-                TeamBox imageView = new TeamBox("");
-                System.out.println("Entrou no função maluca");
-                gridPane.getChildren().remove(imageView);
+            if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                result = node;
                 break;
             }
         }
-        return (Node) childrens;
+        return result;
     }
 
     @FXML public void mostrarDialog(MouseEvent event, FieldTile pTile) {
@@ -232,25 +230,20 @@ public class FieldController implements Initializable {
             coordenadas = pTile.getPersonagem().getAlcance(mapaInterno);
             alcancaveis = coordenadas;
             for (Coordenada c : coordenadas) {
-                FieldTile fieldTile = new FieldTile();
-                fieldTile.coordenada.setPosicao(c.getLinha(), c.getColuna());
+                FieldTile fieldTile = (FieldTile) getNodeByRowColumnIndex(c.getLinha(), c.getColuna(), tabuleiro);
                 fieldTile.setStyle("-fx-border-radius: 15px; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: rgb(34, 177, 76);");
                 fieldTile.setOnMouseClicked(event2 -> {
                     if (event2.getSource() == fieldTile) {
                         fieldTile.getPersonagem().mover(fieldTile.coordenada.getLinha(), fieldTile.coordenada.getColuna(), mapaInterno, tabuleiro);
                         for (Coordenada coord : alcancaveis) {
                             if (coord != fieldTile.getPersonagem().coord) {
-                                removeNodeByRowColumnIndex(coord.getLinha(), coord.getColuna(), tabuleiro);
-                                alcancaveis.remove(coord);
+                                FieldTile temp = (FieldTile) getNodeByRowColumnIndex(coord.getLinha(), coord.getColuna(), tabuleiro);
+                                temp.setStyle("-fx-border-radius: 15px; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: transparent;");
                             }
                         }
                         alcancaveis.clear();
                     }
                 });
-                tabuleiro.add(tbGenerico, c.getColuna(), c.getLinha());
-                Obstaculo obsTemp = new Obstaculo();
-                obsTemp.coord.setPosicao(c.getLinha(),c.getColuna());
-                mapaInterno.inserirObsetaculo(obsTemp);
             }
         });
         opcoes.add(new Button("Atacar"));
