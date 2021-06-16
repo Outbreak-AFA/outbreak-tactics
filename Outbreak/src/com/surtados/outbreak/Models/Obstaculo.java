@@ -8,13 +8,13 @@ public class Obstaculo {
     public ObstaculoBox obstaculoBox;
 
     public Obstaculo clone() {
-        Obstaculo novoObs = new Obstaculo(sprite.getPath());
+        Obstaculo novoObs = new Obstaculo();
         novoObs.coord.setPosicao(coord.getLinha(), coord.getColuna());
         return novoObs;
     }
 
-    public Obstaculo(String path) {
-        sprite.setPath(path);
+    public Obstaculo() {
+        sprite.setPath("E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/obstaculo.png");
     }
 
 

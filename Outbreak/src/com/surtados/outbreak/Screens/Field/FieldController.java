@@ -3,7 +3,7 @@ package com.surtados.outbreak.Screens.Field;
 import com.surtados.outbreak.Core.Sistema;
 import com.surtados.outbreak.Models.*;
 import com.surtados.outbreak.Utils.Dados;
-import com.surtados.outbreak.components.ObstaculoBox;
+import com.surtados.outbreak.components.FieldTile;
 import com.surtados.outbreak.components.TeamBox;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -44,25 +45,28 @@ public class FieldController implements Initializable {
 
     @FXML
     private void criaGridPane() {
-        tabuleiro.setGridLinesVisible(true);
+        tabuleiro.setGridLinesVisible(false);
         for (int i=0; i<Mapa.linhas-3; i++) {
             tabuleiro.getRowConstraints().add(setRC());
         }
         for (int i=0; i<Mapa.colunas-2; i++) {
             tabuleiro.getColumnConstraints().add(setCC());
         }
+        for (int i=0; i<tabuleiro.getRowCount(); i++) {
+            for (int k=0; k<tabuleiro.getColumnCount(); k++) {
+                tabuleiro.add(new FieldTile(), i, k);
+            }
+        }
     }
 
-    public void inserirPersonagem(Personagem p) {
-        personagens.add(p);
-        mapaInterno.personagens.add(p);
-        tabuleiro.add(p.getTeamBox(), p.coord.getColuna(), p.coord.getLinha());
+    public void inserirPersonagem(FieldTile pTile) {
+        mapaInterno.personagens.add(pTile.getPersonagem());
+        tabuleiro.add(pTile, pTile.getPersonagem().coord.getColuna(), pTile.getPersonagem().coord.getLinha());
     }
 
-    public void inserirObsetaculo(Obstaculo o) {
-        obstaculos.add(o);
-        mapaInterno.obstaculos.add(o);
-        tabuleiro.add(o.getObstaculoBox(), o.coord.getColuna(), o.coord.getLinha());
+    public void inserirObsetaculo(FieldTile obsTile) {
+        mapaInterno.obstaculos.add(obsTile.getObstaculo());
+        tabuleiro.add(obsTile, obsTile.coordenada.getColuna(), obsTile.coordenada.getLinha());
     }
 
     public void removerPersonagem(Personagem p) {
@@ -111,24 +115,24 @@ public class FieldController implements Initializable {
             if (i==0) {
                 Coordenada posEsq = new Coordenada();
                 Coordenada posDir = new Coordenada();
-                posEsq.setPosicao(meio, 1);
-                posDir.setPosicao(meio, Mapa.colunas - 2);
+                posEsq.setPosicao(meio, 0);
+                posDir.setPosicao(meio, Mapa.colunas - 1);
                 proibidas.add(posEsq);
                 proibidas.add(posDir);
             } else if (i%2 != 0) {
                 meio += i;
                 Coordenada posEsq = new Coordenada();
                 Coordenada posDir = new Coordenada();
-                posEsq.setPosicao(meio, 1);
-                posDir.setPosicao(meio, Mapa.colunas - 2);
+                posEsq.setPosicao(meio, 0);
+                posDir.setPosicao(meio, Mapa.colunas - 1);
                 proibidas.add(posEsq);
                 proibidas.add(posDir);
             } else {
                 meio -= i;
                 Coordenada posEsq = new Coordenada();
                 Coordenada posDir = new Coordenada();
-                posEsq.setPosicao(meio, 1);
-                posDir.setPosicao(meio, Mapa.colunas - 2);
+                posEsq.setPosicao(meio, 0);
+                posDir.setPosicao(meio, Mapa.colunas - 1);
                 proibidas.add(posEsq);
                 proibidas.add(posDir);
             }
@@ -140,25 +144,28 @@ public class FieldController implements Initializable {
         int posLin = 0, posCol = 0;
         ArrayList<Coordenada> proibidas = gerarMeio();
         int k = 0;
-        for (int i=0; i<(tabuleiro.getColumnCount() / 2 + (tabuleiro.getRowCount() / 4)); i++) {
+        for (int i=0; i<(tabuleiro.getColumnCount() / 2 + (tabuleiro.getRowCount() / 2)); i++) {
             while (k == 0) {
-                posLin = Dados.random(tabuleiro.getRowCount() - 2);
+                posLin = Dados.random(tabuleiro.getRowCount() - 1);
                 posCol = Dados.random(tabuleiro.getColumnCount() - 2);
                 for (Coordenada c : proibidas) {
-                    if (c.equals(posLin, posCol)) k = 0;
+                    if (c.equals(posLin, posCol)) {
+                        k = 0;
+                        break;
+                    }
                     k = 1;
                 }
             }
             k = 0;
-            if (posCol == 1) {
+            if (posCol == 0) {
                 posCol++;
-            } else if (posCol == tabuleiro.getColumnCount() - 2) {
+            } else if (posCol == tabuleiro.getColumnCount() - 1) {
                 posCol--;
             }
-            Obstaculo obs = new Obstaculo("E:/Dev/Faculdade/LP1/Trabalhos/outbreak-tactics/Outbreak/src/com/surtados/outbreak/Assets/obstaculo.png");
-            obs.setObstaculoBox(new ObstaculoBox(obs.sprite.getPath()));
-            obs.coord.setPosicao(posLin, posCol);
-            inserirObsetaculo(obs);
+            Obstaculo obs = new Obstaculo();
+            FieldTile obsTile = new FieldTile(obs);
+            obsTile.coordenada.setPosicao(posLin, posCol);
+            inserirObsetaculo(obsTile);
         }
     }
 
@@ -166,24 +173,25 @@ public class FieldController implements Initializable {
         gerarObstaculosAleatorios();
         ArrayList<Coordenada> cEsq = new ArrayList<>();
         ArrayList<Coordenada> cDir = new ArrayList<>();
+        // Identificando o meio de cada lado
         for (Coordenada c : gerarMeio()) {
-            if (c.getColuna() == 1) {
+            if (c.getColuna() == 0) {
                 cEsq.add(c);
             } else cDir.add(c);
         }
         for (int i=0; i<Sistema.limitePersonagens; i++) {
             p1.get(i).coord.setPosicao(cEsq.get(i).getLinha(), cEsq.get(i).getColuna());
-            p1.get(i).setTeamBox(new TeamBox(p1.get(i).sprite.getPath()));
-            p1.get(i).getTeamBox().setOnMouseClicked(event -> {
+            FieldTile pTile = new FieldTile(p1.get(i));
+            pTile.setOnMouseClicked(event -> {
                 selectCharacter(event);
             });
-            inserirPersonagem(p1.get(i));
+            inserirPersonagem(pTile);
             p2.get(i).coord.setPosicao(cDir.get(i).getLinha(), cDir.get(i).getColuna());
-            p2.get(i).setTeamBox(new TeamBox(p2.get(i).sprite.getPath()));
-            p2.get(i).getTeamBox().setOnMouseClicked(event -> {
+            pTile = new FieldTile(p2.get(i));
+            pTile.setOnMouseClicked(event -> {
                 selectCharacter(event);
             });
-            inserirPersonagem(p2.get(i));
+            inserirPersonagem(pTile);
         }
     }
 
@@ -201,9 +209,9 @@ public class FieldController implements Initializable {
         return (Node) childrens;
     }
 
-    @FXML public void mostrarDialogin(MouseEvent event, Personagem p) {
+    @FXML public void mostrarDialog(MouseEvent event, FieldTile pTile) {
         final Stage dialog = new Stage();
-        dialog.setTitle(p.getNome() + " | Vida: " + p.getVida() + " | Mana: " + p.getMana());
+        dialog.setTitle(pTile.getPersonagem().getNome() + " | Vida: " + pTile.getPersonagem().getVida() + " | Mana: " + pTile.getPersonagem().getMana());
         dialog.setResizable(false);
         dialog.setOnCloseRequest(evento -> {
             if (Sistema.rodada == 1) {
@@ -213,7 +221,6 @@ public class FieldController implements Initializable {
             Sistema.rodada++;
         });
         dialog.initModality(Modality.WINDOW_MODAL);
-//        dialog.initOwner(primaryStage);
         VBox dialogVbox = new VBox(20);
         dialogVbox.setAlignment(Pos.CENTER);
         ObservableList<Node> opcoes = dialogVbox.getChildren();
@@ -222,16 +229,17 @@ public class FieldController implements Initializable {
         botaoMover.setOnMouseClicked(event1 -> {
             dialog.close();
             ArrayList<Coordenada> coordenadas;
-            coordenadas = p.getAlcance(mapaInterno);
+            coordenadas = pTile.getPersonagem().getAlcance(mapaInterno);
             alcancaveis = coordenadas;
             for (Coordenada c : coordenadas) {
-                TeamBox tbGenerico = new TeamBox("");
-                tbGenerico.coord.setPosicao(c.getLinha(), c.getColuna());
-                tbGenerico.setOnMouseClicked(event2 -> {
-                    if (event2.getSource() == tbGenerico) {
-                        p.mover(tbGenerico.coord.getLinha(), tbGenerico.coord.getColuna(), mapaInterno, tabuleiro);
+                FieldTile fieldTile = new FieldTile();
+                fieldTile.coordenada.setPosicao(c.getLinha(), c.getColuna());
+                fieldTile.setStyle("-fx-border-radius: 15px; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: rgb(34, 177, 76);");
+                fieldTile.setOnMouseClicked(event2 -> {
+                    if (event2.getSource() == fieldTile) {
+                        fieldTile.getPersonagem().mover(fieldTile.coordenada.getLinha(), fieldTile.coordenada.getColuna(), mapaInterno, tabuleiro);
                         for (Coordenada coord : alcancaveis) {
-                            if (coord != p.coord) {
+                            if (coord != fieldTile.getPersonagem().coord) {
                                 removeNodeByRowColumnIndex(coord.getLinha(), coord.getColuna(), tabuleiro);
                                 alcancaveis.remove(coord);
                             }
@@ -240,7 +248,7 @@ public class FieldController implements Initializable {
                     }
                 });
                 tabuleiro.add(tbGenerico, c.getColuna(), c.getLinha());
-                Obstaculo obsTemp = new Obstaculo("");
+                Obstaculo obsTemp = new Obstaculo();
                 obsTemp.coord.setPosicao(c.getLinha(),c.getColuna());
                 mapaInterno.inserirObsetaculo(obsTemp);
             }
@@ -263,10 +271,10 @@ public class FieldController implements Initializable {
     }
 
     @FXML private void selectCharacter(MouseEvent event) {
-        TeamBox selecionado = (TeamBox) event.getSource();
+        FieldTile selecionado = (FieldTile) event.getSource();
         for (Personagem p : Sistema.players.get(Sistema.rodada).time) {
-            if (p.getTeamBox() == selecionado) {
-                mostrarDialogin(event, p);
+            if (p == selecionado.getPersonagem()) {
+                mostrarDialog(event, selecionado);
                 return;
             }
         }
@@ -278,6 +286,5 @@ public class FieldController implements Initializable {
         Sistema.sortearPlayers(Sistema.players);
         criaGridPane();
         organizarPersonagens(Sistema.players.get(0).time, Sistema.players.get(1).time);
-        System.out.println("RODADA: " + Sistema.rodada);
     }
 }

@@ -1,6 +1,5 @@
 package com.surtados.outbreak.Models;
 
-import com.surtados.outbreak.Screens.Field.FieldController;
 import com.surtados.outbreak.Utils.Dados;
 import com.surtados.outbreak.components.TeamBox;
 import javafx.scene.layout.GridPane;
@@ -251,10 +250,8 @@ public abstract class Personagem {
     }
 
     public void mover(int linha, int coluna, Mapa mapa, GridPane tabuleiro) {
-//        mapa.setMatriz(sprite.getCharacter(), linha, coluna, coord.getLinha(), coord.getColuna());
-        FieldController.removeNodeByRowColumnIndex(coord.getLinha(), coord.getColuna(), tabuleiro);
-        FieldController.removeNodeByRowColumnIndex(linha, coluna, tabuleiro);
-        mapa.removerObstaculo((Obstaculo) mapa.getPosicao(linha, coluna));
+      mapa.removerObstaculo((Obstaculo) mapa.getPosicao(linha, coluna));
+//      tabuleiro.getChildren();
         coord.setPosicao(linha, coluna);
 
         tabuleiro.add(getTeamBox(), linha, coluna);

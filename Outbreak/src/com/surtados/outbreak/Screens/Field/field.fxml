@@ -4,7 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:id="" gridLinesVisible="true" maxHeight="600.0" maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" styleClass="mainBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.surtados.outbreak.Screens.Field.FieldController">
+<GridPane fx:id="mapa" maxHeight="600.0" maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" styleClass="mainBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.surtados.outbreak.Screens.Field.FieldController">
    <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
       <RowConstraints maxHeight="400.0" minHeight="10.0" prefHeight="400.0" vgrow="ALWAYS" />
@@ -16,7 +16,7 @@
       <ColumnConstraints hgrow="ALWAYS" maxWidth="384.0" minWidth="78.0" prefWidth="111.0" />
    </columnConstraints>
    <children>
-      <GridPane fx:id="tabuleiro" alignment="CENTER" gridLinesVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <GridPane fx:id="tabuleiro" alignment="CENTER" gridLinesVisible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
